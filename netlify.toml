@@ -1,0 +1,17 @@
+[[redirects]]
+  from = "/translatea"
+  to   = "/translatea.html"
+  status = 200
+
+[[redirects]]
+  from = "/fotostories"
+  to   = "/fotostories.html"
+  status = 200
+
+[[redirects]]
+  from = "/ai"
+  to   = "/ai.html"
+  status = 200
+
+[build]
+  publish = "."

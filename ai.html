@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Projects — Adam Lankamer</title>
+<meta name="description" content="AI tools for the creator economy by Adam Lankamer — Ucaption, TestYourSkills, and the Image & Video Tagger.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #f9f7f4;
+    --surface:  rgba(255,255,255,0.72);
+    --surface2: rgba(255,255,255,0.55);
+    --border:   rgba(180,165,150,0.25);
+    --accent:   #5b9ba6;
+    --accent2:  #8ab4bc;
+    --text:     #1e1a17;
+    --muted:    #8a7f76;
+    --warm:     #c4a882;
+    --dark:     #12100e;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 110% 55% at 50% 100%, rgba(91,155,166,0.16) 0%, transparent 58%),
+      radial-gradient(ellipse 60% 30% at 15% 50%, rgba(196,168,130,0.06) 0%, transparent 60%),
+      linear-gradient(175deg, #f9f7f4 0%, #f0ece6 35%, #e8f0f2 70%, #d8eaed 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(249,247,244,0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; letter-spacing: 0.06em; color: var(--text); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 11px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 160px 80px 100px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 5.5vw, 78px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 28px;
+    max-width: 700px;
+  }
+  .hero-title em { font-style: italic; color: var(--muted); }
+
+  .hero-sub {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 56px;
+  }
+
+  /* ── SLIDE NAV DOTS ── */
+  .slide-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 60px;
+  }
+
+  .slide-dot {
+    width: 28px;
+    height: 2px;
+    background: var(--border);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+  }
+  .slide-dot.active {
+    width: 52px;
+    background: var(--accent);
+  }
+
+  /* ── PROJECTS SLIDER ── */
+  .slider-outer {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .project-slide {
+    min-width: 100%;
+    padding: 0 80px 100px;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    min-height: 560px;
+  }
+
+  /* Left panel — visual */
+  .card-visual {
+    position: relative;
+    overflow: hidden;
+    min-height: 480px;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .card-visual-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* ucaption */
+  .visual-ucaption {
+    background: linear-gradient(140deg, #081820 0%, #0d2535 50%, #0a2030 100%);
+  }
+  .visual-ucaption .card-visual-inner { gap: 16px; }
+
+  .ucaption-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+  .ucaption-logo span { color: #5b9ba6; }
+
+  .ucaption-tagline {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .ucaption-captions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    margin-top: 16px;
+  }
+
+  .caption-line {
+    background: rgba(91,155,166,0.08);
+    border: 1px solid rgba(91,155,166,0.2);
+    border-radius: 2px;
+    padding: 12px 14px;
+    font-size: 10px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.6);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .caption-line .cl-label {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #5b9ba6;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  /* testyourskills */
+  .visual-tys {
+    background: linear-gradient(140deg, #0a0f1a 0%, #0d1520 50%, #0a1218 100%);
+  }
+
+  .tys-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+  .tys-logo span { color: #3b82f6; }
+
+  .tys-skill-ring {
+    position: relative;
+    width: 140px;
+    height: 140px;
+  }
+  .tys-skill-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .tys-ring-track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 8; }
+  .tys-ring-fill { fill: none; stroke: #3b82f6; stroke-width: 8; stroke-linecap: round; stroke-dasharray: 352; stroke-dashoffset: 88; }
+  .tys-ring-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .tys-ring-pct { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #fff; line-height: 1; }
+  .tys-ring-sub { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+  .tys-skills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 75%;
+  }
+  .tys-tag {
+    padding: 5px 12px;
+    border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 100px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* tagger */
+  .visual-tagger {
+    background: linear-gradient(140deg, #0f0a06 0%, #1a1208 50%, #0f1208 100%);
+  }
+
+  .tagger-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+  .tagger-logo span { color: #f59e0b; }
+
+  .tagger-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    width: 80%;
+  }
+  .tagger-tag {
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .tagger-tag.t1 { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: rgba(245,158,11,0.8); }
+  .tagger-tag.t2 { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.45); }
+
+  .tagger-bar {
+    width: 75%;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    height: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .tagger-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #ef4444);
+    border-radius: 100px;
+    animation: barFill 2.5s ease-out infinite alternate;
+  }
+  @keyframes barFill {
+    from { width: 30%; }
+    to { width: 88%; }
+  }
+  .tagger-bar-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 4px; }
+
+  /* Right panel — content */
+  .card-content {
+    background: var(--surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    padding: 52px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .card-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--warm);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .card-url {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: lowercase;
+    margin-bottom: 28px;
+    display: block;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--muted);
+    margin-bottom: 32px;
+    flex: 1;
+  }
+
+  .card-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .feature-item::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 13px 28px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+  .btn-primary:hover { background: #4a8a95; }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .card-status {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 100px;
+    border: 1px solid;
+  }
+  .status-live { color: #22c55e; border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.06); }
+  .status-coming { color: var(--warm); border-color: rgba(196,168,130,0.4); background: rgba(196,168,130,0.06); }
+
+  /* ── SLIDER CONTROLS ── */
+  .slider-controls {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px 60px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ctrl-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .ctrl-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .progress-bar {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ── PHILOSOPHY STRIP ── */
+  .philosophy-strip {
+    position: relative;
+    z-index: 1;
+    background: var(--surface);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .philosophy-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+  }
+
+  .phil-item {
+    padding: 36px 32px;
+    border-right: 1px solid var(--border);
+  }
+  .phil-item:last-child { border-right: none; }
+
+  .phil-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 18px;
+  }
+
+  .phil-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .phil-body {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 300; color: var(--muted); letter-spacing: 0.06em; }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* xposter */
+  .visual-xposter {
+    background: linear-gradient(140deg, #060810 0%, #0a0e1a 50%, #080c18 100%);
+  }
+
+  .xposter-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.01em;
+  }
+  .xposter-logo span { color: #e7e7e7; font-weight: 300; }
+
+  .xposter-queue {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 82%;
+  }
+
+  .xpost-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 3px;
+    padding: 10px 12px;
+  }
+  .xpost-item.xpost-live { border-color: rgba(34,197,94,0.3); background: rgba(34,197,94,0.05); }
+  .xpost-item.xpost-dim { opacity: 0.45; }
+
+  .xpost-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .xpost-dot-pending { background: #f59e0b; box-shadow: 0 0 6px rgba(245,158,11,0.5); }
+  .xpost-dot-queue { background: rgba(255,255,255,0.15); }
+  .xpost-live .xpost-dot { background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.5); }
+
+  .xpost-content { flex: 1; }
+  .xpost-time { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 3px; }
+  .xpost-text { font-size: 10px; line-height: 1.4; color: rgba(255,255,255,0.55); }
+
+  .xpost-badge {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    margin-top: 4px;
+  }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 1.5px; background: var(--text); }
+
+  @media (max-width: 1000px) {
+    .project-card { grid-template-columns: 1fr; }
+    .card-visual { min-height: 300px; border-radius: 4px 4px 0 0; }
+    .card-content { border-radius: 0 0 4px 4px; }
+    .philosophy-inner { grid-template-columns: 1fr; padding: 40px 28px; }
+    .phil-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .phil-item:last-child { border-bottom: none; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 28px; }
+    .hamburger { display: flex; }
+    .nav-links { display: none; position: fixed; top: 61px; left: 0; right: 0; background: rgba(249,247,244,0.95); backdrop-filter: blur(20px); flex-direction: column; align-items: center; gap: 28px; padding: 40px 24px; border-bottom: 1px solid var(--border); }
+    .nav-links.open { display: flex; }
+    .hero { padding: 100px 28px 60px; }
+    .project-slide { padding: 0 28px 60px; }
+    .slider-controls { padding: 0 28px 40px; }
+    footer { padding: 40px 28px; flex-direction: column; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Adam <span>Lankamer</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/translatea.html">Translation</a></li>
+    <li><a href="/fotostories.html">Photography</a></li>
+    <li><a href="/ai.html" class="active">AI</a></li>
+    <li><a href="mailto:adam@translatea.com">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-eyebrow">AI &amp; Software</span>
+  <h1 class="hero-title">Tools for the<br><em>creator economy</em></h1>
+  <p class="hero-sub">
+    I build practical AI products that solve real problems for creators. Each tool emerges from direct experience with the creator economy — the friction, the repetition, the gaps that larger companies ignore.
+  </p>
+
+  <div class="slide-nav" id="slideNav">
+    <button class="slide-dot active" onclick="goToSlide(0)"></button>
+    <button class="slide-dot" onclick="goToSlide(1)"></button>
+    <button class="slide-dot" onclick="goToSlide(2)"></button>
+    <button class="slide-dot" onclick="goToSlide(3)"></button>
+  </div>
+</section>
+
+<!-- SLIDER -->
+<div class="slider-outer">
+  <div class="slider-track" id="sliderTrack">
+
+    <!-- ── SLIDE 1: Ucaption ── -->
+    <div class="project-slide">
+      <div class="project-card">
+        <div class="card-visual visual-ucaption">
+          <div class="card-visual-inner">
+            <div>
+              <div class="ucaption-logo">U<span>·</span>caption</div>
+              <div class="ucaption-tagline">AI Captions for Content Creators</div>
+            </div>
+            <div class="ucaption-captions">
+              <div class="caption-line">
+                <span class="cl-label">Engaging</span>
+                Golden hour magic ✨ The light that makes everything feel like a dream…
+              </div>
+              <div class="caption-line">
+                <span class="cl-label">Storytelling</span>
+                Behind every great shot is a story worth telling 📸 Here's mine.
+              </div>
+              <div class="caption-line">
+                <span class="cl-label">Conversational</span>
+                Can't believe how this turned out 😍 Which one is your favourite?
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div>
+            <span class="card-number">Project 01</span>
+            <div class="card-name">Ucaption</div>
+            <span class="card-url">ucaption.online</span>
+            <p class="card-desc">
+              AI-powered caption generation for content creators across any niche. Upload an image or video, get three distinct, platform-ready captions instantly. Grok Vision analyses your media automatically — no prompt writing required.
+            </p>
+            <div class="card-features">
+              <div class="feature-item">Grok Vision AI analyses your media automatically</div>
+              <div class="feature-item">Three distinct caption styles per generation</div>
+              <div class="feature-item">Under 280 characters with hashtags, ready to post</div>
+              <div class="feature-item">Custom brand voice available on Pro plan</div>
+              <div class="feature-item">Multi-language captions (Polish, Spanish, and more)</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://ucaption.online" target="_blank" class="btn btn-primary">Visit Ucaption</a>
+            <span class="card-status status-live">Live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SLIDE 2: TestYourSkills ── -->
+    <div class="project-slide">
+      <div class="project-card">
+        <div class="card-visual visual-tys">
+          <div class="card-visual-inner">
+            <div class="tys-logo">Test<span>Your</span>Skills</div>
+            <div class="tys-skill-ring">
+              <svg viewBox="0 0 120 120">
+                <circle class="tys-ring-track" cx="60" cy="60" r="52"/>
+                <circle class="tys-ring-fill" cx="60" cy="60" r="52"/>
+              </svg>
+              <div class="tys-ring-label">
+                <span class="tys-ring-pct">75%</span>
+                <span class="tys-ring-sub">Percentile</span>
+              </div>
+            </div>
+            <div class="tys-skills">
+              <span class="tys-tag">JavaScript</span>
+              <span class="tys-tag">Python</span>
+              <span class="tys-tag">SQL</span>
+              <span class="tys-tag">Marketing</span>
+              <span class="tys-tag">Design</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div>
+            <span class="card-number">Project 02</span>
+            <div class="card-name">TestYourSkills</div>
+            <span class="card-url">testyourskills.app</span>
+            <p class="card-desc">
+              Skill verification platform for professionals. Take concise, AI-generated assessments across technical and creative domains, see where you stand on the percentile curve, and get an honest read on your capabilities — without the fluff of traditional certification courses.
+            </p>
+            <div class="card-features">
+              <div class="feature-item">AI-generated questions calibrated by difficulty</div>
+              <div class="feature-item">Percentile ranking against all test-takers</div>
+              <div class="feature-item">Multiple domains: code, marketing, design, finance</div>
+              <div class="feature-item">Shareable score cards (coming soon)</div>
+              <div class="feature-item">Anonymous leaderboards by skill (coming soon)</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://testyourskills.app" target="_blank" class="btn btn-primary">Try It Free</a>
+            <span class="card-status status-live">Live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SLIDE 3: Tagger ── -->
+    <div class="project-slide">
+      <div class="project-card">
+        <div class="card-visual visual-tagger">
+          <div class="card-visual-inner">
+            <div class="tagger-logo">Image &amp; Video <span>Tagger</span></div>
+            <div class="tagger-tags">
+              <span class="tagger-tag t1">landscape</span>
+              <span class="tagger-tag t1">portrait</span>
+              <span class="tagger-tag t2">golden hour</span>
+              <span class="tagger-tag t1">architecture</span>
+              <span class="tagger-tag t2">macro</span>
+              <span class="tagger-tag t1">street</span>
+              <span class="tagger-tag t2">bokeh</span>
+              <span class="tagger-tag t1">wildlife</span>
+              <span class="tagger-tag t2">natural light</span>
+              <span class="tagger-tag t1">travel</span>
+              <span class="tagger-tag t2">long exposure</span>
+            </div>
+            <div>
+              <div class="tagger-bar"><div class="tagger-bar-fill"></div></div>
+              <div class="tagger-bar-label" style="text-align:center; margin-top:6px; font-size:9px; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.3);">Tagging 847 files…</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div>
+            <span class="card-number">Project 03</span>
+            <div class="card-name">Image &amp; Video Tagger</div>
+            <span class="card-url">Desktop App · BYOK</span>
+            <p class="card-desc">
+              A standalone desktop application for batch AI tagging of image and video libraries. Bring Your Own API Key — your content never touches our servers. Grok Vision analyses each file and writes semantic tags directly to EXIF metadata and sidecar files. Built for creators with serious media libraries.
+            </p>
+            <div class="card-features">
+              <div class="feature-item">Batch process thousands of images and videos</div>
+              <div class="feature-item">Tags written to EXIF/IPTC + CSV export</div>
+              <div class="feature-item">Keyframe extraction for video tagging (FFmpeg bundled)</div>
+              <div class="feature-item">BYOK — your API key, your data, zero server exposure</div>
+              <div class="feature-item">Mac &amp; Windows installers · One-time licence</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <span class="btn btn-ghost" style="cursor:default; opacity:0.6">Coming Soon</span>
+            <span class="card-status status-coming">In Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SLIDE 4: AutoXPoster ── -->
+    <div class="project-slide">
+      <div class="project-card">
+        <div class="card-visual visual-xposter">
+          <div class="card-visual-inner">
+            <div class="xposter-logo">Auto<span>X</span>Poster</div>
+            <div class="xposter-queue">
+              <div class="xpost-item xpost-live">
+                <div class="xpost-dot"></div>
+                <div class="xpost-content">
+                  <div class="xpost-time">Posted 14 min ago</div>
+                  <div class="xpost-text">Golden hour at the coast 🌅 Every frame tells a story worth sharing…</div>
+                </div>
+              </div>
+              <div class="xpost-item">
+                <div class="xpost-dot xpost-dot-pending"></div>
+                <div class="xpost-content">
+                  <div class="xpost-time">In 1 min</div>
+                  <div class="xpost-text">Behind the lens: what makes a portrait unforgettable 📸</div>
+                </div>
+              </div>
+              <div class="xpost-item xpost-dim">
+                <div class="xpost-dot xpost-dot-queue"></div>
+                <div class="xpost-content">
+                  <div class="xpost-time">In 16 min</div>
+                  <div class="xpost-text">AI caption queued — 3 styles generated ✨</div>
+                </div>
+              </div>
+            </div>
+            <div class="xpost-badge">X (Twitter) · AI Captioned · Auto-Scheduled</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div>
+            <span class="card-number">Project 04</span>
+            <div class="card-name">AutoXPoster</div>
+            <span class="card-url">autoxposter.com</span>
+            <p class="card-desc">
+              Fully automatic content pipeline for X (Twitter). Fetches media from your library, generates AI captions via Grok Vision, schedules posts at optimal intervals, and publishes — all without manual input. Set it once, post forever.
+            </p>
+            <div class="card-features">
+              <div class="feature-item">Automatic media fetching from local or cloud library</div>
+              <div class="feature-item">Grok Vision AI caption generation per post</div>
+              <div class="feature-item">Configurable schedule — interval, times, frequency</div>
+              <div class="feature-item">Smart deduplication — never repeats recent content</div>
+              <div class="feature-item">Skips oversized or incompatible files automatically</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <span class="btn btn-ghost" style="cursor:default; opacity:0.6">Coming Soon</span>
+            <span class="card-status status-coming">In Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /slider-track -->
+</div>
+
+<!-- CONTROLS -->
+<div class="slider-controls">
+  <button class="ctrl-btn" id="prevBtn" onclick="shiftSlide(-1)">‹</button>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width:33.33%"></div>
+  </div>
+  <button class="ctrl-btn" id="nextBtn" onclick="shiftSlide(1)">›</button>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="philosophy-strip">
+  <div class="philosophy-inner">
+    <div class="phil-item">
+      <svg class="phil-icon" viewBox="0 0 28 28" fill="none">
+        <path d="M4 14a10 10 0 1 0 20 0A10 10 0 0 0 4 14z" stroke="#5b9ba6" stroke-width="1.2"/>
+        <path d="M14 9v5l3 3" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div class="phil-title">Practical, not theoretical</div>
+      <p class="phil-body">Every tool I build starts from a problem I experienced personally. AI is only interesting when it saves real time for real people.</p>
+    </div>
+    <div class="phil-item">
+      <svg class="phil-icon" viewBox="0 0 28 28" fill="none">
+        <rect x="4" y="4" width="9" height="9" rx="1" stroke="#5b9ba6" stroke-width="1.2"/>
+        <rect x="15" y="4" width="9" height="9" rx="1" stroke="#5b9ba6" stroke-width="1.2"/>
+        <rect x="4" y="15" width="9" height="9" rx="1" stroke="#5b9ba6" stroke-width="1.2"/>
+        <path d="M19.5 15v9M15 19.5h9" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div class="phil-title">Build, ship, iterate</div>
+      <p class="phil-body">A working product that solves 80% of the problem is worth more than a perfect product that ships never. I move fast and improve in public.</p>
+    </div>
+    <div class="phil-item">
+      <svg class="phil-icon" viewBox="0 0 28 28" fill="none">
+        <path d="M14 4l2.5 5 5.5.8-4 3.9.9 5.5L14 16.5l-4.9 2.7.9-5.5L6 9.8l5.5-.8L14 4z" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="phil-title">Creator-first economics</div>
+      <p class="phil-body">The creator economy is a multi-billion dollar market largely underserved by software. Simple tools, fair pricing, real results — that's the only pitch I need.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-name">Adam Lankamer</span>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/translatea.html">Translation</a></li>
+    <li><a href="/fotostories.html">Photography</a></li>
+    <li><a href="https://instagram.com/foto__stories" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://linkedin.com/in/translatea" target="_blank">LinkedIn</a></li>
+  </ul>
+</footer>
+
+<script>
+let current = 0;
+const total = 4;
+
+function updateSlider() {
+  const track = document.getElementById('sliderTrack');
+  track.style.transform = `translateX(-${current * 100}%)`;
+
+  document.querySelectorAll('.slide-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === current);
+  });
+
+  const pct = ((current + 1) / total) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function goToSlide(n) {
+  current = Math.max(0, Math.min(n, total - 1));
+  updateSlider();
+}
+
+function shiftSlide(dir) {
+  goToSlide((current + dir + total) % total);
+}
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') shiftSlide(-1);
+  if (e.key === 'ArrowRight') shiftSlide(1);
+});
+
+// Touch / swipe
+let touchStartX = 0;
+document.getElementById('sliderTrack').addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+}, { passive: true });
+document.getElementById('sliderTrack').addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) shiftSlide(dx < 0 ? 1 : -1);
+}, { passive: true });
+</script>
+
+</body>
+</html>

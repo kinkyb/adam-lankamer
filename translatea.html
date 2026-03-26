@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Translatea — Professional Translation · Adam Lankamer</title>
+<meta name="description" content="Professional translation services by Adam Lankamer. 27 years of experience across European and Slavic languages for legal, business, and creative projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #f9f7f4;
+    --surface:  rgba(255,255,255,0.72);
+    --border:   rgba(180,165,150,0.25);
+    --accent:   #5b9ba6;
+    --text:     #1e1a17;
+    --muted:    #8a7f76;
+    --warm:     #c4a882;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 120% 60% at 50% 100%, rgba(91,155,166,0.14) 0%, transparent 60%),
+      linear-gradient(175deg, #f9f7f4 0%, #f0ece6 40%, #e8f0f2 75%, #d8eaed 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(249,247,244,0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 160px 80px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 5.5vw, 76px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .hero-title em { font-style: italic; color: var(--muted); }
+
+  .hero-sub {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 480px;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-bottom: 8px;
+  }
+
+  .stat-item {
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 22px 28px;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--text);
+  }
+  .stat-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ── DIVIDER LINE ── */
+  .divider-line {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── SERVICES ── */
+  .section {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 80px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 56px;
+  }
+  .section-title em { font-style: italic; color: var(--muted); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 80px;
+  }
+
+  .service-card {
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    padding: 36px 32px 40px;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-3px); }
+
+  .service-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 20px;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* ── LANGUAGES ── */
+  .languages-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .languages-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .languages-intro em { color: var(--accent); font-style: normal; }
+
+  .lang-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .lang-tag {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .lang-tag:hover { border-color: var(--accent); color: var(--accent); }
+  .lang-tag.primary { border-color: var(--accent); color: var(--accent); background: rgba(91,155,166,0.06); }
+
+  /* ── APPROACH ── */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .approach-item {
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+  }
+
+  .approach-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .approach-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .approach-body {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* ── CTA ── */
+  .cta-strip {
+    position: relative;
+    z-index: 1;
+    background: var(--surface);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cta-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .cta-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .cta-text p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 480px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.25s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: #4a8a95; }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 1.5px; background: var(--text); }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 28px; }
+    .hamburger { display: flex; }
+    .nav-links { display: none; position: fixed; top: 61px; left: 0; right: 0; background: rgba(249,247,244,0.95); backdrop-filter: blur(20px); flex-direction: column; align-items: center; gap: 28px; padding: 40px 24px; border-bottom: 1px solid var(--border); }
+    .nav-links.open { display: flex; }
+    .hero { grid-template-columns: 1fr; padding: 100px 28px 60px; gap: 40px; }
+    .hero-stats { flex-direction: row; flex-wrap: wrap; }
+    .stat-item { flex: 1; min-width: 120px; }
+    .section { padding: 60px 28px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .languages-block { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .cta-inner { flex-direction: column; padding: 60px 28px; text-align: center; }
+    footer { padding: 40px 28px; flex-direction: column; gap: 20px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .credentials-block { flex-direction: column; gap: 12px; }
+  }
+
+  /* ── SPECIALTIES ── */
+  .specialties-block {
+    margin-top: 64px;
+  }
+  .spec-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .spec-tag {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.6);
+  }
+
+  /* ── CREDENTIALS ── */
+  .credentials-block {
+    margin-top: 48px;
+    display: flex;
+    gap: 2px;
+  }
+  .cred-item {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cred-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .cred-detail {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+  .testi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .testi-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--text);
+    flex: 1;
+  }
+  .testi-quote::before { content: '\201C'; }
+  .testi-quote::after  { content: '\201D'; }
+  .testi-author {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .testi-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+  .testi-role {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Adam <span>Lankamer</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/translatea.html" class="active">Translation</a></li>
+    <li><a href="/fotostories.html">Photography</a></li>
+    <li><a href="/ai.html">AI</a></li>
+    <li><a href="mailto:adam@translatea.com">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <span class="hero-eyebrow">Translation &amp; Interpreting</span>
+    <h1 class="hero-title">Words that<br>carry <em>weight</em></h1>
+    <p class="hero-sub">
+      Expert financial, legal and patent translation between English, Polish and French. Since 1999, trusted by law firms, investment banks, fund managers, and international corporations — wherever terminological precision and deep domain knowledge matter.
+    </p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">27+</div>
+      <span class="stat-label">Years of professional practice</span>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">PL · EN</div>
+      <span class="stat-label">Core language pair</span>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">EU</div>
+      <span class="stat-label">Based in Spain, working globally</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- SERVICES -->
+<section class="section">
+  <span class="section-label">What I do</span>
+  <h2 class="section-title">Services built on<br><em>decades of practice</em></h2>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 32 32" fill="none">
+        <path d="M4 8h10M9 8V5M4 8c0 4 3.5 6.5 5 7M14 8c0 4-3.5 6.5-5 7M6.5 15s1 2.5 2.5 3" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M18 12h10l-5 14-5-14" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.5 18h7" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div class="service-name">Written Translation</div>
+      <p class="service-desc">Documents, contracts, marketing copy, literary texts, websites, and technical manuals. Every word chosen with the precision the source deserves.</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="11" stroke="#5b9ba6" stroke-width="1.2"/>
+        <path d="M16 5c0 0-5 3-5 11s5 11 5 11M16 5c0 0 5 3 5 11s-5 11-5 11M5 16h22" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div class="service-name">Interpreting</div>
+      <p class="service-desc">Consecutive and simultaneous interpreting for business meetings, conferences, legal proceedings, and negotiations. Real-time precision under pressure.</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 32 32" fill="none">
+        <rect x="4" y="6" width="24" height="18" rx="2" stroke="#5b9ba6" stroke-width="1.2"/>
+        <path d="M4 11h24M9 6v5M23 6v5" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M8 16h8M8 20h5" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div class="service-name">Localisation</div>
+      <p class="service-desc">Adapting content for culture, not just language. Software UI, e-commerce, marketing campaigns — made to feel native in the target market.</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 32 32" fill="none">
+        <path d="M8 6h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" stroke="#5b9ba6" stroke-width="1.2"/>
+        <path d="M6 22l4 4M26 22l-4 4" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M12 13h8M12 17h5" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div class="service-name">Legal &amp; Certified</div>
+      <p class="service-desc">Sworn translation for official documents, court materials, notarial deeds, and certificates. Accepted by European courts and public institutions.</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 32 32" fill="none">
+        <path d="M6 8h20M6 13h14M6 18h8" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M22 18l4 4-4 4" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="service-name">Proofreading &amp; Editing</div>
+      <p class="service-desc">Review and correction of existing translations. Structural editing of Polish and English texts. Manuscript-ready polishing for publication.</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 32 32" fill="none">
+        <path d="M16 4l3 6 7 1-5 5 1.5 7L16 20l-6.5 3 1.5-7L6 11l7-1 3-6z" stroke="#5b9ba6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="service-name">Creative &amp; Literary</div>
+      <p class="service-desc">Fiction, poetry, brand narrative, advertising copy. Translation that respects rhythm, tone, and intention — not just meaning.</p>
+    </div>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="languages-block">
+    <p class="languages-intro">
+      Three languages fluent enough to think in.
+    </p>
+    <div class="lang-list">
+      <span class="lang-tag primary">Polish</span>
+      <span class="lang-tag primary">English</span>
+      <span class="lang-tag primary">French</span>
+      <span class="lang-tag">Russian</span>
+    </div>
+  </div>
+
+  <!-- SPECIALTIES -->
+  <div class="specialties-block">
+    <p class="section-label" style="margin-bottom:20px;">Domain specialties</p>
+    <div class="spec-tags">
+      <span class="spec-tag">KIIDs</span>
+      <span class="spec-tag">Fund Prospectuses (SICAV)</span>
+      <span class="spec-tag">Articles of Association</span>
+      <span class="spec-tag">Patent Applications</span>
+      <span class="spec-tag">Pre-IPO / IPO / SPO</span>
+      <span class="spec-tag">Financial Statements</span>
+      <span class="spec-tag">ECJ Judgments</span>
+      <span class="spec-tag">CIMA Manuals</span>
+      <span class="spec-tag">IAS Guidelines</span>
+      <span class="spec-tag">Structured Products</span>
+      <span class="spec-tag">Underwriting</span>
+      <span class="spec-tag">Contracts &amp; Agreements</span>
+    </div>
+  </div>
+
+  <!-- CREDENTIALS -->
+  <div class="credentials-block">
+    <p class="section-label" style="margin-bottom:20px;">Qualifications</p>
+    <div class="cred-list">
+      <div class="cred-item">
+        <span class="cred-name">The Chartered Institute of Linguists</span>
+        <span class="cred-detail">CIoL, UK</span>
+      </div>
+      <div class="cred-item">
+        <span class="cred-name">Warsaw School of Economics</span>
+        <span class="cred-detail">SGH — Finance &amp; Law</span>
+      </div>
+      <div class="cred-item">
+        <span class="cred-name">London Chamber of Commerce &amp; Industry</span>
+        <span class="cred-detail">LCCI — Business English</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section" style="padding-top: 0;">
+  <span class="section-label">How I work</span>
+  <h2 class="section-title">The <em>approach</em></h2>
+
+  <div class="approach-grid">
+    <div class="approach-item">
+      <span class="approach-num">01</span>
+      <div class="approach-title">Precision over speed</div>
+      <p class="approach-body">Twenty-seven years have taught me that a rushed translation costs more than a careful one. I take on work I can do properly, and I communicate timelines honestly.</p>
+    </div>
+    <div class="approach-item">
+      <span class="approach-num">02</span>
+      <div class="approach-title">Cultural fluency</div>
+      <p class="approach-body">Language carries culture. A phrase that lands perfectly in Polish can feel tone-deaf in English — not because of the words, but because of what surrounds them. I translate both.</p>
+    </div>
+    <div class="approach-item">
+      <span class="approach-num">03</span>
+      <div class="approach-title">Direct collaboration</div>
+      <p class="approach-body">No agency layers, no handoffs. You work with me. Questions answered, context discussed, revisions handled promptly. One point of contact, full accountability.</p>
+    </div>
+    <div class="approach-item">
+      <span class="approach-num">04</span>
+      <div class="approach-title">Specialised domains</div>
+      <p class="approach-body">Legal, financial, creative, technical, and marketing translation — each has its own register, its own conventions. I know the difference and work accordingly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="padding-top:0;">
+  <span class="section-label">What clients say</span>
+  <h2 class="section-title">Trusted by <em>those who cannot afford mistakes</em></h2>
+  <div class="testimonials-grid">
+
+    <div class="testi-card">
+      <p class="testi-quote">It is VERY rare to find someone fluent in English and Polish who at the same time knows and understands financial markets. In Mr. Lankamer's translations I did not have to make a single correction.</p>
+      <div class="testi-author">
+        <span class="testi-name">Piotr Tymula</span>
+        <span class="testi-role">Institutional Equity Sales · William O'Neill + Co</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p class="testi-quote">Adam has been providing outstanding quality translations for Peter&amp;Clark for many years. He can certainly be considered as one of our best and most reliable resources.</p>
+      <div class="testi-author">
+        <span class="testi-name">Isabelle Carton</span>
+        <span class="testi-role">Chief Operating Officer · Lexitech</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p class="testi-quote">Timely and very professional. Highly responsive, clearly communicating and a pleasure to work with.</p>
+      <div class="testi-author">
+        <span class="testi-name">Ludomir Biedecki</span>
+        <span class="testi-role">Partner, Corporate/M&amp;A · Bird&amp;Bird</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p class="testi-quote">My translation company has used Adam over 200 times for assignments, some highly complex and demanding. He has performed to an outstanding standard on all of them.</p>
+      <div class="testi-author">
+        <span class="testi-name">Andrzej K.</span>
+        <span class="testi-role">Owner · Kaznowski &amp; Associates</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p class="testi-quote">Adam is the Rolls-Royce among translators. Extremely helpful, diligent and committed to his craft.</p>
+      <div class="testi-author">
+        <span class="testi-name">Sylwia Dziuba</span>
+        <span class="testi-role">Journalist &amp; Author</span>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p class="testi-quote">Especially well-versed in capital markets and finance related language. I am happy to recommend Adam to anyone looking for a reliable Polish/English translator of financial or legal documents.</p>
+      <div class="testi-author">
+        <span class="testi-name">Lawrence Fahrenholz</span>
+        <span class="testi-role">Editorial Services · Lacrosse (client since 2006)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h3>Ready to start a project?</h3>
+      <p>Send a brief description of what you need — language pair, document type, volume, and deadline. I'll respond within one business day.</p>
+    </div>
+    <a href="mailto:adam@translatea.com?subject=Translation%20enquiry" class="btn btn-primary">Get in Touch</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-name">Adam Lankamer</span>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/fotostories.html">Photography</a></li>
+    <li><a href="/ai.html">AI</a></li>
+    <li><a href="https://instagram.com/foto__stories" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://linkedin.com/in/translatea" target="_blank">LinkedIn</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
