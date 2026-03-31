@@ -4,7 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Projects — Adam Lankamer</title>
-<meta name="description" content="AI tools for the creator economy by Adam Lankamer — Ucaption, TestYourSkills, and the Image & Video Tagger.">
+<meta name="description" content="AI tools for the creator economy by Adam Lankamer — Ucaption, TestYourSkills, GifPerfect, and more.">
+<link rel="canonical" href="https://adamlankamer.com/ai">
+<!-- Open Graph -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://adamlankamer.com/ai">
+<meta property="og:site_name"   content="Adam Lankamer">
+<meta property="og:title"       content="AI Projects — Adam Lankamer">
+<meta property="og:description" content="AI tools for the creator economy by Adam Lankamer — Ucaption, TestYourSkills, GifPerfect, and more.">
+<meta property="og:image"       content="https://adamlankamer.com/assets/adam-casual-1.jpg">
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="AI Projects — Adam Lankamer">
+<meta name="twitter:description" content="AI tools for the creator economy by Adam Lankamer — Ucaption, TestYourSkills, GifPerfect, and more.">
+<meta name="twitter:image"       content="https://adamlankamer.com/assets/adam-casual-1.jpg">
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "AI Projects by Adam Lankamer",
+  "url": "https://adamlankamer.com/ai",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Ucaption","url":"https://ucaption.online"},
+    {"@type":"ListItem","position":2,"name":"TestYourSkills","url":"https://testyourskills.app"},
+    {"@type":"ListItem","position":3,"name":"GifPerfect","url":"https://gifperfect.com"},
+    {"@type":"ListItem","position":4,"name":"Image & Video Tagger"}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -592,6 +620,97 @@
     margin-top: 4px;
   }
 
+  /* gifperfect */
+  .visual-gifperfect {
+    background: linear-gradient(140deg, #0c0816 0%, #130a22 50%, #0e0c1a 100%);
+  }
+
+  .gifperfect-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .gifperfect-logo span { color: #a855f7; }
+
+  .gifperfect-tagline {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+  }
+
+  .gifperfect-chunks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 82%;
+    margin-top: 8px;
+  }
+
+  .gif-chunk-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .gif-chunk-bar {
+    flex: 1;
+    height: 28px;
+    border-radius: 3px;
+    background: rgba(168,85,247,0.12);
+    border: 1px solid rgba(168,85,247,0.28);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+    overflow: hidden;
+  }
+  .gif-chunk-bar.chunk-source {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.12);
+  }
+  .gif-chunk-fill {
+    height: 5px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #a855f7, #7c3aed);
+    flex: 1;
+  }
+  .gif-chunk-fill.fill-60  { width: 60%; }
+  .gif-chunk-fill.fill-85  { width: 85%; }
+  .gif-chunk-fill.fill-45  { width: 45%; }
+
+  .gif-chunk-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .gif-chunk-label.lbl-accent { color: rgba(168,85,247,0.8); }
+
+  .gif-size-badge {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 100px;
+    border: 1px solid rgba(168,85,247,0.35);
+    color: rgba(168,85,247,0.7);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .gif-arrow {
+    font-size: 14px;
+    color: rgba(168,85,247,0.5);
+    flex-shrink: 0;
+  }
+
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
   .hamburger span { width: 22px; height: 1.5px; background: var(--text); }
 
@@ -644,6 +763,7 @@
     <button class="slide-dot" onclick="goToSlide(1)"></button>
     <button class="slide-dot" onclick="goToSlide(2)"></button>
     <button class="slide-dot" onclick="goToSlide(3)"></button>
+    <button class="slide-dot" onclick="goToSlide(4)"></button>
   </div>
 </section>
 
@@ -852,6 +972,72 @@
       </div>
     </div>
 
+    <!-- ── SLIDE 5: GifPerfect ── -->
+    <div class="project-slide">
+      <div class="project-card">
+        <div class="card-visual visual-gifperfect">
+          <div class="card-visual-inner">
+            <div>
+              <div class="gifperfect-logo"><span>Gif</span>Perfect</div>
+              <div class="gifperfect-tagline">Video → GIF chunks at any target size</div>
+            </div>
+            <div class="gifperfect-chunks">
+              <!-- Source video row -->
+              <div class="gif-chunk-row">
+                <div class="gif-chunk-bar chunk-source" style="flex:1">
+                  <span class="gif-chunk-label">video.mp4 · 340 MB</span>
+                </div>
+              </div>
+              <div style="text-align:center; font-size:11px; color:rgba(168,85,247,0.5); letter-spacing:.1em;">↓ chunk &amp; compress</div>
+              <!-- Chunk 1 -->
+              <div class="gif-chunk-row">
+                <div class="gif-chunk-bar">
+                  <div class="gif-chunk-fill fill-85"></div>
+                </div>
+                <div class="gif-size-badge">≤ 8 MB</div>
+              </div>
+              <!-- Chunk 2 -->
+              <div class="gif-chunk-row">
+                <div class="gif-chunk-bar">
+                  <div class="gif-chunk-fill fill-60"></div>
+                </div>
+                <div class="gif-size-badge">≤ 8 MB</div>
+              </div>
+              <!-- Chunk 3 -->
+              <div class="gif-chunk-row">
+                <div class="gif-chunk-bar">
+                  <div class="gif-chunk-fill fill-45"></div>
+                </div>
+                <div class="gif-size-badge">≤ 8 MB</div>
+              </div>
+            </div>
+            <div style="font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:rgba(168,85,247,0.45); margin-top:4px;">Mac &amp; Windows · Offline · No watermark</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div>
+            <span class="card-number">Project 05</span>
+            <div class="card-name">GifPerfect</div>
+            <span class="card-url">gifperfect.com</span>
+            <p class="card-desc">
+              Stop fighting platform size limits. GifPerfect converts any video into perfectly-sized GIF chunks — automatically calculating the right bitrate so every chunk lands under your target. Frame extraction included. Nothing ever leaves your machine.
+            </p>
+            <div class="card-features">
+              <div class="feature-item">Target-size chunking — splits video into GIFs under any file limit</div>
+              <div class="feature-item">Auto bitrate calculation from a test segment — no guesswork</div>
+              <div class="feature-item">JPG frame extraction with timestamps alongside GIF output</div>
+              <div class="feature-item">Fully offline — FFmpeg bundled, no cloud upload ever</div>
+              <div class="feature-item">MP4, MOV, AVI, MKV, WebM · Mac &amp; Windows · one-time licence</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://gifperfect.com" target="_blank" class="btn btn-primary">Visit GifPerfect</a>
+            <span class="card-status status-live">Live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div><!-- /slider-track -->
 </div>
 
@@ -910,7 +1096,7 @@
 
 <script>
 let current = 0;
-const total = 4;
+const total = 5;
 
 function updateSlider() {
   const track = document.getElementById('sliderTrack');
