@@ -16,6 +16,7 @@ cd /Users/mac/Desktop/AdamLankamer && netlify deploy --prod --dir=.
 - **Always deploy**: After pushing to GitHub, always run the Netlify deploy command above.
 - **All files in sync**: Never leave uncommitted changes — every file in the project must be pushed including robots.txt, sitemap.xml, favicons, etc.
 - **English only**: All communication, commit messages, and code comments in English.
+- **Trust the user — search harder before contradicting**: If the user says something has been solved or exists in another workflow, do not contradict them based on a single failed search. Search again more thoroughly (different terms, subagents, broader scope) before saying it cannot be found. The user is usually right.
 
 ## Site Overview
 Personal brand site for Adam Lankamer — professional translator, fine art photographer, and AI entrepreneur. All brands and projects live under one roof at adamlankamer.com.
