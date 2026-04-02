@@ -76,4 +76,4 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 | Ucaption | `~/Desktop/Ucaption` |
 | GifPerfect | `~/Desktop/GifPerfect` |
 | Ucaption (old landing stub) | `~/ucaptionlanding` — stale, do not deploy |
-- **Verify before declaring done**: Before marking any task complete or telling Adam it's done, verify the end result actually worked — as if you'd already received the message that it wasn't done. A successful CLI command is not proof. Check the live URL, re-read the changed file, hit the endpoint, confirm the deploy timestamp. This applies to deployments, file edits, API changes, releases, and any publish/push action.
+- **Verify before confirming anything**: Never confirm that something is true, done, or working without first checking proof. This applies to mid-conversation statements ("yes, X is now the case", "that's already in place", "it's working") as well as task completion. Assume the statement is FALSE until you have verified it with a direct check (read the file, query the state, check the log, hit the endpoint). A successful CLI command is not proof of the outcome. If you haven't checked, don't confirm.
