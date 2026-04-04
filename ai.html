@@ -726,6 +726,82 @@
     flex-shrink: 0;
   }
 
+  /* slomoperfect */
+  .visual-slomo {
+    background: linear-gradient(140deg, #0a0814 0%, #120b20 50%, #0c0e1a 100%);
+  }
+  .slomo-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .slomo-logo span { color: #7c5cbf; }
+  .slomo-tagline {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+  }
+  .slomo-frames {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 85%;
+    margin-top: 8px;
+  }
+  .slomo-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .slomo-label {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    width: 48px;
+    flex-shrink: 0;
+  }
+  .slomo-bar {
+    flex: 1;
+    height: 22px;
+    border-radius: 3px;
+    background: rgba(124,92,191,0.12);
+    border: 1px solid rgba(124,92,191,0.28);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    gap: 5px;
+    overflow: hidden;
+  }
+  .slomo-bar.bar-source {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+  }
+  .slomo-frame-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(124,92,191,0.7);
+    flex-shrink: 0;
+  }
+  .slomo-bar.bar-source .slomo-frame-dot { background: rgba(255,255,255,0.3); }
+  .slomo-speed-badge {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 100px;
+    border: 1px solid rgba(124,92,191,0.35);
+    color: rgba(124,92,191,0.8);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
   .hamburger span { width: 22px; height: 1.5px; background: var(--text); }
 
@@ -779,6 +855,7 @@
     <button class="slide-dot" onclick="goToSlide(2)"></button>
     <button class="slide-dot" onclick="goToSlide(3)"></button>
     <button class="slide-dot" onclick="goToSlide(4)"></button>
+    <button class="slide-dot" onclick="goToSlide(5)"></button>
   </div>
 </section>
 
@@ -1053,6 +1130,85 @@
       </div>
     </div>
 
+    <!-- ── SLIDE 6: Slo-Mo Perfect ── -->
+    <div class="project-slide">
+      <div class="project-card">
+        <div class="card-visual visual-slomo">
+          <div class="card-visual-inner">
+            <div>
+              <div class="slomo-logo">Slo-Mo <span>Perfect</span></div>
+              <div class="slomo-tagline">AI slow motion · any format · offline</div>
+            </div>
+            <div class="slomo-frames">
+              <div class="slomo-row">
+                <div class="slomo-label">Original</div>
+                <div class="slomo-bar bar-source">
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                </div>
+              </div>
+              <div style="text-align:center; font-size:11px; color:rgba(124,92,191,0.5); letter-spacing:.1em;">↓ RIFE interpolation</div>
+              <div class="slomo-row">
+                <div class="slomo-label">½ speed</div>
+                <div class="slomo-bar">
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                </div>
+                <div class="slomo-speed-badge">2× frames</div>
+              </div>
+              <div class="slomo-row">
+                <div class="slomo-label">¼ speed</div>
+                <div class="slomo-bar">
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                  <div class="slomo-frame-dot"></div>
+                </div>
+                <div class="slomo-speed-badge">4× frames</div>
+              </div>
+            </div>
+            <div style="font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:rgba(124,92,191,0.45); margin-top:4px;">Mac &amp; Windows · Offline · MP4 / GIF / WebM / MOV</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div>
+            <span class="card-number">Project 06</span>
+            <div class="card-name">Slo-Mo Perfect</div>
+            <span class="card-url">slomoperfect.com</span>
+            <p class="card-desc">
+              Convert any video or GIF into smooth, cinematic slow motion using AI frame interpolation. RIFE generates the in-between frames — no blurring, no artifacts. Choose your speed, pick your output format, and get a file ready to post.
+            </p>
+            <div class="card-features">
+              <div class="feature-item">RIFE AI interpolation — GPU-accelerated via Vulkan, CPU fallback</div>
+              <div class="feature-item">½, ¼, ⅛ speed presets — output as MP4, GIF, WebM, or MOV</div>
+              <div class="feature-item">Batch mode: process folders sequentially</div>
+              <div class="feature-item">Fully offline — FFmpeg + RIFE bundled, no upload ever</div>
+              <div class="feature-item">Mac &amp; Windows · One-time licence from $29</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://slomoperfect.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit SlomoPerfect</a>
+            <span class="card-status status-coming">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div><!-- /slider-track -->
 </div>
 
@@ -1060,7 +1216,7 @@
 <div class="slider-controls">
   <button class="ctrl-btn" id="prevBtn" onclick="shiftSlide(-1)">‹</button>
   <div class="progress-bar">
-    <div class="progress-fill" id="progressFill" style="width:33.33%"></div>
+    <div class="progress-fill" id="progressFill" style="width:16.67%"></div>
   </div>
   <button class="ctrl-btn" id="nextBtn" onclick="shiftSlide(1)">›</button>
 </div>
@@ -1111,7 +1267,7 @@
 
 <script>
 let current = 0;
-const total = 5;
+const total = 6;
 
 function updateSlider() {
   const track = document.getElementById('sliderTrack');
