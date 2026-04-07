@@ -635,6 +635,89 @@
     margin-top: 4px;
   }
 
+  /* telegram */
+  .visual-telegram {
+    background: linear-gradient(140deg, #061422 0%, #0a1e30 50%, #071828 100%);
+  }
+
+  .tg-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.02em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  .tg-plane {
+    width: 26px;
+    height: 26px;
+    opacity: 0.9;
+  }
+
+  .tg-tagline {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+  }
+
+  .tg-channel {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 84%;
+    margin-top: 8px;
+  }
+
+  .tg-post {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(42,171,238,0.07);
+    border: 1px solid rgba(42,171,238,0.18);
+    border-radius: 4px;
+    padding: 9px 12px;
+  }
+  .tg-post.tg-post-stars {
+    background: rgba(255,193,7,0.06);
+    border-color: rgba(255,193,7,0.22);
+  }
+
+  .tg-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+    background: #2AABEE;
+    box-shadow: 0 0 5px rgba(42,171,238,0.5);
+  }
+  .tg-dot-queued { background: rgba(255,255,255,0.2); box-shadow: none; }
+  .tg-dot-stars { background: #ffc107; box-shadow: 0 0 5px rgba(255,193,7,0.5); }
+
+  .tg-post-content { flex: 1; }
+  .tg-post-time { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 3px; }
+  .tg-post-text { font-size: 10px; line-height: 1.4; color: rgba(255,255,255,0.55); }
+  .tg-stars-badge {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,193,7,0.7);
+    margin-top: 3px;
+  }
+
+  .tg-footer-badge {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(42,171,238,0.4);
+    margin-top: 4px;
+  }
+
   /* gifperfect */
   .visual-gifperfect {
     background: linear-gradient(140deg, #0c0816 0%, #130a22 50%, #0e0c1a 100%);
@@ -1059,6 +1142,70 @@
           <div class="card-actions">
             <span class="btn btn-ghost" style="cursor:default; opacity:0.6">Coming Soon</span>
             <span class="card-status status-coming">In Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SLIDE 6: Telegram Channel Automation ── -->
+    <div class="project-slide">
+      <div class="project-card">
+        <div class="card-visual visual-telegram">
+          <div class="card-visual-inner">
+            <div class="tg-logo">
+              <svg class="tg-plane" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 2L11 13" stroke="#2AABEE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="#2AABEE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Telegram Automation
+            </div>
+            <div class="tg-tagline">Full channel management · Built to order</div>
+            <div class="tg-channel">
+              <div class="tg-post">
+                <div class="tg-dot"></div>
+                <div class="tg-post-content">
+                  <div class="tg-post-time">Posted · auto</div>
+                  <div class="tg-post-text">Scheduled post published from media library ✓</div>
+                </div>
+              </div>
+              <div class="tg-post tg-post-stars">
+                <div class="tg-dot tg-dot-stars"></div>
+                <div class="tg-post-content">
+                  <div class="tg-post-time">Premium content</div>
+                  <div class="tg-post-text">Unlock with Telegram Stars ⭐</div>
+                  <div class="tg-stars-badge">⭐ Stars payment · instant unlock</div>
+                </div>
+              </div>
+              <div class="tg-post">
+                <div class="tg-dot tg-dot-queued"></div>
+                <div class="tg-post-content">
+                  <div class="tg-post-time">Queued · in 22 min</div>
+                  <div class="tg-post-text">Next post ready — AI caption attached</div>
+                </div>
+              </div>
+            </div>
+            <div class="tg-footer-badge">Auto-post · Stars PPV · Mini App · Any niche</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div>
+            <span class="card-number">Service</span>
+            <div class="card-name">Telegram Channel<br>Automation</div>
+            <span class="card-url">Built to your specification</span>
+            <p class="card-desc">
+              A fully automated Telegram channel built end-to-end for your needs. Auto-posts from your media library on a custom schedule, handles Telegram Stars payments for premium content, and includes a scrollable Mini App feed inside Telegram. Every detail — posting logic, captions, content flow — configured to your channel's audience and goals.
+            </p>
+            <div class="card-features">
+              <div class="feature-item">Automated posting from local or cloud media library</div>
+              <div class="feature-item">Telegram Stars PPV — gated premium content with instant unlock</div>
+              <div class="feature-item">In-app Mini App feed — scrollable, branded, inside Telegram</div>
+              <div class="feature-item">AI-generated captions per post, matching your channel voice</div>
+              <div class="feature-item">Fully custom-built — architecture, schedule, logic all yours</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="mailto:adam@translatea.com" class="btn btn-primary">Get in Touch</a>
+            <span class="card-status status-live">Available</span>
           </div>
         </div>
       </div>
