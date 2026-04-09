@@ -8,7 +8,8 @@
 
 ## Deploy Command
 ```bash
-cd /Users/mac/Desktop/AdamLankamer && netlify deploy --prod --dir=.
+export PATH="/opt/homebrew/opt/node/bin:/opt/homebrew/bin:$PATH"
+cd /Users/mac/Desktop/AdamLankamer && /opt/homebrew/bin/netlify deploy --prod --dir=.
 ```
 
 ## Workflow Rules
@@ -17,6 +18,7 @@ cd /Users/mac/Desktop/AdamLankamer && netlify deploy --prod --dir=.
 - **All files in sync**: Never leave uncommitted changes — every file in the project must be pushed including robots.txt, sitemap.xml, favicons, etc.
 - **English only**: All communication, commit messages, and code comments in English.
 - **Trust the user — search harder before contradicting**: If the user says something has been solved or exists in another workflow, do not contradict them based on a single failed search. Search again more thoroughly (different terms, subagents, broader scope) before saying it cannot be found. The user is usually right.
+- **Verify before confirming anything**: Never confirm that something is true, done, or working without first checking proof. This applies to mid-conversation statements ("yes, X is now the case", "that's already in place", "it's working") as well as task completion. Assume the statement is FALSE until you have verified it with a direct check (read the file, query the state, check the log, hit the endpoint). A successful CLI command is not proof of the outcome. If you haven't checked, don't confirm.
 
 ## Site Overview
 Personal brand site for Adam Lankamer — professional translator, fine art photographer, and AI entrepreneur. All brands and projects live under one roof at adamlankamer.com.
@@ -27,7 +29,7 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 | `index.html` | `/` | Homepage — hero, ventures overview, about strip |
 | `translatea.html` | `/translatea` | Translation services page |
 | `fotostories.html` | `/fotostories` | Photography portfolio page |
-| `ai.html` | `/ai` | AI projects slider (5 slides) |
+| `ai.html` | `/ai` | AI projects slider (7 slides) |
 
 ## Stack
 - **Hosting**: Netlify (static HTML — no build step)
@@ -44,14 +46,16 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 - Fonts: Cormorant Garamond (headings, serif) + DM Sans (body)
 - Minimal, editorial aesthetic — no Bootstrap, no utility frameworks
 
-## AI Projects (ai.html slider — 5 slides)
+## AI Projects (ai.html slider — 7 slides)
 | # | Name | URL | Status |
 |---|------|-----|--------|
 | 1 | Ucaption | ucaption.online | Live |
 | 2 | TestYourSkills | testyourskills.app | Live |
-| 3 | Image & Video Tagger | — | In Development |
+| 3 | Image & Video Tagger | utagger.online | In Development |
 | 4 | AutoXPoster | autoxposter.com | In Development |
 | 5 | GifPerfect | gifperfect.com | Live |
+| 6 | Telegram Channel Automation | — (bespoke service, contact via email) | Available |
+| 7 | Slo-Mo Perfect | slomoperfect.com | Live |
 
 ## SEO Setup
 - Canonical tags on all pages (no `.html` extension — Netlify pretty URLs)
@@ -72,9 +76,12 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 - `ucaption.online` footer carries `Copyright © 2026 adamlankamer.com`
 
 ## Related Projects
-| Project | Folder |
-|---------|--------|
-| Ucaption | `~/Desktop/Ucaption` |
-| GifPerfect | `~/Desktop/GifPerfect` |
-| Ucaption (old landing stub) | `~/ucaptionlanding` — stale, do not deploy |
-- **Verify before confirming anything**: Never confirm that something is true, done, or working without first checking proof. This applies to mid-conversation statements ("yes, X is now the case", "that's already in place", "it's working") as well as task completion. Assume the statement is FALSE until you have verified it with a direct check (read the file, query the state, check the log, hit the endpoint). A successful CLI command is not proof of the outcome. If you haven't checked, don't confirm.
+| Project | Folder | Notes |
+|---------|--------|-------|
+| Ucaption | `~/Desktop/Ucaption` | GitHub: kinkyb/darling-cassata-186fd2 (private) |
+| GifPerfect | `~/Desktop/GifPerfect` | |
+| Image Tagger | `~/Desktop/ImageTagger` | Internal CLI tool — utagger.online |
+| Video Tagger | `~/Desktop/VideoTagger` | Internal CLI tool |
+| Telegram Channel Bot | `~/Desktop/TelegramApp` | Bot + mini app — bespoke service |
+| Slo-Mo Perfect | `~/Desktop/SlomoPerfect` (check) | slomoperfect.com |
+| Ucaption (old landing stub) | `~/ucaptionlanding` | Stale — do not deploy |
