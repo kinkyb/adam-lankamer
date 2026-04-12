@@ -59,6 +59,12 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 | 6 | Telegram Channel Automation | — (bespoke service, contact via email) | Available |
 | 7 | Slo-Mo Perfect | slomoperfect.com | Live |
 
+## Instagram Feed
+- Embedded on `/fotostories` via **Behold.so** widget (free tier)
+- Feed ID: `4hswJ1WJTmaIf1WQpgg6` — account: `@foto__stories`
+- Widget placed above the existing Instagram CTA strip
+- To change layout/posts: log in to behold.so and edit the widget there
+
 ## SEO Setup
 - Canonical tags on all pages (no `.html` extension — Netlify pretty URLs)
 - `sitemap.xml` — 4 URLs, updated on every deploy
