@@ -392,6 +392,31 @@
   .footer-links a:hover { color: var(--accent); }
 
   /* ── INSTAGRAM CTA ── */
+  .insta-feed-section {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 48px 60px;
+  }
+  .insta-feed-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  behold-widget {
+    width: 100%;
+  }
+  @media (max-width: 900px) {
+    .insta-feed-section { padding: 60px 24px 40px; }
+  }
+
   .insta-strip {
     position: relative;
     z-index: 1;
@@ -512,6 +537,20 @@
   <img class="lightbox-img" id="lightboxImg" src="" alt="">
   <button class="lightbox-next" onclick="shiftLightbox(1)">›</button>
 </div>
+
+<!-- INSTAGRAM FEED -->
+<section class="insta-feed-section">
+  <div class="insta-feed-inner">
+    <span class="section-eyebrow">Fresh from Instagram</span>
+    <behold-widget feed-id="4hswJ1WJTmaIf1WQpgg6"></behold-widget>
+    <script>
+      (() => {
+        const d=document,s=d.createElement("script");s.type="module";
+        s.src="https://w.behold.so/widget.js";d.head.append(s);
+      })();
+    </script>
+  </div>
+</section>
 
 <!-- INSTAGRAM CTA -->
 <div class="insta-strip">
