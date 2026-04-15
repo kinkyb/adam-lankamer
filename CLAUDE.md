@@ -54,18 +54,18 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 - Nav: dark (#0e0e0e) with white/muted links — consistent across all pages
 - About strip on homepage: dark (#0e0e0e background), white text
 
-## AI Projects (ai.html — vertical product listing, NOT a slider)
+## AI Projects (ai.html — ACreatorStore hero, 2-col flat tool cards, NOT a slider)
 | # | Name | URL | Status | Pricing |
 |---|------|-----|--------|---------|
 | 1 | Ucaption | ucaption.online | Live | From €39/mo |
 | 2 | TestYourSkills | testyourskills.app | Live | — |
-| 3 | Image & Video Tagger | utagger.online | In Development | — |
+| 3 | Image & Video Tagger | utagger.online | Live | From $49 |
 | 4 | AutoXPoster | autoxposter.com | In Development | — |
 | 5 | Telegram Channel Automation | contact via email | Available (bespoke) | — |
 | 6 | GifPerfect | gifperfect.com | Live | From $29 |
 | 7 | Slo-Mo Perfect | slomoperfect.com | Live | From $29 |
 
-Each product row: 2-column grid (dark visual panel left | content panel right). All products visible by scrolling — no JS slider.
+ai.html layout: centered "ACreatorStore" Playfair hero (100px), eyebrow with flanking lines, 2-col pure-text tool cards (no dark panels), red top-bar hover animation per card, Slo-Mo Perfect spans full width. No Telegram in footer, Telegram Channel Automation product present as 05/07.
 
 ## Instagram Feed
 - Embedded on `/fotostories` via **Behold.so** widget (free tier)
