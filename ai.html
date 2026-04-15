@@ -3,26 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Projects — Adam Lankamer</title>
-<meta name="description" content="AI tools for the creator economy by Adam Lankamer — Ucaption, TestYourSkills, GifPerfect, Slo-Mo Perfect, and more. Practical tools built from direct experience.">
+<title>ACreatorStore — AI Tools for Creators · Adam Lankamer</title>
+<meta name="description" content="Practical AI tools for the creator economy — Ucaption, TestYourSkills, GifPerfect, Slo-Mo Perfect and more. Built from direct creative experience.">
 <link rel="canonical" href="https://adamlankamer.com/ai">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<!-- Open Graph -->
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://adamlankamer.com/ai">
 <meta property="og:site_name"   content="Adam Lankamer">
-<meta property="og:title"       content="AI Projects — Adam Lankamer">
-<meta property="og:description" content="AI tools for the creator economy by Adam Lankamer — Ucaption, TestYourSkills, GifPerfect, and more.">
+<meta property="og:title"       content="ACreatorStore — AI Tools for Creators">
+<meta property="og:description" content="Practical AI tools for the creator economy — Ucaption, TestYourSkills, GifPerfect, Slo-Mo Perfect and more.">
 <meta property="og:image"       content="https://adamlankamer.com/assets/adam-casual-1.jpg">
 <meta property="og:locale"      content="en_US">
-<!-- Twitter Card -->
 <meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="AI Projects — Adam Lankamer">
-<meta name="twitter:description" content="AI tools for the creator economy by Adam Lankamer — Ucaption, TestYourSkills, GifPerfect, and more.">
+<meta name="twitter:title"       content="ACreatorStore — AI Tools for Creators">
+<meta name="twitter:description" content="Practical AI tools for the creator economy — Ucaption, TestYourSkills, GifPerfect, Slo-Mo Perfect and more.">
 <meta name="twitter:image"       content="https://adamlankamer.com/assets/adam-casual-1.jpg">
-<!-- Structured data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,10 +60,15 @@
     --muted:   #6b6259;
     --muted2:  #a09888;
     --nav-bg:  rgba(14,14,14,0.94);
+    --green-bg:    rgba(22,101,52,0.08);
+    --green-text:  #166534;
+    --green-border:rgba(22,101,52,0.2);
+    --amber-bg:    rgba(120,80,10,0.08);
+    --amber-text:  #92400e;
+    --amber-border:rgba(120,80,10,0.2);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'DM Mono', monospace;
     background: var(--bg);
@@ -100,7 +102,6 @@
   .nav-links a {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
-    font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.55);
@@ -108,168 +109,96 @@
     transition: color 0.2s;
   }
   .nav-links a:hover, .nav-links a.active { color: #fff; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 1.5px; background: rgba(255,255,255,0.6); }
 
-  /* ── PAGE HERO ── */
-  .page-hero {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 160px 80px 80px;
-  }
-
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(44px, 5.5vw, 78px);
-    font-weight: 700;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 24px;
-    max-width: 720px;
-  }
-  .hero-title em { font-style: italic; font-weight: 400; color: var(--muted); }
-
-  .hero-sub {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--muted);
-    max-width: 560px;
-  }
-
-  /* ── PRODUCT LIST ── */
-  .products-list {
-    border-top: 1px solid var(--border);
-    margin-top: 60px;
-  }
-
-  /* Each product row */
-  .product-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--border);
-    min-height: 520px;
-  }
-
-  /* Visual panel — dark, product mockup */
-  .product-visual {
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    padding: 52px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Content panel */
-  .product-content {
-    background: var(--bg);
-    border-left: 1px solid var(--border);
-    padding: 52px 52px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0;
-  }
-
-  .product-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
-  }
-
-  .product-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 3vw, 44px);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-
-  .product-url {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-    text-transform: lowercase;
-    text-decoration: none;
-    margin-bottom: 24px;
-    display: block;
-    transition: opacity 0.2s;
-  }
-  .product-url:hover { opacity: 0.7; }
-
-  .product-desc {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--muted);
-    margin-bottom: 24px;
-  }
-
-  .product-features {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 32px;
-    list-style: none;
-  }
-  .product-features li {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 300;
-    color: var(--muted);
-    line-height: 1.5;
-    padding-left: 18px;
+    text-align: center;
+    padding: 130px 24px 100px;
     position: relative;
   }
-  .product-features li::before {
+  .hero::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 7px;
-    width: 5px;
-    height: 1px;
-    background: var(--accent);
+    top: 42%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 500px;
+    background: radial-gradient(ellipse, rgba(200,16,46,0.055) 0%, transparent 62%);
+    pointer-events: none;
   }
-
-  .product-actions {
-    display: flex;
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+  }
+  .eyebrow {
+    display: inline-flex;
     align-items: center;
     gap: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--accent);
+    opacity: 0.35;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 11vw, 100px);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -3px;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .hero-title .a { color: var(--accent); }
+  .hero-title em { font-style: italic; font-weight: 400; }
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(15px, 2.2vw, 20px);
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--text);
+    opacity: 0.75;
+    margin-bottom: 18px;
+  }
+  .hero-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 2;
+    letter-spacing: 0.06em;
+    max-width: 500px;
+    margin: 0 auto 52px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
     flex-wrap: wrap;
   }
-
   .btn {
     display: inline-block;
-    padding: 13px 24px;
+    padding: 13px 28px;
     font-family: 'DM Mono', monospace;
     font-size: 10px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     text-decoration: none;
     transition: all 0.2s;
-    cursor: pointer;
-    border: none;
     white-space: nowrap;
   }
   .btn-primary { background: var(--accent); color: #fff; }
@@ -277,317 +206,209 @@
   .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  .product-status {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 5px 11px;
-    border: 1px solid;
+  /* ── TOOLS SECTION ── */
+  .section-wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 100px 32px;
   }
-  .status-live { color: #22c55e; border-color: rgba(34,197,94,0.4); }
-  .status-dev { color: var(--muted2); border-color: var(--border); }
-  .status-available { color: #f59e0b; border-color: rgba(245,158,11,0.4); }
-
-  .product-price {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-left: auto;
-  }
-  .product-price strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  /* ── PRODUCT VISUALS ── */
-  /* Ucaption */
-  .visual-ucaption {
-    background: linear-gradient(140deg, #0a0612 0%, #120918 50%, #0d0b16 100%);
-  }
-  .ucaption-ui {
+  .section-label {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 16px;
-    width: 85%;
-  }
-  .ucaption-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 20px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: -0.01em;
-    text-align: center;
-  }
-  .ucaption-logo span { color: #a855f7; }
-  .ucaption-caption-box {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 14px 16px;
-    width: 100%;
-  }
-  .ucaption-caption-line {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.6;
-    animation: textFade 3s ease-in-out infinite alternate;
-  }
-  @keyframes textFade { from { opacity: 0.55; } to { opacity: 0.9; } }
-  .ucaption-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .ucaption-tag {
+    gap: 12px;
     font-family: 'DM Mono', monospace;
     font-size: 8px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.5em;
     text-transform: uppercase;
-    padding: 4px 8px;
-    border: 1px solid rgba(168,85,247,0.3);
-    color: rgba(168,85,247,0.7);
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .section-label::before {
+    content: '';
+    width: 18px; height: 1px;
+    background: var(--accent);
+    opacity: 0.45;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -1.2px;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .section-title em { font-style: italic; font-weight: 400; }
+  .section-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.95;
+    letter-spacing: 0.05em;
+    max-width: 560px;
+    margin-bottom: 60px;
   }
 
-  /* TestYourSkills */
-  .visual-tys {
-    background: linear-gradient(140deg, #050c14 0%, #0a1622 50%, #070e18 100%);
+  /* ── TOOLS GRID ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
   }
-  .tys-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 16px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: 0.02em;
-    text-align: center;
-  }
-  .tys-logo span { color: #22c55e; }
-  .tys-questions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 85%;
-  }
-  .tys-q {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .tys-q.tys-correct { border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.06); }
-  .tys-dot {
-    width: 8px; height: 8px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .tys-dot-fill { background: #22c55e; border-color: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.5); }
-  .tys-text { font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.45); flex: 1; }
-  .tys-score { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(34,197,94,0.7); }
 
-  /* Tagger */
-  .visual-tagger {
-    background: linear-gradient(140deg, #0a0c06 0%, #141a08 50%, #0c1008 100%);
+  /* ── TOOL CARD ── */
+  .tool-card {
+    background: var(--bg);
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.22s;
   }
-  .tagger-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 16px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: 0.02em;
-    text-align: center;
+  .tool-card:hover { background: var(--surface); }
+  .tool-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.38s cubic-bezier(0.16,1,0.3,1);
   }
-  .tagger-logo span { color: #84cc16; }
-  .tagger-results {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 85%;
-  }
-  .tagger-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(132,204,22,0.15);
-    padding: 9px 12px;
-  }
-  .tagger-icon { font-size: 10px; }
-  .tagger-label { font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.45); flex: 1; }
-  .tagger-bar-wrap { width: 60px; background: rgba(255,255,255,0.06); height: 3px; }
-  .tagger-bar-fill { height: 3px; background: #84cc16; }
-  .tagger-pct { font-family: 'DM Mono', monospace; font-size: 8px; color: rgba(132,204,22,0.7); width: 28px; text-align: right; }
+  .tool-card:hover::after { transform: scaleX(1); }
+  .tool-card.coming-soon { opacity: 0.62; }
+  .tool-card.coming-soon:hover { opacity: 0.88; }
 
-  /* AutoXPoster */
-  .visual-xposter {
-    background: linear-gradient(140deg, #060810 0%, #0a0e1a 50%, #080c18 100%);
-  }
-  .xposter-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 20px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: 0.01em;
-    text-align: center;
-  }
-  .xposter-logo span { color: #e7e7e7; font-weight: 300; }
-  .xposter-queue {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 82%;
-  }
-  .xpost-item {
+  .tool-header {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.09);
-    padding: 10px 12px;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
   }
-  .xpost-item.xpost-live { border-color: rgba(34,197,94,0.3); background: rgba(34,197,94,0.05); }
-  .xpost-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.2); margin-top: 4px; flex-shrink: 0; }
-  .xpost-dot-pending { background: #f59e0b; box-shadow: 0 0 6px rgba(245,158,11,0.5); }
-  .xpost-live .xpost-dot { background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.5); }
-  .xpost-content { flex: 1; }
-  .xpost-time { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 3px; }
-  .xpost-text { font-size: 10px; line-height: 1.4; color: rgba(255,255,255,0.55); }
-
-  /* Telegram */
-  .visual-telegram {
-    background: linear-gradient(140deg, #061422 0%, #0a1e30 50%, #071828 100%);
-  }
-  .tg-logo {
+  .tool-category {
     font-family: 'DM Mono', monospace;
-    font-size: 16px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: 0.02em;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
+    font-size: 8px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 9px;
   }
-  .tg-plane { width: 22px; height: 22px; opacity: 0.9; }
-  .tg-channel {
+  .tool-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    line-height: 1;
+  }
+  .tool-name .a { color: var(--accent); }
+  .tool-badges {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 7px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    white-space: nowrap;
+    border: 1px solid;
+  }
+  .badge-live   { background: var(--green-bg);  color: var(--green-text);  border-color: var(--green-border); }
+  .badge-dev    { background: var(--amber-bg);  color: var(--amber-text);  border-color: var(--amber-border); }
+  .badge-avail  { background: rgba(200,16,46,0.06); color: var(--accent); border-color: rgba(200,16,46,0.2); }
+  .badge-price  { background: transparent; color: var(--muted); border-color: var(--border); font-size: 8px; }
+
+  .tool-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text);
+    opacity: 0.75;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .tool-desc {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.95;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+  }
+  .tool-features {
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 7px;
-    width: 84%;
+    margin-bottom: 32px;
   }
-  .tg-post {
+  .tool-features li {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    background: rgba(42,171,238,0.07);
-    border: 1px solid rgba(42,171,238,0.18);
-    padding: 9px 12px;
+    line-height: 1.6;
   }
-  .tg-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; background: #2AABEE; box-shadow: 0 0 5px rgba(42,171,238,0.5); }
-  .tg-post-content { flex: 1; }
-  .tg-post-time { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 3px; }
-  .tg-post-text { font-size: 10px; line-height: 1.4; color: rgba(255,255,255,0.55); }
-
-  /* GifPerfect */
-  .visual-gifperfect {
-    background: linear-gradient(140deg, #0c0816 0%, #130a22 50%, #0e0c1a 100%);
-  }
-  .gifperfect-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 22px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: -0.01em;
-    text-align: center;
-  }
-  .gifperfect-logo span { color: #a855f7; }
-  .gifperfect-chunks {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 82%;
-  }
-  .gif-chunk-row { display: flex; align-items: center; gap: 10px; }
-  .gif-chunk-bar {
-    flex: 1;
-    height: 26px;
-    background: rgba(168,85,247,0.12);
-    border: 1px solid rgba(168,85,247,0.28);
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    gap: 8px;
-    overflow: hidden;
-  }
-  .gif-chunk-bar.chunk-source { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
-  .gif-chunk-fill { height: 4px; background: linear-gradient(90deg, #a855f7, #7c3aed); flex: 1; }
-  .gif-chunk-label { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); white-space: nowrap; flex-shrink: 0; }
-  .gif-chunk-label.lbl-accent { color: rgba(168,85,247,0.8); }
-  .gif-size-badge {
-    font-size: 8px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 4px 8px;
-    border: 1px solid rgba(168,85,247,0.35);
-    color: rgba(168,85,247,0.7);
-    white-space: nowrap;
+  .tool-features li::before {
+    content: '—';
+    color: var(--accent);
+    opacity: 0.5;
     flex-shrink: 0;
   }
-  .gif-arrow { font-size: 14px; color: rgba(168,85,247,0.5); flex-shrink: 0; }
-
-  /* SloMo Perfect */
-  .visual-slomo {
-    background: linear-gradient(140deg, #0a0814 0%, #120b20 50%, #0c0e1a 100%);
-  }
-  .slomo-logo {
+  .tool-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: 'DM Mono', monospace;
-    font-size: 22px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: -0.01em;
-    text-align: center;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,16,46,0.28);
+    padding-bottom: 2px;
+    transition: gap 0.2s, border-color 0.2s;
   }
-  .slomo-logo span { color: #7c5cbf; }
-  .slomo-frames {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 85%;
+  .tool-cta:hover { gap: 14px; border-bottom-color: var(--accent); }
+  .tool-cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: gap 0.2s, color 0.2s;
+    margin-left: 24px;
   }
-  .slomo-row { display: flex; align-items: center; gap: 8px; }
-  .slomo-label { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); width: 48px; flex-shrink: 0; }
-  .slomo-dots { display: flex; gap: 4px; flex: 1; }
-  .slomo-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(124,92,191,0.3); }
-  .slomo-dot.filled { background: rgba(124,92,191,0.5); border-color: rgba(124,92,191,0.7); }
-  .slomo-dot.interp { background: rgba(124,92,191,0.25); border-color: rgba(124,92,191,0.45); animation: interpPulse 1.5s ease-in-out infinite; }
-  @keyframes interpPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
-  .slomo-count { font-size: 9px; letter-spacing: 0.1em; color: rgba(124,92,191,0.7); }
-  .slomo-arrow { font-size: 11px; color: rgba(124,92,191,0.5); }
+  .tool-cta-ghost:hover { gap: 14px; color: var(--text); }
 
   /* ── PHILOSOPHY STRIP ── */
-  .philosophy-strip {
-    background: var(--text);
-    margin-top: 0;
-  }
+  .philosophy-strip { background: var(--text); }
   .philosophy-inner {
-    max-width: 1200px;
+    max-width: 1140px;
     margin: 0 auto;
-    padding: 80px;
+    padding: 80px 32px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1px;
     background: rgba(255,255,255,0.07);
   }
-  .phil-item {
-    background: var(--text);
-    padding: 40px 36px;
-  }
+  .phil-item { background: var(--text); padding: 40px 36px; }
   .phil-num {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
@@ -606,17 +427,17 @@
   }
   .phil-body {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 300;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.45);
+    line-height: 1.85;
+    color: rgba(255,255,255,0.42);
   }
 
   /* ── FOOTER ── */
   footer {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 48px 80px;
+    padding: 48px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -627,26 +448,22 @@
   .footer-links a { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--accent); }
 
-  /* ── HAMBURGER ── */
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-  .hamburger span { width: 22px; height: 1.5px; background: rgba(255,255,255,0.6); }
-
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 18px 28px; }
     .hamburger { display: flex; }
     .nav-links { display: none; position: fixed; top: 61px; left: 0; right: 0; background: rgba(14,14,14,0.97); flex-direction: column; align-items: center; gap: 28px; padding: 40px 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .nav-links.open { display: flex; }
-
-    .page-hero { padding: 100px 28px 60px; }
-    .product-row { grid-template-columns: 1fr; min-height: auto; }
-    .product-visual { min-height: 280px; }
-    .product-content { border-left: none; border-top: 1px solid var(--border); padding: 36px 28px; }
-    .philosophy-inner { grid-template-columns: 1fr; padding: 40px 28px; }
-    footer { padding: 40px 28px; flex-direction: column; gap: 20px; }
+    .hero { padding: 100px 24px 80px; }
+    .hero-title { letter-spacing: -1px; }
+    .section-wrap { padding: 60px 24px; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .tool-card { padding: 36px 28px; }
+    .philosophy-inner { grid-template-columns: 1fr; padding: 40px 24px; }
+    footer { padding: 40px 24px; flex-direction: column; gap: 20px; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
-    .product-actions { flex-wrap: wrap; }
-    .product-price { margin-left: 0; }
+    .tool-header { flex-direction: column; gap: 12px; }
+    .tool-badges { flex-direction: row; align-items: center; }
   }
 </style>
 </head>
@@ -667,353 +484,192 @@
 </nav>
 
 <!-- HERO -->
-<div class="page-hero">
-  <span class="hero-eyebrow">AI Projects · Creator Tools</span>
-  <h1 class="hero-title">Practical tools<br>for the <em>creator economy</em></h1>
-  <p class="hero-sub">Built from real creative workflows. Every product solves a problem I ran into myself — then realised thousands of others had too.</p>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">AI Tools for Creators</div>
+    <h1 class="hero-title"><span class="a">A</span><em>CreatorStore</em></h1>
+    <p class="hero-tagline">The practical toolkit for the modern creator economy.</p>
+    <p class="hero-sub">
+      Seven tools built from real creative workflows.<br>
+      Each one solves a problem I ran into personally — then realised thousands of others had too.
+    </p>
+    <div class="hero-actions">
+      <a href="#tools" class="btn btn-primary">Explore the Tools</a>
+      <a href="mailto:adam@translatea.com" class="btn btn-ghost">Custom Work →</a>
+    </div>
+  </div>
+</section>
 
-  <!-- PRODUCT LIST -->
-  <div class="products-list">
+<!-- TOOLS -->
+<div class="section-wrap" id="tools">
+  <div class="section-label">The Stack</div>
+  <h2 class="section-title">Every tool you need.<br><em>Nothing you don't.</em></h2>
+  <p class="section-sub">Practical, precise, and built from direct experience — not venture-backed speculation. Each tool does one thing exceptionally well.</p>
+
+  <div class="tools-grid">
 
     <!-- 01 · UCAPTION -->
-    <div class="product-row">
-      <div class="product-visual visual-ucaption">
-        <div class="ucaption-ui">
-          <div class="ucaption-logo">U<span>caption</span></div>
-          <div class="ucaption-caption-box">
-            <p class="ucaption-caption-line">Golden hour light catches the texture of the fabric — effortless, editorial, unmistakably yours. ✨ #fashion #ootd #style</p>
-          </div>
-          <div class="ucaption-tags">
-            <span class="ucaption-tag">Fashion</span>
-            <span class="ucaption-tag">Food</span>
-            <span class="ucaption-tag">Fitness</span>
-            <span class="ucaption-tag">Real Estate</span>
-            <span class="ucaption-tag">Travel</span>
-          </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div>
+          <div class="tool-category">AI Captions</div>
+          <div class="tool-name"><span class="a">U</span>caption</div>
+        </div>
+        <div class="tool-badges">
+          <span class="badge badge-live">● Live</span>
+          <span class="badge badge-price">From €39 / mo</span>
         </div>
       </div>
-      <div class="product-content">
-        <span class="product-num">01 / 07</span>
-        <h2 class="product-name">Ucaption</h2>
-        <a href="https://ucaption.online" target="_blank" rel="noopener noreferrer" class="product-url">ucaption.online</a>
-        <p class="product-desc">
-          AI caption generator built for social media creators. Upload an image, choose your niche, and get platform-ready captions with the right tone, hashtags, and call-to-action — in seconds. Powered by Grok's latest vision model.
-        </p>
-        <ul class="product-features">
-          <li>Six fixed verticals: Fashion, Food, Fitness, Real Estate, Travel, Arts</li>
-          <li>Custom niche setup — bespoke AI persona crafted for your brand</li>
-          <li>Chrome Extension live on the Web Store — generate from any image</li>
-          <li>Batch mode for content creators: process multiple images at once</li>
-          <li>300 images/mo on Standard · unlimited on Pro and Custom</li>
-        </ul>
-        <div class="product-actions">
-          <a href="https://ucaption.online" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Try Free</a>
-          <span class="product-status status-live">Live</span>
-          <span class="product-price">From <strong>€39/mo</strong></span>
-        </div>
-      </div>
+      <p class="tool-tagline">"Upload an image, choose your niche, get platform-ready captions in seconds."</p>
+      <p class="tool-desc">AI caption generator for social media creators. Powered by Grok's latest vision model — it reads the image and writes captions with the right tone, hashtags, and call-to-action for your specific vertical. Available as a web app and Chrome Extension.</p>
+      <ul class="tool-features">
+        <li>Six fixed verticals: Fashion, Food, Fitness, Real Estate, Travel, Arts</li>
+        <li>Custom niche — bespoke AI persona crafted to your exact brand voice</li>
+        <li>Chrome Extension live on the Web Store — generate from any image on any site</li>
+        <li>Batch mode — process multiple images at once, each counted toward your limit</li>
+        <li>300 images/mo on Standard · unlimited on Pro and Custom plans</li>
+      </ul>
+      <a href="https://ucaption.online" target="_blank" rel="noopener noreferrer" class="tool-cta">Try Ucaption →</a>
     </div>
 
     <!-- 02 · TESTYOURSKILLS -->
-    <div class="product-row">
-      <div class="product-visual visual-tys">
-        <div class="tys-logo">Test<span>YourSkills</span></div>
-        <div class="tys-questions">
-          <div class="tys-q">
-            <div class="tys-dot tys-dot-fill"></div>
-            <span class="tys-text">Which verb form is grammatically correct in a conditional clause?</span>
-            <span class="tys-score">✓</span>
-          </div>
-          <div class="tys-q tys-correct">
-            <div class="tys-dot tys-dot-fill"></div>
-            <span class="tys-text">Translate the term "due diligence" in a legal context.</span>
-            <span class="tys-score">✓</span>
-          </div>
-          <div class="tys-q">
-            <div class="tys-dot"></div>
-            <span class="tys-text">What is the correct register for a formal business email?</span>
-          </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div>
+          <div class="tool-category">Skills Assessment</div>
+          <div class="tool-name">TestYourSkills</div>
+        </div>
+        <div class="tool-badges">
+          <span class="badge badge-live">● Live</span>
         </div>
       </div>
-      <div class="product-content">
-        <span class="product-num">02 / 07</span>
-        <h2 class="product-name">TestYourSkills</h2>
-        <a href="https://testyourskills.app" target="_blank" rel="noopener noreferrer" class="product-url">testyourskills.app</a>
-        <p class="product-desc">
-          AI-powered skills assessment platform. Generates intelligent, domain-specific tests on the fly — no pre-written question banks. Ideal for language learners, translators, and professionals who want to measure and prove competence.
-        </p>
-        <ul class="product-features">
-          <li>AI-generated questions adapted to your chosen domain and difficulty</li>
-          <li>Instant scoring with detailed explanations for each answer</li>
-          <li>Sharable results certificate — proof of competence for clients</li>
-          <li>Language, legal, financial, and technical knowledge modules</li>
-        </ul>
-        <div class="product-actions">
-          <a href="https://testyourskills.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Start a Test</a>
-          <span class="product-status status-live">Live</span>
-        </div>
-      </div>
+      <p class="tool-tagline">"AI-generated tests on any domain, any difficulty. Prove what you actually know."</p>
+      <p class="tool-desc">Skills assessment platform that generates intelligent, domain-specific tests on the fly — no pre-written question banks, no outdated content. Ideal for language learners, translators, and professionals who need to measure and demonstrate competence.</p>
+      <ul class="tool-features">
+        <li>AI-generated questions adapted to your chosen domain and difficulty level</li>
+        <li>Instant scoring with detailed explanations for every answer</li>
+        <li>Shareable results certificate — proof of competence you can send to clients</li>
+        <li>Language, legal, financial, and technical knowledge modules available</li>
+      </ul>
+      <a href="https://testyourskills.app" target="_blank" rel="noopener noreferrer" class="tool-cta">Start a Test →</a>
     </div>
 
     <!-- 03 · IMAGE & VIDEO TAGGER -->
-    <div class="product-row">
-      <div class="product-visual visual-tagger">
-        <div class="tagger-logo">u<span>tagger</span></div>
-        <div class="tagger-results">
-          <div class="tagger-row">
-            <span class="tagger-icon">🖼</span>
-            <span class="tagger-label">golden hour portrait outdoor woman</span>
-            <div class="tagger-bar-wrap"><div class="tagger-bar-fill" style="width:94%"></div></div>
-            <span class="tagger-pct">94%</span>
-          </div>
-          <div class="tagger-row">
-            <span class="tagger-icon">🎥</span>
-            <span class="tagger-label">slow motion water splash macro lens</span>
-            <div class="tagger-bar-wrap"><div class="tagger-bar-fill" style="width:88%"></div></div>
-            <span class="tagger-pct">88%</span>
-          </div>
-          <div class="tagger-row">
-            <span class="tagger-icon">🖼</span>
-            <span class="tagger-label">minimalist architecture concrete facade</span>
-            <div class="tagger-bar-wrap"><div class="tagger-bar-fill" style="width:91%"></div></div>
-            <span class="tagger-pct">91%</span>
-          </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div>
+          <div class="tool-category">Media Management</div>
+          <div class="tool-name">Image &amp; Video Tagger</div>
+        </div>
+        <div class="tool-badges">
+          <span class="badge badge-live">● Live</span>
         </div>
       </div>
-      <div class="product-content">
-        <span class="product-num">03 / 07</span>
-        <h2 class="product-name">Image &amp; Video Tagger</h2>
-        <a href="https://utagger.online" target="_blank" rel="noopener noreferrer" class="product-url">utagger.online</a>
-        <p class="product-desc">
-          Batch-tag your entire media library in minutes. Drop images or video files and get precise, searchable tags generated by AI vision models. Built for photographers, stock contributors, and content teams managing large archives.
-        </p>
-        <ul class="product-features">
-          <li>Supports JPEG, PNG, WebP, MP4, MOV and more</li>
-          <li>Exports tags as CSV, JSON or embeds directly into EXIF/IPTC metadata</li>
-          <li>Semantic search across your tagged library</li>
-          <li>Batch processing — hundreds of files in a single run</li>
-        </ul>
-        <div class="product-actions">
-          <a href="https://utagger.online" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Join Waitlist</a>
-          <span class="product-status status-dev">In Development</span>
-        </div>
-      </div>
+      <p class="tool-tagline">"Tag your entire media library automatically. Find any file in seconds."</p>
+      <p class="tool-desc">Batch-tag images and video files using AI vision. Drop a folder and get precise, searchable tags generated automatically — with export to CSV, JSON, or embedded directly into EXIF/IPTC metadata. Built for photographers, stock contributors, and content teams managing large archives.</p>
+      <ul class="tool-features">
+        <li>Supports JPEG, PNG, WebP, MP4, MOV and all major media formats</li>
+        <li>Exports to CSV, JSON or writes tags directly into EXIF/IPTC metadata</li>
+        <li>Semantic search across your tagged library — find by description, not filename</li>
+        <li>Batch processing — hundreds of files in a single run, fully offline</li>
+      </ul>
+      <a href="https://utagger.online" target="_blank" rel="noopener noreferrer" class="tool-cta">Try UTagger →</a>
     </div>
 
     <!-- 04 · AUTOXPOSTER -->
-    <div class="product-row">
-      <div class="product-visual visual-xposter">
-        <div class="xposter-logo"><span>Auto</span>XPoster</div>
-        <div class="xposter-queue">
-          <div class="xpost-item xpost-live">
-            <div class="xpost-dot"></div>
-            <div class="xpost-content">
-              <div class="xpost-time">Posting now · 14:00</div>
-              <div class="xpost-text">Just shipped a major update to our batch caption engine — 3× faster, smarter hashtag suggestions...</div>
-            </div>
-          </div>
-          <div class="xpost-item">
-            <div class="xpost-dot xpost-dot-pending"></div>
-            <div class="xpost-content">
-              <div class="xpost-time">Scheduled · 17:30</div>
-              <div class="xpost-text">Thread: Why most AI tools fail creators — and what we built differently...</div>
-            </div>
-          </div>
-          <div class="xpost-item" style="opacity:0.45">
-            <div class="xpost-dot"></div>
-            <div class="xpost-content">
-              <div class="xpost-time">Queued · tomorrow 09:00</div>
-              <div class="xpost-text">Weekend roundup: best-performing posts from the community this week...</div>
-            </div>
-          </div>
+    <div class="tool-card coming-soon">
+      <div class="tool-header">
+        <div>
+          <div class="tool-category">Social Media</div>
+          <div class="tool-name"><span class="a">A</span>utoXPoster</div>
+        </div>
+        <div class="tool-badges">
+          <span class="badge badge-dev">In Development</span>
         </div>
       </div>
-      <div class="product-content">
-        <span class="product-num">04 / 07</span>
-        <h2 class="product-name">AutoXPoster</h2>
-        <a href="https://autoxposter.com" target="_blank" rel="noopener noreferrer" class="product-url">autoxposter.com</a>
-        <p class="product-desc">
-          Scheduled X (Twitter) posting with AI content assistance. Plan your content calendar, write or generate posts, and let AutoXPoster handle the timing. Built for indie creators and solo founders who need consistent presence without constant attention.
-        </p>
-        <ul class="product-features">
-          <li>Visual content calendar with drag-and-drop scheduling</li>
-          <li>AI writing assistant — generate threads, hooks, and replies</li>
-          <li>Analytics: impressions, engagement, best-time recommendations</li>
-          <li>Works via official X API — no account bans, no grey zones</li>
-        </ul>
-        <div class="product-actions">
-          <a href="https://autoxposter.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Join Waitlist</a>
-          <span class="product-status status-dev">In Development</span>
-        </div>
-      </div>
+      <p class="tool-tagline">"Schedule posts, generate content, grow your X presence on autopilot."</p>
+      <p class="tool-desc">Scheduled X (Twitter) posting with AI content assistance. Plan your content calendar, write or generate posts, and let AutoXPoster handle the timing. Built for indie creators and solo founders who need consistent presence without constant attention.</p>
+      <ul class="tool-features">
+        <li>Visual content calendar with drag-and-drop scheduling</li>
+        <li>AI writing assistant — generate threads, hooks, and reply suggestions</li>
+        <li>Analytics: impressions, engagement, best-time recommendations</li>
+        <li>Works via official X API — no account bans, no grey zones</li>
+      </ul>
+      <a href="https://autoxposter.com" target="_blank" rel="noopener noreferrer" class="tool-cta">Join Waitlist →</a>
     </div>
 
     <!-- 05 · TELEGRAM CHANNEL AUTOMATION -->
-    <div class="product-row">
-      <div class="product-visual visual-telegram">
-        <div class="tg-logo">
-          <svg class="tg-plane" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22 2L11 13" stroke="#2AABEE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="#2AABEE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Telegram Automation
+    <div class="tool-card">
+      <div class="tool-header">
+        <div>
+          <div class="tool-category">Channel Growth · Bespoke</div>
+          <div class="tool-name">Telegram Automation</div>
         </div>
-        <div class="tg-channel">
-          <div class="tg-post">
-            <div class="tg-dot"></div>
-            <div class="tg-post-content">
-              <div class="tg-post-time">Just posted · 10:00</div>
-              <div class="tg-post-text">Weekly content brief generated and scheduled — 14 posts, 3 video shorts, 1 newsletter.</div>
-            </div>
-          </div>
-          <div class="tg-post">
-            <div class="tg-dot"></div>
-            <div class="tg-post-content">
-              <div class="tg-post-time">Scheduled · 14:00</div>
-              <div class="tg-post-text">Deep-dive article dropped with auto-pinned message and cross-promotion thread.</div>
-            </div>
-          </div>
-          <div class="tg-post" style="opacity:0.5">
-            <div class="tg-dot" style="background:rgba(255,255,255,0.2); box-shadow:none"></div>
-            <div class="tg-post-content">
-              <div class="tg-post-time">Tomorrow · 09:00</div>
-              <div class="tg-post-text">Subscriber milestone post + engagement prompt auto-queued...</div>
-            </div>
-          </div>
+        <div class="tool-badges">
+          <span class="badge badge-avail">● Available</span>
         </div>
       </div>
-      <div class="product-content">
-        <span class="product-num">05 / 07</span>
-        <h2 class="product-name">Telegram Channel Automation</h2>
-        <p class="product-desc">
-          Full-service Telegram channel development and automation. From content strategy and scheduling to bot configuration, subscriber growth mechanics, and monetisation via Telegram Stars — all fully customised to your niche and audience. Bespoke service, no one-size-fits-all.
-        </p>
-        <ul class="product-features">
-          <li>Custom bot built for your channel — scheduling, reactions, polls, pinned posts</li>
-          <li>Content calendar and AI-assisted content generation</li>
-          <li>Subscriber growth strategy tailored to your topic</li>
-          <li>Telegram Stars monetisation setup and optimisation</li>
-          <li>Ongoing management or full handover with documentation</li>
-        </ul>
-        <div class="product-actions">
-          <a href="mailto:adam@translatea.com?subject=Telegram%20channel%20enquiry" class="btn btn-primary">Get in Touch</a>
-          <span class="product-status status-available">Available</span>
-        </div>
-      </div>
+      <p class="tool-tagline">"Full-service channel development — strategy, automation, and growth, all tailored to your niche."</p>
+      <p class="tool-desc">Complete Telegram channel setup and automation as a bespoke service. From content strategy and scheduling to custom bot configuration, subscriber growth mechanics, and Telegram Stars monetisation — everything built around your specific audience and goals. No templates, no shortcuts.</p>
+      <ul class="tool-features">
+        <li>Custom bot built for your channel — scheduling, reactions, polls, pinned posts</li>
+        <li>Content calendar and AI-assisted content generation for your niche</li>
+        <li>Subscriber growth strategy tailored to your topic and audience</li>
+        <li>Telegram Stars monetisation setup and revenue optimisation</li>
+        <li>Ongoing management or full handover with documentation — your choice</li>
+      </ul>
+      <a href="mailto:adam@translatea.com?subject=Telegram%20channel%20enquiry" class="tool-cta">Get in Touch →</a>
     </div>
 
     <!-- 06 · GIFPERFECT -->
-    <div class="product-row">
-      <div class="product-visual visual-gifperfect">
-        <div class="gifperfect-logo">Gif<span>Perfect</span></div>
-        <div class="gifperfect-chunks">
-          <div class="gif-chunk-row">
-            <div class="gif-chunk-bar chunk-source">
-              <div class="gif-chunk-fill" style="width:100%"></div>
-              <span class="gif-chunk-label">source.mp4 · 24 MB</span>
-            </div>
-          </div>
-          <div class="gif-chunk-row">
-            <span class="gif-arrow">↓</span>
-            <div class="gif-chunk-bar">
-              <div class="gif-chunk-fill fill-60"></div>
-              <span class="gif-chunk-label lbl-accent">output.gif</span>
-            </div>
-            <span class="gif-size-badge">3.2 MB</span>
-          </div>
-          <div class="gif-chunk-row">
-            <span class="gif-arrow">↓</span>
-            <div class="gif-chunk-bar">
-              <div class="gif-chunk-fill fill-45"></div>
-              <span class="gif-chunk-label lbl-accent">optimised.gif</span>
-            </div>
-            <span class="gif-size-badge">1.8 MB</span>
-          </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div>
+          <div class="tool-category">Video Tools</div>
+          <div class="tool-name">GifPerfect</div>
+        </div>
+        <div class="tool-badges">
+          <span class="badge badge-live">● Live</span>
+          <span class="badge badge-price">From $29</span>
         </div>
       </div>
-      <div class="product-content">
-        <span class="product-num">06 / 07</span>
-        <h2 class="product-name">GifPerfect</h2>
-        <a href="https://gifperfect.com" target="_blank" rel="noopener noreferrer" class="product-url">gifperfect.com</a>
-        <p class="product-desc">
-          The cleanest GIF maker on Mac and Windows. Convert any video to a perfectly-optimised GIF — intelligent frame selection, palette dithering, and size compression that actually preserves quality. No cloud uploads, no subscriptions for the core tool.
-        </p>
-        <ul class="product-features">
-          <li>Drag-and-drop conversion with real-time preview</li>
-          <li>Smart frame sampling — removes redundant frames automatically</li>
-          <li>Palette optimiser: up to 70% smaller than naive conversion tools</li>
-          <li>Batch mode — convert a folder of clips in one pass</li>
-          <li>Fully offline — your files never leave your machine</li>
-        </ul>
-        <div class="product-actions">
-          <a href="https://gifperfect.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get GifPerfect</a>
-          <span class="product-status status-live">Live</span>
-          <span class="product-price">From <strong>$29</strong></span>
-        </div>
-      </div>
+      <p class="tool-tagline">"The cleanest GIF maker on Mac and Windows. Quality that naive converters can't match."</p>
+      <p class="tool-desc">Convert any video to a perfectly optimised GIF — intelligent frame selection, palette dithering, and size compression that actually preserves quality. No cloud uploads, no subscriptions for the core tool. Your files never leave your machine.</p>
+      <ul class="tool-features">
+        <li>Drag-and-drop conversion with real-time quality preview</li>
+        <li>Smart frame sampling — removes redundant frames automatically</li>
+        <li>Palette optimiser: up to 70% smaller than naive conversion tools</li>
+        <li>Batch mode — convert an entire folder of clips in one pass</li>
+        <li>Fully offline · Mac and Windows native apps</li>
+      </ul>
+      <a href="https://gifperfect.com" target="_blank" rel="noopener noreferrer" class="tool-cta">Get GifPerfect →</a>
     </div>
 
     <!-- 07 · SLO-MO PERFECT -->
-    <div class="product-row">
-      <div class="product-visual visual-slomo">
-        <div class="slomo-logo">Slo-Mo <span>Perfect</span></div>
-        <div class="slomo-frames">
-          <div class="slomo-row">
-            <span class="slomo-label">Source</span>
-            <div class="slomo-dots">
-              <div class="slomo-dot filled"></div>
-              <div class="slomo-dot"></div>
-              <div class="slomo-dot"></div>
-              <div class="slomo-dot"></div>
-              <div class="slomo-dot filled"></div>
-            </div>
-            <span class="slomo-count">5 fps</span>
-          </div>
-          <div class="slomo-row">
-            <span class="slomo-label" style="color:rgba(124,92,191,0.6)">↓ RIFE</span>
-          </div>
-          <div class="slomo-row">
-            <span class="slomo-label">Output</span>
-            <div class="slomo-dots">
-              <div class="slomo-dot filled"></div>
-              <div class="slomo-dot interp"></div>
-              <div class="slomo-dot interp"></div>
-              <div class="slomo-dot filled"></div>
-              <div class="slomo-dot interp"></div>
-              <div class="slomo-dot interp"></div>
-              <div class="slomo-dot filled"></div>
-              <div class="slomo-dot interp"></div>
-              <div class="slomo-dot interp"></div>
-              <div class="slomo-dot filled"></div>
-            </div>
-            <span class="slomo-count">10 fps</span>
-          </div>
+    <div class="tool-card" style="grid-column: 1 / -1;">
+      <div class="tool-header">
+        <div>
+          <div class="tool-category">Video Tools</div>
+          <div class="tool-name">Slo-Mo Perfect</div>
+        </div>
+        <div class="tool-badges">
+          <span class="badge badge-live">● Live</span>
+          <span class="badge badge-price">From $29</span>
         </div>
       </div>
-      <div class="product-content">
-        <span class="product-num">07 / 07</span>
-        <h2 class="product-name">Slo-Mo Perfect</h2>
-        <a href="https://slomoperfect.com" target="_blank" rel="noopener noreferrer" class="product-url">slomoperfect.com</a>
-        <p class="product-desc">
-          AI-powered slow motion for any video. Uses RIFE frame interpolation to generate smooth intermediate frames — turning 24fps footage into buttery 60, 90, or 120fps slow motion. No high-speed camera required. GPU-accelerated, runs entirely offline.
-        </p>
-        <ul class="product-features">
-          <li>RIFE AI interpolation: ½, ¼ and ⅛ speed presets</li>
-          <li>GPU-accelerated via Vulkan — fast even on mid-range hardware</li>
-          <li>Batch mode — slow down an entire folder in one pass</li>
-          <li>Fully offline — no cloud, no subscription for the core tool</li>
-          <li>Mac and Windows native apps</li>
-        </ul>
-        <div class="product-actions">
-          <a href="https://slomoperfect.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get Slo-Mo Perfect</a>
-          <span class="product-status status-live">Live</span>
-          <span class="product-price">From <strong>$29</strong></span>
-        </div>
-      </div>
+      <p class="tool-tagline">"AI slow motion for any footage. No high-speed camera required."</p>
+      <p class="tool-desc" style="max-width:680px;">Uses RIFE frame interpolation to generate smooth intermediate frames — turning standard 24fps footage into buttery 60, 90, or 120fps slow motion. GPU-accelerated via Vulkan, runs entirely offline. No cloud, no subscription for the core tool.</p>
+      <ul class="tool-features" style="max-width:680px;">
+        <li>RIFE AI interpolation: ½, ¼ and ⅛ speed presets — choose your effect</li>
+        <li>GPU-accelerated via Vulkan — fast even on mid-range hardware</li>
+        <li>Batch mode — slow down an entire folder of clips in one pass</li>
+        <li>Fully offline · Mac and Windows native apps</li>
+      </ul>
+      <a href="https://slomoperfect.com" target="_blank" rel="noopener noreferrer" class="tool-cta">Get Slo-Mo Perfect →</a>
     </div>
 
-  </div><!-- end .products-list -->
-</div><!-- end .page-hero -->
+  </div>
+</div>
 
 <!-- PHILOSOPHY STRIP -->
 <div class="philosophy-strip">
@@ -1031,7 +687,7 @@
     <div class="phil-item">
       <span class="phil-num">03</span>
       <div class="phil-title">Built to last</div>
-      <p class="phil-body">Indie software that works years from now. No VC-backed sunset risk. No paywalled updates. Buy it, own it. For SaaS tools — transparent pricing with no hidden costs.</p>
+      <p class="phil-body">No VC-backed sunset risk. No paywalled updates. Buy it, own it. For SaaS tools — transparent pricing with no hidden costs and no surprise pivots.</p>
     </div>
   </div>
 </div>
