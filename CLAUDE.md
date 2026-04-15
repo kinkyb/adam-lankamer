@@ -28,36 +28,44 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 ## Pages
 | File | URL | Purpose |
 |------|-----|---------|
-| `index.html` | `/` | Homepage — hero, ventures overview, about strip |
+| `index.html` | `/` | Homepage — hero (2-col with photo collage), 3 venture cards, dark about strip |
 | `translatea.html` | `/translatea` | Translation services page |
-| `fotostories.html` | `/fotostories` | Photography portfolio page |
-| `ai.html` | `/ai` | AI projects slider (7 slides) |
+| `fotostories.html` | `/fotostories` | Photography portfolio — dark hero, Behold Instagram feed, masonry gallery |
+| `ai.html` | `/ai` | AI projects — vertical product listing (7 products, NOT a slider) |
 
 ## Stack
 - **Hosting**: Netlify (static HTML — no build step)
-- **Fonts**: Google Fonts — Cormorant Garamond + DM Sans
+- **Fonts**: Google Fonts — Playfair Display (headings) + DM Mono (body)
 - **No frameworks**: Pure HTML/CSS/JS
 - **Assets**: `/assets/` folder — photos, images
 
-## Design System
-- `--bg: #f9f7f4` — warm off-white background
-- `--accent: #5b9ba6` — teal (primary brand colour)
-- `--text: #1e1a17` — near-black
-- `--muted: #8a7f76` — warm grey
-- `--warm: #c4a882` — gold/warm accent
-- Fonts: Cormorant Garamond (headings, serif) + DM Sans (body)
-- Minimal, editorial aesthetic — no Bootstrap, no utility frameworks
+## Design System (April 2026 redesign — matches acreatorslab.com)
+- `--bg: #f5f2ee` — warm off-white background
+- `--surface: #eeeae6` — card/panel surface
+- `--border: #d8d2ca` — border colour
+- `--accent: #c8102e` — wine red (primary brand colour)
+- `--text: #0e0e0e` — near-black
+- `--muted: #6b6259` — warm grey
+- `--nav-bg: rgba(14,14,14,0.94)` — dark nav background
+- Fonts: **Playfair Display 700** (headings, serif) + **DM Mono 300/400/500** (body/mono)
+- Red "A" in logo: `<span class="logo-a">A</span>dam Lankamer` across ALL pages
+- Flat design: NO backdrop-filter/blur, NO box-shadow, sharp corners
+- 1px gap grids: outer div sets `background: var(--border)`, children `background: var(--surface)`
+- Nav: dark (#0e0e0e) with white/muted links — consistent across all pages
+- About strip on homepage: dark (#0e0e0e background), white text
 
-## AI Projects (ai.html slider — 7 slides)
-| # | Name | URL | Status |
-|---|------|-----|--------|
-| 1 | Ucaption | ucaption.online | Live |
-| 2 | TestYourSkills | testyourskills.app | Live |
-| 3 | Image & Video Tagger | utagger.online | In Development |
-| 4 | AutoXPoster | autoxposter.com | In Development |
-| 5 | GifPerfect | gifperfect.com | Live |
-| 6 | Telegram Channel Automation | — (bespoke service, contact via email) | Available |
-| 7 | Slo-Mo Perfect | slomoperfect.com | Live |
+## AI Projects (ai.html — vertical product listing, NOT a slider)
+| # | Name | URL | Status | Pricing |
+|---|------|-----|--------|---------|
+| 1 | Ucaption | ucaption.online | Live | From €39/mo |
+| 2 | TestYourSkills | testyourskills.app | Live | — |
+| 3 | Image & Video Tagger | utagger.online | In Development | — |
+| 4 | AutoXPoster | autoxposter.com | In Development | — |
+| 5 | Telegram Channel Automation | contact via email | Available (bespoke) | — |
+| 6 | GifPerfect | gifperfect.com | Live | From $29 |
+| 7 | Slo-Mo Perfect | slomoperfect.com | Live | From $29 |
+
+Each product row: 2-column grid (dark visual panel left | content panel right). All products visible by scrolling — no JS slider.
 
 ## Instagram Feed
 - Embedded on `/fotostories` via **Behold.so** widget (free tier)
