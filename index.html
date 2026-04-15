@@ -17,7 +17,7 @@
 <meta property="og:title"       content="Adam Lankamer — Translator · Photographer · AI Entrepreneur">
 <meta property="og:description" content="Adam Lankamer — professional translator with 27 years of experience, fine art photographer, and AI entrepreneur building tools for the modern creator economy.">
 <meta property="og:image"       content="https://adamlankamer.com/assets/adam-casual-1.jpg">
-<meta property="og:locale"         content="en_US">
+<meta property="og:locale"      content="en_US">
 <!-- Twitter Card -->
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Adam Lankamer — Translator · Photographer · AI Entrepreneur">
@@ -51,40 +51,27 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:       #f9f7f4;
-    --surface:  rgba(255,255,255,0.72);
-    --border:   rgba(180,165,150,0.25);
-    --accent:   #5b9ba6;
-    --accent2:  #8ab4bc;
-    --text:     #1e1a17;
-    --muted:    #8a7f76;
-    --warm:     #c4a882;
+    --bg:      #f5f2ee;
+    --surface: #eeeae6;
+    --border:  #d8d2ca;
+    --accent:  #c8102e;
+    --text:    #0e0e0e;
+    --muted:   #6b6259;
+    --muted2:  #a09888;
+    --nav-bg:  rgba(14,14,14,0.94);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Mono', monospace;
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
-  }
-
-  /* ── SEA BACKGROUND ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 120% 60% at 50% 100%, rgba(91,155,166,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 80% 40% at 80% 110%, rgba(138,180,188,0.12) 0%, transparent 55%),
-      linear-gradient(175deg, #f9f7f4 0%, #f0ece6 40%, #e8f0f2 75%, #d8eaed 100%);
-    pointer-events: none;
-    z-index: 0;
   }
 
   /* ── NAV ── */
@@ -96,58 +83,53 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 48px;
-    background: rgba(249,247,244,0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    transition: padding 0.3s;
+    background: var(--nav-bg);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
   .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    color: var(--text);
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
     text-decoration: none;
   }
-  .nav-logo span { color: var(--accent); }
+  .logo-a { color: var(--accent); }
   .nav-links {
     display: flex;
     gap: 36px;
     list-style: none;
   }
   .nav-links a {
-    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
     font-weight: 400;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: rgba(255,255,255,0.55);
     text-decoration: none;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover, .nav-links a.active { color: #fff; }
 
   /* ── HERO ── */
   .hero {
-    position: relative;
-    z-index: 1;
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 0;
-    padding: 120px 0 80px;
+    padding: 120px 80px 80px;
     max-width: 1200px;
     margin: 0 auto;
-    padding-left: 80px;
-    padding-right: 80px;
   }
 
   .hero-text { padding-right: 60px; }
 
   .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
     font-size: 10px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 20px;
@@ -155,25 +137,25 @@
   }
 
   .hero-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(52px, 6vw, 88px);
-    font-weight: 300;
+    font-weight: 700;
     line-height: 1.0;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     color: var(--text);
     margin-bottom: 28px;
   }
   .hero-name em {
     font-style: italic;
     color: var(--muted);
-    font-weight: 300;
+    font-weight: 400;
   }
 
   .hero-tagline {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
     font-weight: 300;
-    line-height: 1.75;
+    line-height: 1.8;
     color: var(--muted);
     max-width: 400px;
     margin-bottom: 48px;
@@ -187,24 +169,21 @@
 
   .btn {
     display: inline-block;
-    padding: 13px 22px;
-    font-size: 11px;
+    padding: 13px 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     text-decoration: none;
-    border-radius: 2px;
-    transition: all 0.25s;
+    transition: all 0.2s;
     cursor: pointer;
+    border: none;
   }
   .btn-primary {
     background: var(--accent);
     color: #fff;
-    border: 1px solid var(--accent);
   }
-  .btn-primary:hover {
-    background: #4a8a95;
-    border-color: #4a8a95;
-  }
+  .btn-primary:hover { background: #a50d26; }
   .btn-ghost {
     background: transparent;
     color: var(--text);
@@ -224,55 +203,47 @@
     height: 540px;
   }
 
-  /* back-left photo */
   .photo-c1 {
     position: absolute;
     left: 0;
     top: 20px;
     width: 220px;
     height: 300px;
-    border-radius: 4px;
     overflow: hidden;
-    opacity: 0.42;
+    opacity: 0.38;
     transform: rotate(-3deg);
-    filter: saturate(0.75);
+    filter: saturate(0.6);
     z-index: 1;
   }
 
-  /* back-right photo */
   .photo-c3 {
     position: absolute;
     right: 0;
     bottom: 30px;
     width: 200px;
     height: 270px;
-    border-radius: 4px;
     overflow: hidden;
-    opacity: 0.38;
+    opacity: 0.32;
     transform: rotate(2.5deg);
-    filter: saturate(0.7);
+    filter: saturate(0.55);
     z-index: 1;
   }
 
-  /* main centre photo */
   .photo-c2 {
     position: relative;
     width: 290px;
     height: 390px;
-    border-radius: 4px;
     overflow: hidden;
     z-index: 2;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.13);
   }
 
-  /* fade into page bg */
   .photo-c2::after {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to right, transparent 50%, rgba(249,247,244,0.55) 100%),
-      linear-gradient(to bottom, transparent 60%, rgba(249,247,244,0.75) 100%);
+      linear-gradient(to right, transparent 50%, rgba(245,242,238,0.5) 100%),
+      linear-gradient(to bottom, transparent 60%, rgba(245,242,238,0.7) 100%);
     pointer-events: none;
   }
 
@@ -284,63 +255,61 @@
     display: block;
   }
 
-  .photo-glass-badge {
+  .photo-badge {
     position: absolute;
     bottom: 20px;
-    left: 60px;
+    left: 50px;
     z-index: 3;
-    background: var(--surface);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border);
-    border-radius: 4px;
+    background: var(--text);
     padding: 14px 20px;
-    min-width: 150px;
+    min-width: 140px;
   }
   .badge-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 300;
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
     line-height: 1;
-    color: var(--text);
+    color: #fff;
   }
   .badge-label {
-    font-size: 9px;
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 4px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 5px;
     display: block;
   }
 
   /* ── VENTURES SECTION ── */
   .section {
-    position: relative;
-    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
     padding: 120px 80px;
   }
 
   .section-label {
+    font-family: 'DM Mono', monospace;
     font-size: 10px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--warm);
+    color: var(--accent);
     margin-bottom: 16px;
     display: block;
   }
 
   .section-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(32px, 4vw, 52px);
-    font-weight: 300;
-    line-height: 1.15;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     color: var(--text);
     margin-bottom: 64px;
   }
   .section-title em {
     font-style: italic;
+    font-weight: 400;
     color: var(--muted);
   }
 
@@ -348,20 +317,18 @@
   .ventures-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 1px;
+    background: var(--border);
   }
 
   .venture-card {
     position: relative;
     background: var(--surface);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--border);
     padding: 40px 36px 44px;
     text-decoration: none;
     color: inherit;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: background 0.2s;
     display: flex;
     flex-direction: column;
   }
@@ -373,21 +340,18 @@
     height: 3px;
     background: var(--accent);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.2s;
   }
 
-  .venture-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.07);
-  }
+  .venture-card:hover { background: #e8e4e0; }
   .venture-card:hover::before { opacity: 1; }
 
   .venture-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
-    font-weight: 300;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
     line-height: 1;
-    color: rgba(0,0,0,0.06);
+    color: rgba(0,0,0,0.05);
     margin-bottom: 20px;
     user-select: none;
   }
@@ -396,20 +360,22 @@
     width: 36px;
     height: 36px;
     margin-bottom: 20px;
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
   .venture-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     line-height: 1.2;
     color: var(--text);
     margin-bottom: 12px;
   }
 
   .venture-desc {
-    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
     font-weight: 300;
     line-height: 1.75;
     color: var(--muted);
@@ -418,8 +384,9 @@
   }
 
   .venture-link {
-    font-size: 10px;
-    letter-spacing: 0.22em;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
     display: flex;
@@ -428,27 +395,18 @@
     transition: gap 0.2s;
   }
   .venture-card:hover .venture-link { gap: 14px; }
-
-  .venture-link::after {
-    content: '→';
-    transition: transform 0.2s;
-  }
+  .venture-link::after { content: '→'; }
 
   /* ── ABOUT STRIP ── */
   .about-strip {
-    position: relative;
-    z-index: 1;
-    background: var(--surface);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    background: var(--text);
+    border-top: none;
   }
 
   .about-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 80px;
+    padding: 80px;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 80px;
@@ -456,26 +414,25 @@
   }
 
   .about-pull {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(22px, 2.5vw, 32px);
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     line-height: 1.45;
-    color: var(--text);
+    color: #fff;
   }
   .about-pull em { color: var(--accent); font-style: normal; }
 
   .about-body {
-    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
     font-weight: 300;
     line-height: 1.85;
-    color: var(--muted);
+    color: rgba(255,255,255,0.5);
   }
 
   /* ── FOOTER ── */
   footer {
-    position: relative;
-    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
     padding: 48px 80px;
@@ -486,11 +443,11 @@
   }
 
   .footer-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 15px;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--muted);
-    letter-spacing: 0.06em;
+    letter-spacing: -0.01em;
   }
 
   .footer-links {
@@ -499,8 +456,9 @@
     list-style: none;
   }
   .footer-links a {
-    font-size: 10px;
-    letter-spacing: 0.18em;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
     text-decoration: none;
@@ -508,7 +466,7 @@
   }
   .footer-links a:hover { color: var(--accent); }
 
-  /* ── HAMBURGER (mobile) ── */
+  /* ── HAMBURGER ── */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -519,7 +477,7 @@
   .hamburger span {
     width: 22px;
     height: 1.5px;
-    background: var(--text);
+    background: rgba(255,255,255,0.6);
     transition: all 0.3s;
   }
 
@@ -531,13 +489,12 @@
       display: none;
       position: fixed;
       top: 61px; left: 0; right: 0;
-      background: rgba(249,247,244,0.95);
-      backdrop-filter: blur(20px);
+      background: rgba(14,14,14,0.97);
       flex-direction: column;
       align-items: center;
       gap: 28px;
       padding: 40px 24px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
     .nav-links.open { display: flex; }
 
@@ -552,11 +509,12 @@
     .hero-photo { display: none; }
 
     .section { padding: 80px 28px; }
-    .ventures-grid { grid-template-columns: 1fr; gap: 2px; }
+    .ventures-grid { grid-template-columns: 1fr; gap: 1px; }
 
     .about-inner { grid-template-columns: 1fr; padding: 60px 28px; gap: 32px; }
 
     footer { padding: 40px 28px; flex-direction: column; gap: 20px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
   }
 </style>
 </head>
@@ -564,11 +522,11 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">Adam <span>Lankamer</span></a>
+  <a href="/" class="nav-logo"><span class="logo-a">A</span>dam Lankamer</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/translatea.html">Translation</a></li>
-    <li><a href="/fotostories.html">Photography</a></li>
-    <li><a href="/ai.html">AI</a></li>
+    <li><a href="/translatea">Translation</a></li>
+    <li><a href="/fotostories">Photography</a></li>
+    <li><a href="/ai">AI</a></li>
     <li><a href="mailto:adam@translatea.com">Contact</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
@@ -580,31 +538,28 @@
 <section class="hero">
   <div class="hero-text">
     <span class="hero-eyebrow">Translator · Photographer · AI Entrepreneur</span>
-    <h1 class="hero-name">Adam<br><em>Lankamer</em></h1>
+    <h1 class="hero-name"><span class="logo-a">A</span>dam<br><em>Lankamer</em></h1>
     <p class="hero-tagline">
       Twenty-seven years turning language into meaning. Then trying to express with my camera what words cannot. And now building AI tools for the next generation of creators.
     </p>
     <div class="hero-cta-group">
-      <a href="/translatea.html" class="btn btn-primary">Translation</a>
-      <a href="/fotostories.html" class="btn btn-ghost">Photography</a>
-      <a href="/ai.html" class="btn btn-ghost">AI</a>
+      <a href="/translatea" class="btn btn-primary">Translation</a>
+      <a href="/fotostories" class="btn btn-ghost">Photography</a>
+      <a href="/ai" class="btn btn-ghost">AI</a>
     </div>
   </div>
 
   <div class="hero-photo">
-    <!-- back-left: red polo, leaning, casual indoor -->
     <div class="photo-c1">
       <img src="assets/adam-casual-1.jpg" alt="Adam Lankamer, professional translator and photographer">
     </div>
-    <!-- main centre: big smile, white polo, sea background -->
     <div class="photo-c2">
       <img src="assets/adam-casual-3.jpg" alt="Adam Lankamer — translator, photographer and AI entrepreneur">
     </div>
-    <!-- back-right: glasses, garden, relaxed -->
     <div class="photo-c3">
       <img src="assets/adam-casual-4.jpg" alt="Adam Lankamer outdoors, relaxed portrait">
     </div>
-    <div class="photo-glass-badge">
+    <div class="photo-badge">
       <span class="badge-num">27</span>
       <span class="badge-label">Years of excellence</span>
     </div>
@@ -618,12 +573,12 @@
 
   <div class="ventures-grid">
     <!-- Translation -->
-    <a class="venture-card" href="/translatea.html">
+    <a class="venture-card" href="/translatea">
       <div class="venture-number">01</div>
       <svg class="venture-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 10h10M11 10v-3M6 10c0 4.5 4 7 5 7M16 10c0 4.5-4 7-5 7M8 17s1.5 3 3 3" stroke="#5b9ba6" stroke-width="1.3" stroke-linecap="round"/>
-        <path d="M20 14h10l-5 14-5-14" stroke="#5b9ba6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21.5 20h7" stroke="#5b9ba6" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M6 10h10M11 10v-3M6 10c0 4.5 4 7 5 7M16 10c0 4.5-4 7-5 7M8 17s1.5 3 3 3" stroke="#c8102e" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M20 14h10l-5 14-5-14" stroke="#c8102e" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21.5 20h7" stroke="#c8102e" stroke-width="1.3" stroke-linecap="round"/>
       </svg>
       <div class="venture-name">Translation</div>
       <p class="venture-desc">
@@ -633,13 +588,13 @@
     </a>
 
     <!-- Photography -->
-    <a class="venture-card" href="/fotostories.html">
+    <a class="venture-card" href="/fotostories">
       <div class="venture-number">02</div>
       <svg class="venture-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4" y="10" width="28" height="20" rx="2" stroke="#5b9ba6" stroke-width="1.3"/>
-        <circle cx="18" cy="20" r="5" stroke="#5b9ba6" stroke-width="1.3"/>
-        <path d="M13 10l2-4h6l2 4" stroke="#5b9ba6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="28" cy="15" r="1" fill="#5b9ba6"/>
+        <rect x="4" y="10" width="28" height="20" rx="2" stroke="#c8102e" stroke-width="1.3"/>
+        <circle cx="18" cy="20" r="5" stroke="#c8102e" stroke-width="1.3"/>
+        <path d="M13 10l2-4h6l2 4" stroke="#c8102e" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="28" cy="15" r="1" fill="#c8102e"/>
       </svg>
       <div class="venture-name">Photography</div>
       <p class="venture-desc">
@@ -649,14 +604,14 @@
     </a>
 
     <!-- AI -->
-    <a class="venture-card" href="/ai.html">
+    <a class="venture-card" href="/ai">
       <div class="venture-number">03</div>
       <svg class="venture-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="6" width="16" height="18" rx="2" stroke="#5b9ba6" stroke-width="1.3"/>
-        <path d="M14 11h8M14 15h8M14 19h5" stroke="#5b9ba6" stroke-width="1.3" stroke-linecap="round"/>
-        <path d="M16 24v3M20 24v3M12 27h12" stroke="#5b9ba6" stroke-width="1.3" stroke-linecap="round"/>
-        <circle cx="28" cy="9" r="4" fill="rgba(91,155,166,0.15)" stroke="#5b9ba6" stroke-width="1.3"/>
-        <path d="M26.5 9h3M28 7.5v3" stroke="#5b9ba6" stroke-width="1.3" stroke-linecap="round"/>
+        <rect x="10" y="6" width="16" height="18" rx="2" stroke="#c8102e" stroke-width="1.3"/>
+        <path d="M14 11h8M14 15h8M14 19h5" stroke="#c8102e" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M16 24v3M20 24v3M12 27h12" stroke="#c8102e" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="28" cy="9" r="4" fill="rgba(200,16,46,0.1)" stroke="#c8102e" stroke-width="1.3"/>
+        <path d="M26.5 9h3M28 7.5v3" stroke="#c8102e" stroke-width="1.3" stroke-linecap="round"/>
       </svg>
       <div class="venture-name">AI</div>
       <p class="venture-desc">
@@ -683,11 +638,11 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-name">Adam Lankamer</span>
+  <span class="footer-name"><span class="logo-a">A</span>dam Lankamer</span>
   <ul class="footer-links">
-    <li><a href="/translatea.html">Translation</a></li>
-    <li><a href="/fotostories.html">Photography</a></li>
-    <li><a href="/ai.html">AI</a></li>
+    <li><a href="/translatea">Translation</a></li>
+    <li><a href="/fotostories">Photography</a></li>
+    <li><a href="/ai">AI</a></li>
     <li><a href="https://instagram.com/foto__stories" target="_blank" rel="noopener noreferrer">Instagram</a></li>
     <li><a href="https://t.me/adamlankamer" target="_blank" rel="noopener noreferrer">Telegram</a></li>
     <li><a href="https://wa.me/34641758592" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>

@@ -16,7 +16,7 @@
 <meta property="og:title"       content="Fotostories — Fine Art Photography · Adam Lankamer">
 <meta property="og:description" content="Fine art portrait and boudoir photography by Adam Lankamer. Intimate, honest, luminous. Based in Spain.">
 <meta property="og:image"       content="https://adamlankamer.com/assets/DSC00763-25.jpg">
-<meta property="og:locale"         content="en_US">
+<meta property="og:locale"      content="en_US">
 <!-- Twitter Card -->
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Fotostories — Fine Art Photography · Adam Lankamer">
@@ -51,37 +51,27 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:       #f4f2ef;
-    --surface:  rgba(255,255,255,0.70);
-    --border:   rgba(180,165,150,0.22);
-    --accent:   #5b9ba6;
-    --text:     #1e1a17;
-    --muted:    #8a7f76;
-    --warm:     #c4a882;
+    --bg:      #f5f2ee;
+    --surface: #eeeae6;
+    --border:  #d8d2ca;
+    --accent:  #c8102e;
+    --text:    #0e0e0e;
+    --muted:   #6b6259;
+    --muted2:  #a09888;
+    --nav-bg:  rgba(14,14,14,0.94);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Mono', monospace;
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 100% 50% at 50% 110%, rgba(91,155,166,0.12) 0%, transparent 55%),
-      linear-gradient(175deg, #f4f2ef 0%, #ede8e0 40%, #e5eef0 80%, #d5e8ec 100%);
-    pointer-events: none;
-    z-index: 0;
   }
 
   /* ── NAV ── */
@@ -93,35 +83,45 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 48px;
-    background: rgba(244,242,239,0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+    background: var(--nav-bg);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; letter-spacing: 0.06em; color: var(--text); text-decoration: none; }
-  .nav-logo span { color: var(--accent); }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .logo-a { color: var(--accent); }
   .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { font-size: 11px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: #fff; }
 
   /* ── HERO ── */
   .hero {
     position: relative;
-    z-index: 1;
     min-height: 100vh;
     display: flex;
     align-items: flex-end;
     padding: 0 80px 80px;
   }
-
   .hero-bg {
     position: absolute;
     inset: 0;
     overflow: hidden;
     background: #111;
   }
-  .hero-bg video,
-  .hero-bg img {
+  .hero-bg video, .hero-bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -132,53 +132,68 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(20,16,12,0.65) 0%, rgba(20,16,12,0.15) 50%, transparent 100%);
+    background: linear-gradient(to top, rgba(14,14,14,0.75) 0%, rgba(14,14,14,0.2) 50%, transparent 100%);
   }
-
   .hero-text {
     position: relative;
     z-index: 2;
     color: #fff;
     max-width: 700px;
   }
-
   .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
     font-size: 10px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,0.6);
     margin-bottom: 20px;
     display: block;
   }
-
   .hero-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(48px, 6vw, 90px);
-    font-weight: 300;
+    font-weight: 700;
     line-height: 1.0;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     color: #fff;
     margin-bottom: 24px;
   }
-  .hero-title em { font-style: italic; color: rgba(255,255,255,0.75); }
-
+  .hero-title em { font-style: italic; font-weight: 400; color: rgba(255,255,255,0.7); }
   .hero-sub {
-    font-size: 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
     font-weight: 300;
     line-height: 1.75;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.65);
     max-width: 480px;
   }
 
-  /* ── INTRO ── */
+  /* ── INSTAGRAM FEED ── */
+  .insta-feed-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 80px 60px;
+  }
+  .insta-feed-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  behold-widget { width: 100%; }
+
+  /* ── INTRO STRIP ── */
   .intro-strip {
-    position: relative;
-    z-index: 1;
     background: var(--surface);
-    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
-
   .intro-inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -188,19 +203,18 @@
     gap: 80px;
     align-items: center;
   }
-
   .intro-pull {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(22px, 2.5vw, 34px);
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     line-height: 1.4;
     color: var(--text);
   }
   .intro-pull em { color: var(--accent); font-style: normal; }
-
   .intro-body {
-    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
     font-weight: 300;
     line-height: 1.9;
     color: var(--muted);
@@ -208,108 +222,87 @@
 
   /* ── GALLERY ── */
   .gallery-section {
-    position: relative;
-    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
     padding: 100px 80px;
   }
-
   .gallery-header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     margin-bottom: 48px;
   }
-
   .gallery-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(28px, 3.5vw, 46px);
-    font-weight: 300;
-    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
     color: var(--text);
   }
-  .gallery-title em { font-style: italic; color: var(--muted); }
-
-  .gallery-filter {
-    display: flex;
-    gap: 8px;
-  }
-
+  .gallery-title em { font-style: italic; font-weight: 400; color: var(--muted); }
+  .gallery-filter { display: flex; gap: 6px; }
   .filter-btn {
-    padding: 8px 18px;
-    font-size: 10px;
-    letter-spacing: 0.18em;
+    padding: 7px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     border: 1px solid var(--border);
     background: transparent;
     color: var(--muted);
     cursor: pointer;
-    border-radius: 2px;
     transition: all 0.2s;
   }
   .filter-btn.active, .filter-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(91,155,166,0.06);
+    background: rgba(200,16,46,0.04);
   }
 
   /* ── PHOTO GRID ── */
-  .photo-grid {
-    columns: 3;
-    column-gap: 12px;
-    row-gap: 12px;
-  }
-
+  .photo-grid { columns: 3; column-gap: 10px; }
   .photo-item {
     break-inside: avoid;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
     display: block;
   }
-
   .photo-item img {
     width: 100%;
     display: block;
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    filter: saturate(0.9);
+    filter: saturate(0.88);
   }
-  .photo-item:hover img {
-    transform: scale(1.03);
-    filter: saturate(1.05);
-  }
-
+  .photo-item:hover img { transform: scale(1.03); filter: saturate(1.05); }
   .photo-item::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(30,26,23,0);
-    transition: background 0.35s;
+    background: rgba(14,14,14,0);
+    transition: background 0.3s;
     pointer-events: none;
   }
-  .photo-item:hover::after {
-    background: rgba(30,26,23,0.12);
-  }
+  .photo-item:hover::after { background: rgba(14,14,14,0.1); }
 
-  /* Photo placeholder grid (shown before photos are added) */
+  /* Photo placeholder */
   .photo-placeholder-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 10px;
   }
-
   .photo-ph {
-    background: linear-gradient(135deg, #e8e0d8 0%, #d8d0c8 100%);
-    border-radius: 2px;
+    background: var(--surface);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 8px;
-    color: rgba(0,0,0,0.25);
-    font-size: 10px;
+    color: var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
   }
@@ -321,22 +314,14 @@
   .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(20,16,12,0.92);
+    background: rgba(14,14,14,0.95);
     z-index: 1000;
     display: none;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px);
   }
   .lightbox.open { display: flex; }
-
-  .lightbox-img {
-    max-width: 90vw;
-    max-height: 90vh;
-    object-fit: contain;
-    border-radius: 2px;
-  }
-
+  .lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
   .lightbox-close {
     position: absolute;
     top: 28px; right: 36px;
@@ -349,11 +334,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2px;
     transition: border-color 0.2s;
   }
   .lightbox-close:hover { border-color: rgba(255,255,255,0.6); }
-
   .lightbox-prev, .lightbox-next {
     position: absolute;
     top: 50%;
@@ -367,59 +350,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2px;
     transition: border-color 0.2s;
   }
   .lightbox-prev { left: 28px; }
   .lightbox-next { right: 28px; }
   .lightbox-prev:hover, .lightbox-next:hover { border-color: rgba(255,255,255,0.6); }
 
-  /* ── FOOTER ── */
-  footer {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 48px 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid var(--border);
-  }
-  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 300; color: var(--muted); letter-spacing: 0.06em; }
-  .footer-links { display: flex; gap: 28px; list-style: none; }
-  .footer-links a { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--accent); }
-
   /* ── INSTAGRAM CTA ── */
-  .insta-feed-section {
-    position: relative;
-    z-index: 1;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 80px 48px 60px;
-  }
-  .insta-feed-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
-  .section-eyebrow {
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-  behold-widget {
-    width: 100%;
-  }
-  @media (max-width: 900px) {
-    .insta-feed-section { padding: 60px 24px 40px; }
-  }
-
   .insta-strip {
-    position: relative;
-    z-index: 1;
     text-align: center;
     padding: 52px 24px;
     border-top: 1px solid var(--border);
@@ -428,7 +366,8 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
     font-weight: 300;
     color: var(--muted);
     text-decoration: none;
@@ -439,32 +378,51 @@
   .insta-cta strong { font-weight: 500; color: var(--text); }
   .insta-cta:hover strong { color: var(--accent); }
 
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-  .hamburger span { width: 22px; height: 1.5px; background: var(--text); }
+  /* ── FOOTER ── */
+  footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+  }
+  .footer-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 400; color: var(--muted); letter-spacing: -0.01em; }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
 
+  /* ── HAMBURGER ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 1.5px; background: rgba(255,255,255,0.6); }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 18px 28px; }
     .hamburger { display: flex; }
-    .nav-links { display: none; position: fixed; top: 61px; left: 0; right: 0; background: rgba(244,242,239,0.95); backdrop-filter: blur(20px); flex-direction: column; align-items: center; gap: 28px; padding: 40px 24px; border-bottom: 1px solid var(--border); }
+    .nav-links { display: none; position: fixed; top: 61px; left: 0; right: 0; background: rgba(14,14,14,0.97); flex-direction: column; align-items: center; gap: 28px; padding: 40px 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .nav-links.open { display: flex; }
     .hero { padding: 0 28px 60px; }
+    .insta-feed-section { padding: 60px 24px 40px; }
     .intro-inner { grid-template-columns: 1fr; padding: 56px 28px; gap: 28px; }
     .gallery-section { padding: 60px 28px; }
     .gallery-header { flex-direction: column; align-items: flex-start; gap: 20px; }
     .photo-grid { columns: 2; }
     .photo-placeholder-grid { grid-template-columns: repeat(2, 1fr); }
     footer { padding: 40px 28px; flex-direction: column; gap: 20px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">Adam <span>Lankamer</span></a>
+  <a href="/" class="nav-logo"><span class="logo-a">A</span>dam Lankamer</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/translatea.html">Translation</a></li>
-    <li><a href="/fotostories.html" class="active">Photography</a></li>
-    <li><a href="/ai.html">AI</a></li>
+    <li><a href="/translatea">Translation</a></li>
+    <li><a href="/fotostories" class="active">Photography</a></li>
+    <li><a href="/ai">AI</a></li>
     <li><a href="mailto:adam@translatea.com">Contact</a></li>
   </ul>
   <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
@@ -527,8 +485,6 @@
     </div>
   </div>
 
-  <!-- PHOTO GRID — populated via JS from assets/photos.json -->
-  <!-- If no photos loaded, shows placeholder grid -->
   <div id="photoGrid">
     <div class="photo-placeholder-grid" id="placeholderGrid">
       <div class="photo-ph ph-tall"><span>Portrait</span></div>
@@ -565,11 +521,11 @@
 </div>
 
 <footer>
-  <span class="footer-name">Adam Lankamer</span>
+  <span class="footer-name"><span class="logo-a">A</span>dam Lankamer</span>
   <ul class="footer-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/translatea.html">Translation</a></li>
-    <li><a href="/ai.html">AI</a></li>
+    <li><a href="/translatea">Translation</a></li>
+    <li><a href="/ai">AI</a></li>
     <li><a href="https://instagram.com/foto__stories" target="_blank" rel="noopener noreferrer">@foto__stories</a></li>
     <li><a href="https://t.me/adamlankamer" target="_blank" rel="noopener noreferrer">Telegram</a></li>
     <li><a href="https://wa.me/34641758592" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
@@ -579,20 +535,17 @@
 
 <script>
 // ── PHOTO DATA ─────────────────────────────────────────────────────────────
-// To add your photos, drop them into the assets/ folder and add entries here.
-// Format: { src: 'assets/filename.jpg', category: 'portrait|boudoir|other', aspect: 'tall|wide|square' }
-
 const PHOTOS = [
   // ── Portraits ──────────────────────────────────────────────────────────────
-  { src: 'assets/DSC01930-16.jpg',       category: 'portrait', aspect: 'square' }, // Adam, beach sunset
-  { src: 'assets/DSC01627-2.jpg',        category: 'portrait', aspect: 'square' }, // B&W reflection, cobblestones
-  { src: 'assets/DSC09746-3.jpg',        category: 'portrait', aspect: 'square' }, // B&W woman, glasses
-  { src: 'assets/dsc09412-8.jpg',        category: 'portrait', aspect: 'square' }, // Blonde, hat, outdoors
-  { src: 'assets/dsc05905-10.jpg',       category: 'portrait', aspect: 'tall'   }, // Woman, white dress, natural light
-  { src: 'assets/DSC00763-25.jpg',       category: 'portrait', aspect: 'square' }, // Blonde, dreamy, plant foreground
-  { src: 'assets/20251008193928.jpg',    category: 'portrait', aspect: 'tall'   }, // Evening, chair, gray dress
-  { src: 'assets/dsc08448-19 (1).jpg',   category: 'portrait', aspect: 'square' }, // Railway tracks, black dress
-  { src: 'assets/dsc08790-4 (1).jpg',    category: 'portrait', aspect: 'square' }, // Red convertible, lifestyle
+  { src: 'assets/DSC01930-16.jpg',       category: 'portrait', aspect: 'square' },
+  { src: 'assets/DSC01627-2.jpg',        category: 'portrait', aspect: 'square' },
+  { src: 'assets/DSC09746-3.jpg',        category: 'portrait', aspect: 'square' },
+  { src: 'assets/dsc09412-8.jpg',        category: 'portrait', aspect: 'square' },
+  { src: 'assets/dsc05905-10.jpg',       category: 'portrait', aspect: 'tall'   },
+  { src: 'assets/DSC00763-25.jpg',       category: 'portrait', aspect: 'square' },
+  { src: 'assets/20251008193928.jpg',    category: 'portrait', aspect: 'tall'   },
+  { src: 'assets/dsc08448-19 (1).jpg',   category: 'portrait', aspect: 'square' },
+  { src: 'assets/dsc08790-4 (1).jpg',    category: 'portrait', aspect: 'square' },
   { src: 'assets/DSC07933-9.jpg',        category: 'portrait', aspect: 'square' },
   { src: 'assets/dsc00099-16.jpg',       category: 'portrait', aspect: 'square' },
   { src: 'assets/dsc01068-5 (1).jpg',    category: 'portrait', aspect: 'square' },
@@ -601,24 +554,24 @@ const PHOTOS = [
   { src: 'assets/dsc08467-22 (1).jpg',   category: 'portrait', aspect: 'square' },
   { src: 'assets/dsc08536-5 (1).jpg',    category: 'portrait', aspect: 'square' },
   // ── Boudoir ────────────────────────────────────────────────────────────────
-  { src: 'assets/20250712111251.jpg',      category: 'boudoir', aspect: 'tall'   }, // Seated nude, artistic
-  { src: 'assets/20250712113052 (1).jpg',  category: 'boudoir', aspect: 'tall'   }, // Artistic blur, boots
-  { src: 'assets/DSC00990-26.jpg',         category: 'boudoir', aspect: 'square' }, // Curly blonde, tattoos, pink
+  { src: 'assets/20250712111251.jpg',      category: 'boudoir', aspect: 'tall'   },
+  { src: 'assets/20250712113052 (1).jpg',  category: 'boudoir', aspect: 'tall'   },
+  { src: 'assets/DSC00990-26.jpg',         category: 'boudoir', aspect: 'square' },
   // ── Lifestyle / Bokeh ──────────────────────────────────────────────────────
-  { src: 'assets/adam-bokeh-1.jpg',        category: 'lifestyle', aspect: 'square' }, // Dried grass macro, soft bokeh
-  { src: 'assets/adam-bokeh-2.jpg',        category: 'lifestyle', aspect: 'square' }, // Macramé wall art, warm bokeh lights
-  { src: 'assets/adam-bokeh-3.jpg',        category: 'lifestyle', aspect: 'square' }, // Green leaf, bokeh evening lights
+  { src: 'assets/adam-bokeh-1.jpg',        category: 'lifestyle', aspect: 'square' },
+  { src: 'assets/adam-bokeh-2.jpg',        category: 'lifestyle', aspect: 'square' },
+  { src: 'assets/adam-bokeh-3.jpg',        category: 'lifestyle', aspect: 'square' },
   // ── Cars ────────────────────────────────────────────────────────────────────
-  { src: 'assets/adam-car-1.jpg',          category: 'car', aspect: 'wide'   }, // White Mustang GT, front 3/4
-  { src: 'assets/adam-car-2.jpg',          category: 'car', aspect: 'tall'   }, // White Mustang GT, rear 3/4
-  { src: 'assets/adam-car-3.jpg',          category: 'car', aspect: 'square' }, // White Mustang 5.0, side detail
+  { src: 'assets/adam-car-1.jpg',          category: 'car', aspect: 'wide'   },
+  { src: 'assets/adam-car-2.jpg',          category: 'car', aspect: 'tall'   },
+  { src: 'assets/adam-car-3.jpg',          category: 'car', aspect: 'square' },
 ];
 
 let currentIndex = 0;
 let visiblePhotos = [];
 
 function buildGrid(photos) {
-  if (!photos.length) return; // keep placeholder
+  if (!photos.length) return;
   const grid = document.getElementById('photoGrid');
   const ph = document.getElementById('placeholderGrid');
   if (ph) ph.remove();
