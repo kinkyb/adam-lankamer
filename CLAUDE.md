@@ -60,12 +60,13 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 | 1 | Ucaption | ucaption.online | Live | From €39/mo |
 | 2 | TestYourSkills | testyourskills.app | Live | — |
 | 3 | Image & Video Tagger | utagger.online | Live | From $49 |
-| 4 | AutoXPoster | autoxposter.com | In Development | — |
-| 5 | Telegram Channel Automation | contact via email | Available (bespoke) | — |
-| 6 | GifPerfect | gifperfect.com | Live | From $29 |
-| 7 | Slo-Mo Perfect | slomoperfect.com | Live | From $29 |
+| 4 | UTagger Viewer | utagger.online/viewer | Live | $19 one-time |
+| 5 | GifPerfect | gifperfect.com | Live | From $29 |
+| 6 | Slo-Mo Perfect | slomoperfect.com | Live | From $29 |
+| 7 | AutoXPoster | autoxposter.com | In Development | — |
+| 8 | Telegram Channel Automation | contact via email | Available (bespoke) | — |
 
-ai.html layout: centered "ACreatorStore" Playfair hero (100px), eyebrow with flanking lines, 2-col pure-text tool cards (no dark panels), red top-bar hover animation per card, Slo-Mo Perfect spans full width. No Telegram in footer, Telegram Channel Automation product present as 05/07.
+ai.html layout: centered "ACreatorStore" Playfair hero (100px), eyebrow with flanking lines, 2-col pure-text tool cards (no dark panels), red top-bar hover animation per card. 8 cards fit evenly in 2-col grid (no full-width span). No Telegram in footer. Ucaption card lists Chrome Extension (Live) + context-menu integration (In Development).
 
 ## Instagram Feed
 - Embedded on `/fotostories` via **Behold.so** widget (free tier)
