@@ -356,6 +356,74 @@
   .lightbox-next { right: 28px; }
   .lightbox-prev:hover, .lightbox-next:hover { border-color: rgba(255,255,255,0.6); }
 
+  /* ── COLLABORATION CTA ── */
+  .collab-strip {
+    background: var(--text);
+    padding: 88px 80px;
+    text-align: center;
+  }
+  .collab-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .collab-eyebrow::before, .collab-eyebrow::after {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--accent);
+    opacity: 0.35;
+  }
+  .collab-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4.5vw, 58px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .collab-title em { font-style: italic; font-weight: 400; color: rgba(255,255,255,0.65); }
+  .collab-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.42);
+    line-height: 1.9;
+    max-width: 480px;
+    margin: 0 auto 44px;
+    letter-spacing: 0.03em;
+  }
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 16px 32px;
+    transition: opacity 0.2s;
+  }
+  .btn-whatsapp:hover { opacity: 0.88; }
+  .collab-note {
+    margin-top: 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.22);
+    letter-spacing: 0.08em;
+  }
+
   /* ── INSTAGRAM CTA ── */
   .insta-strip {
     text-align: center;
@@ -410,6 +478,7 @@
     .gallery-header { flex-direction: column; align-items: flex-start; gap: 20px; }
     .photo-grid { columns: 2; }
     .photo-placeholder-grid { grid-template-columns: repeat(2, 1fr); }
+    .collab-strip { padding: 64px 28px; }
     footer { padding: 40px 28px; flex-direction: column; gap: 20px; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
   }
@@ -423,7 +492,7 @@
     <li><a href="/translatea">Translation</a></li>
     <li><a href="/fotostories" class="active">Photography</a></li>
     <li><a href="/ai">AI</a></li>
-    <li><a href="mailto:adam@translatea.com">Contact</a></li>
+    <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
   </ul>
   <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
@@ -462,12 +531,12 @@
 <div class="intro-strip">
   <div class="intro-inner">
     <p class="intro-pull">
-      Photography taught me to see people, <em>not subjects</em>.
+      I photograph people the way a translator reads between the lines — for what's <em>unspoken</em>.
     </p>
     <p class="intro-body">
-      I came to photography as a translator — which means I came to it as someone who looks for meaning that isn't immediately obvious. A translation doesn't simply convert words; it transfers intention, tone, and subtext. A photograph works the same way.<br><br>
-      My work spans portraiture, boudoir, automotive, and landscape. Each discipline demands its own patience. Portraiture requires trust. Boudoir requires courage — from both of us. Cars demand precision. Nature demands that you stop trying to control anything at all.<br><br>
-      These are not commercial photographs. They are collaborations with light, moment, and whoever or whatever is in front of my lens.
+      I came to photography as a translator — someone trained to look for meaning that isn't immediately on the surface. A translation doesn't simply convert words; it transfers intention, tone, and subtext across a gap. A photograph works the same way: it captures not just what someone looks like, but what they feel like to be around.<br><br>
+      My work spans portraiture, boudoir, lifestyle, and automotive. Each demands something different. Portraiture requires trust — you have to let someone see you. Boudoir requires courage, and a photographer who understands that. Lifestyle sessions are about your world, not a set. Cars are about light falling on form at exactly the right angle.<br><br>
+      If any of this speaks to you — if you've been looking for photographs that feel true rather than performed — I'd like to make them with you. Sessions available across Spain, with travel considered for the right project.
     </p>
   </div>
 </div>
@@ -508,6 +577,21 @@
   <button class="lightbox-next" onclick="shiftLightbox(1)">›</button>
 </div>
 
+<!-- COLLABORATION CTA -->
+<div class="collab-strip">
+  <div class="collab-eyebrow">Book a Session</div>
+  <h2 class="collab-title">Let's create your<br><em>photo story.</em></h2>
+  <p class="collab-sub">Portraits, boudoir, lifestyle, automotive — wherever you are in Spain. Every session is built around you: your story, your pace, your comfort.</p>
+  <a href="https://wa.me/34641758592?text=Hi%20Adam%2C%20I%27d%20love%20to%20create%20a%20photo%20story%20with%20you." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.12 1.528 5.849L.057 23.617a.75.75 0 0 0 .92.92l5.874-1.522A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.716 9.716 0 0 1-5.004-1.385l-.36-.214-3.733.968.994-3.64-.234-.374A9.716 9.716 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
+    </svg>
+    Message me on WhatsApp
+  </a>
+  <p class="collab-note">Replies within 24 hours · Sessions from €150</p>
+</div>
+
 <!-- INSTAGRAM CTA -->
 <div class="insta-strip">
   <a href="https://instagram.com/foto__stories" target="_blank" rel="noopener noreferrer" class="insta-cta">
@@ -528,7 +612,9 @@
     <li><a href="/ai">AI</a></li>
     <li><a href="https://instagram.com/foto__stories" target="_blank" rel="noopener noreferrer">@foto__stories</a></li>
     <li><a href="https://wa.me/34641758592" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-    <li><a href="mailto:adam@translatea.com">Contact</a></li>
+    <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/terms">Terms</a></li>
   </ul>
 </footer>
 
