@@ -31,7 +31,7 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 | `index.html` | `/` | Homepage — hero (2-col with photo collage), 3 venture cards, dark about strip |
 | `translatea.html` | `/translatea` | Translation services page |
 | `fotostories.html` | `/fotostories` | Photography portfolio — dark hero, Behold Instagram feed, masonry gallery |
-| `ai.html` | `/ai` | AI projects — vertical product listing (7 products, NOT a slider) |
+| `ai.html` | `/ai` | AI projects — vertical product listing (9 products, NOT a slider) |
 
 ## Stack
 - **Hosting**: Netlify (static HTML — no build step)
@@ -79,7 +79,8 @@ ai.html layout: centered "ACreatorStore" Playfair hero (100px), eyebrow with fla
 - Canonical tags on all pages (no `.html` extension — Netlify pretty URLs)
 - `sitemap.xml` — 4 URLs, updated on every deploy
 - `robots.txt` — allow all, sitemap pointer
-- `favicon.svg` + `favicon-32x32.png` + `apple-touch-icon.png`
+- Favicons: `favicon.ico` (16/32/48px multi-size) + `favicon-32x32.png` + `favicon-16x16.png` + `apple-touch-icon.png` (180×180) — all generated from Adam's portrait photo (`adam-casual-3.jpg`, April 2026). No SVG favicon.
+- Favicon source: tight headshot, face centered, works well at 32×32
 - Structured data: Person (index), ProfessionalService (translatea, fotostories), ItemList + BreadcrumbList (ai), FAQPage (translatea)
 - `og:locale`, OG tags, Twitter Card on all pages
 - Google Search Console verified (verification tag on index.html)
