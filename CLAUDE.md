@@ -81,7 +81,9 @@ ai.html layout: centered "ACreatorStore" Playfair hero (100px), eyebrow with fla
 - `robots.txt` — allow all, sitemap pointer
 - Favicons: `favicon.ico` (16/32/48px multi-size) + `favicon-32x32.png` + `favicon-16x16.png` + `apple-touch-icon.png` (180×180) — all generated from Adam's portrait photo (`adam-casual-3.jpg`, April 2026). No SVG favicon.
 - Favicon source: tight headshot, face centered, works well at 32×32
-- Structured data: Person (index), ProfessionalService (translatea, fotostories), ItemList + BreadcrumbList (ai), FAQPage (translatea)
+- Structured data: Person (index), LocalBusiness+ProfessionalService (fotostories — with address, geo, phone, offer catalog, areaServed), ProfessionalService (translatea), ItemList + BreadcrumbList (ai), FAQPage (translatea)
+- Geo meta tags on fotostories: `geo.region=ES-GR`, `geo.placename=La Herradura, Almuñécar, Granada, Spain`, lat/long 36.7272 / -3.7486
+- fotostories areaServed: La Herradura, Almuñécar, Nerja, Granada, Málaga, Andalusia, Spain
 - `og:locale`, OG tags, Twitter Card on all pages
 - Google Search Console verified (verification tag on index.html)
 
