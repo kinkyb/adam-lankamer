@@ -287,6 +287,38 @@
     color: var(--muted);
   }
 
+  /* ── LANGUAGE FLAGS ── */
+  .lang-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .lang-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    white-space: nowrap;
+  }
+  .lang-flags {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .flag-wrap {
+    display: block;
+    width: 32px;
+    height: 22px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .flag-wrap svg { display: block; width: 100%; height: 100%; }
+
   /* ── GALLERY ── */
   .gallery-section {
     max-width: 1200px;
@@ -602,11 +634,53 @@
     <p class="intro-pull">
       I photograph people the way a translator reads between the lines — for what's <em>unspoken</em>.
     </p>
-    <p class="intro-body">
-      I came to photography as a translator — someone trained to look for meaning that isn't immediately on the surface. A translation doesn't simply convert words; it transfers intention, tone, and subtext across a gap. A photograph works the same way: it captures not just what someone looks like, but what they feel like to be around.<br><br>
-      My work spans portraiture, boudoir, lifestyle, and automotive. Each demands something different. Portraiture requires trust — you have to let someone see you. Boudoir requires courage, and a photographer who understands that. Lifestyle sessions are about your world, not a set. Cars are about light falling on form at exactly the right angle.<br><br>
-      If any of this speaks to you — if you've been looking for photographs that feel true rather than performed — I'd like to make them with you. Sessions available across Spain, with travel considered for the right project.
-    </p>
+    <div class="intro-right">
+      <p class="intro-body">
+        I came to photography as a translator — someone trained to look for meaning that isn't immediately on the surface. A translation doesn't simply convert words; it transfers intention, tone, and subtext across a gap. A photograph works the same way: it captures not just what someone looks like, but what they feel like to be around.<br><br>
+        My work spans portraiture, boudoir, lifestyle, and automotive. Each demands something different. Portraiture requires trust — you have to let someone see you. Boudoir requires courage, and a photographer who understands that. Lifestyle sessions are about your world, not a set. Cars are about light falling on form at exactly the right angle.<br><br>
+        If any of this speaks to you — if you've been looking for photographs that feel true rather than performed — I'd like to make them with you. Sessions available across Spain, with travel considered for the right project.
+      </p>
+      <div class="lang-row">
+        <span class="lang-label">I speak</span>
+        <div class="lang-flags">
+          <!-- Poland -->
+          <span class="flag-wrap" title="Polish">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 22">
+              <rect width="32" height="11" fill="#fff"/>
+              <rect y="11" width="32" height="11" fill="#DC143C"/>
+            </svg>
+          </span>
+          <!-- United Kingdom -->
+          <span class="flag-wrap" title="English">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 22">
+              <rect width="32" height="22" fill="#012169"/>
+              <path d="M0,0 L32,22 M32,0 L0,22" stroke="#fff" stroke-width="7"/>
+              <path d="M0,0 L32,22 M32,0 L0,22" stroke="#C8102E" stroke-width="3.5"/>
+              <rect x="13" y="0" width="6" height="22" fill="#fff"/>
+              <rect x="0" y="8" width="32" height="6" fill="#fff"/>
+              <rect x="14.5" y="0" width="3" height="22" fill="#C8102E"/>
+              <rect x="0" y="9.5" width="32" height="3" fill="#C8102E"/>
+            </svg>
+          </span>
+          <!-- France -->
+          <span class="flag-wrap" title="French">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 22">
+              <rect width="11" height="22" fill="#002395"/>
+              <rect x="11" width="10" height="22" fill="#fff"/>
+              <rect x="21" width="11" height="22" fill="#ED2939"/>
+            </svg>
+          </span>
+          <!-- Russia -->
+          <span class="flag-wrap" title="Russian">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 22">
+              <rect width="32" height="8" fill="#fff"/>
+              <rect y="8" width="32" height="7" fill="#0039A6"/>
+              <rect y="15" width="32" height="7" fill="#D52B1E"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
