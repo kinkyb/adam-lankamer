@@ -66,8 +66,9 @@ Personal brand site for Adam Lankamer — professional translator, fine art phot
 | 7 | Aspect Perfect | aspectperfect.com | Live | From $29 |
 | 8 | AutoXPoster | autoxposter.com | In Development | — |
 | 9 | Telegram Channel Automation | contact via email | Available (bespoke) | — |
+| 10 | ClaudSkills | claudskills.com | Live | Free |
 
-ai.html layout: centered "ACreatorStore" Playfair hero (100px), eyebrow with flanking lines, 2-col pure-text tool cards (no dark panels), red top-bar hover animation per card. 9 cards in 2-col grid (no full-width span). No Telegram in footer. Ucaption card lists Chrome Extension (Live) + context-menu integration (In Development).
+ai.html layout: centered "ACreatorStore" Playfair hero (100px), eyebrow with flanking lines, 2-col pure-text tool cards (no dark panels), red top-bar hover animation per card. 10 cards in 2-col grid (no full-width span). No Telegram in footer. Ucaption card lists Chrome Extension (Live) + context-menu integration (In Development).
 
 ## Instagram Feed
 - Embedded on `/fotostories` via **Behold.so** widget (free tier)
