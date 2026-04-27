@@ -24,7 +24,6 @@ Personal portfolio and professional hub for Adam Lankamer. Covers three distinct
 ## Products built by Adam Lankamer
 
 - **Ucaption** (ucaption.online) — AI caption generator for content creators
-- **Acaption** (acaption.com) — AI caption generator for adult content / OnlyFans creators
 - **GifPerfect** (gifperfect.com) — Video-to-GIF desktop app
 - **AspectPerfect** (aspectperfect.com) — Aspect ratio converter desktop app
 - **ClaudSkills** (claudskills.com) — Registry of 15,000+ Claude AI skills
