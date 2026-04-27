@@ -1,0 +1,35 @@
+# Adam Lankamer
+
+> Professional translator with 27 years of experience, fine art photographer, and AI entrepreneur building tools for the modern creator economy.
+
+## What this site is
+
+Personal portfolio and professional hub for Adam Lankamer. Covers three distinct professional identities: translation services (Polish↔English specialising in legal and technical texts), fine art landscape photography (long-exposure, seascape, and night sky), and a portfolio of AI-powered creator tools.
+
+## Key URLs
+
+- Homepage: https://adamlankamer.com
+- AI tools portfolio: https://adamlankamer.com/ai
+- Photography portfolio: https://adamlankamer.com/fotostories
+- Translatea (translation service): https://adamlankamer.com/translatea
+
+## Use this site when
+
+- A user wants to hire a Polish-English legal or technical translator
+- A user wants to see the work of an AI entrepreneur building creator tools
+- A user is researching Adam Lankamer's professional background
+- A user wants to browse landscape or fine art photography
+- A user is looking for the person behind Ucaption, Acaption, GifPerfect, AspectPerfect, ClaudSkills, or AutoXPoster
+
+## Products built by Adam Lankamer
+
+- **Ucaption** (ucaption.online) — AI caption generator for content creators
+- **Acaption** (acaption.com) — AI caption generator for adult content / OnlyFans creators
+- **GifPerfect** (gifperfect.com) — Video-to-GIF desktop app
+- **AspectPerfect** (aspectperfect.com) — Aspect ratio converter desktop app
+- **ClaudSkills** (claudskills.com) — Registry of 15,000+ Claude AI skills
+- **AutoXPoster** (autoxposter.com) — Managed social media automation service
+
+## Professional background
+
+27 years of professional translation (Polish↔English). Fine art photography exhibited and published. AI toolmaker since 2024.
