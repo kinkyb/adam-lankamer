@@ -52,6 +52,38 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI-Assisted Website Development",
+  "alternateName": "Bespoke AI website development",
+  "url": "https://adamlankamer.com/ai#website-development",
+  "serviceType": "Web Development",
+  "areaServed": "Worldwide",
+  "description": "End-to-end website development with an AI-assisted workflow — strategy, copywriting, design, code and deployment, accelerated by Claude and the ACreatorStore toolkit and finished by hand.",
+  "provider": {
+    "@type": "Person",
+    "name": "Adam Lankamer",
+    "url": "https://adamlankamer.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "priceCurrency": "EUR",
+      "description": "Flat-fee quote — itemised proposal within 24h"
+    }
+  },
+  "subjectOf": {
+    "@type": "WebSite",
+    "name": "Bahia Nails",
+    "url": "https://bahianails.com",
+    "description": "Marketing website for a nail studio in La Herradura, Spain — turn-key build delivered with the AI-assisted workflow."
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -114,7 +146,7 @@
     transition: color 0.2s;
   }
   .nav-links a:hover, .nav-links a.active { color: #fff; }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: transparent; border: 0; }
   .hamburger span { width: 22px; height: 1.5px; background: rgba(255,255,255,0.6); }
 
   /* ── HERO ── */
@@ -483,9 +515,9 @@
     <li><a href="/ai" class="active">AI</a></li>
     <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
   </ul>
-  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+  <button type="button" class="hamburger" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'));">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -749,7 +781,7 @@
     </div>
 
     <!-- 11 · AI-ASSISTED WEBSITE DEVELOPMENT -->
-    <div class="tool-card">
+    <div class="tool-card" id="website-development">
       <div class="tool-header">
         <div>
           <div class="tool-category">Web Development · Bespoke</div>
@@ -762,6 +794,9 @@
       </div>
       <p class="tool-tagline">"From brief to launch in days — AI-assisted, hand-finished."</p>
       <p class="tool-desc">End-to-end website development with an AI-assisted workflow. Strategy, copywriting, design, code and deployment, accelerated by Claude and the ACreatorStore toolkit and finished by hand for the details that matter. Built for small businesses, creators and professionals who need a real website — not a template.</p>
+      <a href="https://bahianails.com" target="_blank" rel="noopener noreferrer" aria-label="View bahianails.com — case study site" style="display:block;margin-bottom:14px;border:1px solid var(--border);overflow:hidden;background:var(--surface);">
+        <img src="assets/bahianails-preview.jpg" alt="Screenshot of bahianails.com — marketing site for a nail studio in La Herradura, Spain, designed and developed by Adam Lankamer with an AI-assisted workflow" width="1000" height="625" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+      </a>
       <div style="margin-bottom:24px;padding:14px 16px;background:var(--surface);border-left:2px solid var(--accent);">
         <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Showcase</div>
         <a href="https://bahianails.com" target="_blank" rel="noopener noreferrer" style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent);">bahianails.com</a>

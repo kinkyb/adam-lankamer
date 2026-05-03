@@ -563,7 +563,7 @@
   .footer-links a:hover { color: var(--accent); }
 
   /* ── HAMBURGER ── */
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: transparent; border: 0; }
   .hamburger span { width: 22px; height: 1.5px; background: rgba(255,255,255,0.6); }
 
   /* ── RESPONSIVE ── */
@@ -595,9 +595,9 @@
     <li><a href="/ai">AI</a></li>
     <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
   </ul>
-  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+  <button type="button" class="hamburger" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'));">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -731,7 +731,7 @@
 <div class="lightbox" id="lightbox" onclick="closeLightboxOnOverlay(event)">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <button class="lightbox-prev" onclick="shiftLightbox(-1)">‹</button>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <img class="lightbox-img" id="lightboxImg" src="" alt="" loading="lazy" decoding="async">
   <button class="lightbox-next" onclick="shiftLightbox(1)">›</button>
 </div>
 
