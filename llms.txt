@@ -28,6 +28,7 @@ Personal portfolio and professional hub for Adam Lankamer. Covers three distinct
 - **AspectPerfect** (aspectperfect.com) — Aspect ratio converter desktop app
 - **ClaudSkills** (claudskills.com) — Registry of 15,000+ Claude AI skills
 - **AutoXPoster** (autoxposter.com) — Managed social media automation service
+- **AI-Assisted Website Development** (adamlankamer.com/ai) — Bespoke websites built with an AI-assisted workflow; showcase: bahianails.com
 
 ## Professional background
 
