@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adam Lankamer — Translator · Photographer · AI Entrepreneur</title>
 <meta name="description" content="Adam Lankamer — professional translator with 27 years of experience, fine art photographer, and AI entrepreneur building tools for the modern creator economy.">
+<meta name="author" content="Adam Lankamer">
+<meta name="theme-color" content="#c8102e">
 <meta name="google-site-verification" content="-iNYVdlqAC7IwvkAMls74V_okU3ndlyR6P6u1eFfsFE">
 <link rel="canonical" href="https://adamlankamer.com/">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -17,46 +19,71 @@
 <meta property="og:site_name"   content="Adam Lankamer">
 <meta property="og:title"       content="Adam Lankamer — Translator · Photographer · AI Entrepreneur">
 <meta property="og:description" content="Adam Lankamer — professional translator with 27 years of experience, fine art photographer, and AI entrepreneur building tools for the modern creator economy.">
-<meta property="og:image"       content="https://adamlankamer.com/assets/adam-casual-1.jpg">
-<meta property="og:locale"      content="en_US">
+<meta property="og:image"        content="https://adamlankamer.com/assets/og-home.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"    content="Adam Lankamer — translator, photographer and AI entrepreneur, working from Spain.">
+<meta property="og:locale"       content="en_US">
 <!-- Twitter Card -->
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="Adam Lankamer — Translator · Photographer · AI Entrepreneur">
 <meta name="twitter:description" content="Adam Lankamer — professional translator with 27 years of experience, fine art photographer, and AI entrepreneur building tools for the modern creator economy.">
-<meta name="twitter:image"       content="https://adamlankamer.com/assets/adam-casual-1.jpg">
+<meta name="twitter:image"       content="https://adamlankamer.com/assets/og-home.jpg">
 <!-- Structured data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Adam Lankamer",
-  "url": "https://adamlankamer.com",
-  "image": "https://adamlankamer.com/assets/adam-casual-1.jpg",
-  "jobTitle": "Translator, Photographer & AI Entrepreneur",
-  "description": "Professional translator with 27 years of experience, fine art photographer, and AI entrepreneur building tools for the modern creator economy.",
-  "knowsLanguage": ["English","Polish","French","Russian"],
-  "hasOccupation": [
-    {"@type":"Occupation","name":"Professional Translator"},
-    {"@type":"Occupation","name":"Fine Art Photographer"},
-    {"@type":"Occupation","name":"Software Entrepreneur"}
-  ],
-  "sameAs": [
-    "https://translatea.com",
-    "https://ucaption.online",
-    "https://gifperfect.com",
-    "https://aspectperfect.com",
-    "https://claudskills.com",
-    "https://autoxposter.com",
-    "https://testyourskills.app",
-    "https://linkedin.com/in/translatea",
-    "https://instagram.com/foto__stories",
-    "https://github.com/kinkyb"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://adamlankamer.com/#person",
+      "name": "Adam Lankamer",
+      "url": "https://adamlankamer.com",
+      "image": "https://adamlankamer.com/assets/adam-casual-1.jpg",
+      "jobTitle": "Translator, Photographer & AI Entrepreneur",
+      "description": "Professional translator with 27 years of experience, fine art photographer, and AI entrepreneur building tools for the modern creator economy.",
+      "knowsLanguage": ["English","Polish","French","Russian"],
+      "hasOccupation": [
+        {"@type":"Occupation","name":"Professional Translator"},
+        {"@type":"Occupation","name":"Fine Art Photographer"},
+        {"@type":"Occupation","name":"Software Entrepreneur"}
+      ],
+      "sameAs": [
+        "https://translatea.com",
+        "https://ucaption.online",
+        "https://gifperfect.com",
+        "https://aspectperfect.com",
+        "https://claudskills.com",
+        "https://autoxposter.com",
+        "https://testyourskills.app",
+        "https://linkedin.com/in/translatea",
+        "https://instagram.com/foto__stories",
+        "https://github.com/kinkyb"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://adamlankamer.com/#website",
+      "url": "https://adamlankamer.com/",
+      "name": "Adam Lankamer",
+      "description": "Translator, Photographer and AI Entrepreneur — based in Spain, working globally.",
+      "publisher": {"@id": "https://adamlankamer.com/#person"},
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.google.com/search?q=site%3Aadamlankamer.com+{search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
   ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/adam-casual-3.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/adam-casual-3.webp" type="image/webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -559,13 +586,22 @@
 
   <div class="hero-photo">
     <div class="photo-c1">
-      <img src="assets/adam-casual-1.jpg" alt="Adam Lankamer, professional translator and photographer" width="1088" height="1080" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="assets/adam-casual-1.webp" type="image/webp">
+        <img src="assets/adam-casual-1.jpg" alt="Adam Lankamer, professional translator and photographer" width="1088" height="1080" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="photo-c2">
-      <img src="assets/adam-casual-3.jpg" alt="Adam Lankamer — translator, photographer and AI entrepreneur" width="1088" height="1080" fetchpriority="high" decoding="async">
+      <picture>
+        <source srcset="assets/adam-casual-3.webp" type="image/webp">
+        <img src="assets/adam-casual-3.jpg" alt="Adam Lankamer — translator, photographer and AI entrepreneur" width="1088" height="1080" fetchpriority="high" decoding="async">
+      </picture>
     </div>
     <div class="photo-c3">
-      <img src="assets/adam-casual-4.jpg" alt="Adam Lankamer outdoors, relaxed portrait" width="1280" height="1280" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="assets/adam-casual-4.webp" type="image/webp">
+        <img src="assets/adam-casual-4.jpg" alt="Adam Lankamer outdoors, relaxed portrait" width="1280" height="1280" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="photo-badge">
       <span class="badge-num">27</span>

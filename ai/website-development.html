@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Assisted Website Development — Bahia Nails Case Study · Adam Lankamer</title>
+<meta name="description" content="How a complete marketing website for a nail studio in La Herradura, Spain — bahianails.com — was designed, written and shipped in a single week using an AI-assisted workflow.">
+<meta name="author" content="Adam Lankamer">
+<meta name="theme-color" content="#c8102e">
+<link rel="canonical" href="https://adamlankamer.com/ai/website-development">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- Open Graph -->
+<meta property="og:type"         content="article">
+<meta property="og:url"          content="https://adamlankamer.com/ai/website-development">
+<meta property="og:site_name"    content="Adam Lankamer">
+<meta property="og:title"        content="AI-Assisted Website Development — Bahia Nails Case Study">
+<meta property="og:description"  content="A complete marketing site for a nail studio in La Herradura, designed and shipped in days using an AI-assisted workflow.">
+<meta property="og:image"        content="https://adamlankamer.com/assets/bahianails-preview.jpg">
+<meta property="og:image:width"  content="1000">
+<meta property="og:image:height" content="625">
+<meta property="og:image:alt"    content="Screenshot of bahianails.com — homepage hero with the Bahia Nails wordmark and a manicured-hand photograph.">
+<meta property="og:locale"       content="en_US">
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="AI-Assisted Website Development — Bahia Nails Case Study">
+<meta name="twitter:description" content="How a complete marketing site was designed, written and shipped in days using an AI-assisted workflow.">
+<meta name="twitter:image"       content="https://adamlankamer.com/assets/bahianails-preview.jpg">
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://adamlankamer.com/ai/website-development#article",
+      "headline": "AI-Assisted Website Development — Bahia Nails Case Study",
+      "description": "How a complete marketing website for a nail studio in La Herradura, Spain — bahianails.com — was designed, written and shipped in a single week using an AI-assisted workflow.",
+      "image": "https://adamlankamer.com/assets/bahianails-preview.jpg",
+      "datePublished": "2026-05-03",
+      "dateModified": "2026-05-03",
+      "author": {"@type":"Person","name":"Adam Lankamer","url":"https://adamlankamer.com"},
+      "publisher": {"@type":"Person","name":"Adam Lankamer","url":"https://adamlankamer.com"},
+      "mainEntityOfPage": "https://adamlankamer.com/ai/website-development",
+      "about": {"@type":"WebSite","name":"Bahia Nails","url":"https://bahianails.com"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Adam Lankamer","item":"https://adamlankamer.com/"},
+        {"@type":"ListItem","position":2,"name":"AI Projects","item":"https://adamlankamer.com/ai"},
+        {"@type":"ListItem","position":3,"name":"AI Website Development","item":"https://adamlankamer.com/ai/website-development"}
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #f5f2ee;
+    --surface: #eeeae6;
+    --border:  #d8d2ca;
+    --accent:  #c8102e;
+    --text:    #0e0e0e;
+    --muted:   #6b6259;
+    --nav-bg:  rgba(14,14,14,0.94);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Mono', monospace; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: var(--nav-bg); border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: #fff; text-decoration: none; }
+  .logo-a { color: var(--accent); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #fff; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: transparent; border: 0; }
+  .hamburger span { width: 22px; height: 1.5px; background: rgba(255,255,255,0.6); }
+
+  /* breadcrumb */
+  .crumbs { max-width: 880px; margin: 0 auto; padding: 110px 32px 0; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .crumbs a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .crumbs a:hover { color: var(--accent); border-color: var(--accent); }
+  .crumbs .sep { margin: 0 10px; opacity: 0.4; }
+
+  /* hero */
+  .hero-wrap { max-width: 880px; margin: 0 auto; padding: 32px 32px 60px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 16px; font-size: 9px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); opacity: 0.4; }
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 6vw, 64px); font-weight: 700; line-height: 1.06; letter-spacing: -1.4px; color: var(--text); margin-bottom: 22px; }
+  h1 em { font-style: italic; font-weight: 400; color: var(--muted); }
+  h1 .a { color: var(--accent); }
+  .lede { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(17px, 2vw, 22px); line-height: 1.55; color: var(--text); opacity: 0.78; margin-bottom: 30px; max-width: 720px; }
+
+  .meta-row { display: flex; flex-wrap: wrap; gap: 24px 36px; padding: 22px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 50px; }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--muted); }
+  .meta-val { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--text); }
+
+  .preview-frame { margin: 0 -32px 50px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
+  .preview-frame img { width: 100%; height: auto; display: block; }
+  .preview-cap { padding: 14px 32px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .preview-cap a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,16,46,0.3); }
+
+  /* body */
+  .body-wrap { max-width: 720px; margin: 0 auto; padding: 0 32px 80px; }
+  .body-wrap h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 30px); font-weight: 700; line-height: 1.2; letter-spacing: -0.6px; margin: 50px 0 18px; color: var(--text); }
+  .body-wrap h2 em { font-style: italic; font-weight: 400; color: var(--muted); }
+  .body-wrap p, .body-wrap ul { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); line-height: 1.95; letter-spacing: 0.04em; margin-bottom: 18px; }
+  .body-wrap ul { padding-left: 22px; }
+  .body-wrap ul li { margin-bottom: 8px; }
+  .body-wrap a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,16,46,0.3); }
+  .body-wrap strong { color: var(--text); font-weight: 500; }
+
+  .pull { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.5; color: var(--text); opacity: 0.85; margin: 36px 0; padding: 24px 28px; border-left: 2px solid var(--accent); background: var(--surface); }
+
+  .step-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); margin: 24px 0 36px; }
+  .step { background: var(--surface); padding: 22px 24px; }
+  .step-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .step-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .step-body { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); line-height: 1.85; letter-spacing: 0.03em; }
+
+  .stack-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin: 16px 0 36px; }
+  .stack-item { background: var(--surface); padding: 14px 18px; }
+  .stack-key { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .stack-val { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--text); }
+
+  .cta-block { margin: 60px 0 0; padding: 36px 32px; background: var(--text); color: #fff; }
+  .cta-block h3 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; margin-bottom: 10px; }
+  .cta-block h3 em { font-style: italic; color: var(--accent); }
+  .cta-block p { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 22px; }
+  .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 13px 24px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #a50d26; }
+  .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* footer */
+  footer { max-width: 1200px; margin: 0 auto; padding: 48px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); }
+  .footer-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 400; color: var(--muted); letter-spacing: -0.01em; }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 28px; }
+    .hamburger { display: flex; }
+    .nav-links { display: none; position: fixed; top: 61px; left: 0; right: 0; background: rgba(14,14,14,0.97); flex-direction: column; align-items: center; gap: 28px; padding: 40px 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .nav-links.open { display: flex; }
+    .crumbs { padding: 100px 24px 0; }
+    .hero-wrap { padding: 24px 24px 50px; }
+    .preview-frame { margin: 0 -24px 40px; }
+    .preview-cap { padding: 12px 24px; }
+    .body-wrap { padding: 0 24px 60px; }
+    .stack-list { grid-template-columns: 1fr; }
+    .cta-block { padding: 28px 24px; }
+    footer { padding: 40px 24px; flex-direction: column; gap: 20px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><span class="logo-a">A</span>dam Lankamer</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/translatea">Translation</a></li>
+    <li><a href="/fotostories">Photography</a></li>
+    <li><a href="/ai" class="active">AI</a></li>
+    <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
+  </ul>
+  <button type="button" class="hamburger" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'));">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a><span class="sep">›</span><a href="/ai">AI Projects</a><span class="sep">›</span><span>AI Website Development</span>
+</nav>
+
+<section class="hero-wrap">
+  <div class="eyebrow">Case Study · Web Development</div>
+  <h1>From brief to <em>launch</em><br>in a single <em>week</em>.</h1>
+  <p class="lede">A complete marketing website for a nail studio in La Herradura, Spain — <a href="https://bahianails.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(200,16,46,0.4);">bahianails.com</a> — designed, written and shipped using an AI-assisted workflow that compresses a typical agency timeline from months into days.</p>
+
+  <div class="meta-row">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-val">Bahia Nails</span></div>
+    <div class="meta-item"><span class="meta-label">Sector</span><span class="meta-val">Beauty / Hospitality</span></div>
+    <div class="meta-item"><span class="meta-label">Location</span><span class="meta-val">La Herradura, Spain</span></div>
+    <div class="meta-item"><span class="meta-label">Timeline</span><span class="meta-val">7 working days</span></div>
+    <div class="meta-item"><span class="meta-label">Stack</span><span class="meta-val">Static HTML · Netlify</span></div>
+  </div>
+</section>
+
+<div class="preview-frame">
+  <a href="https://bahianails.com" target="_blank" rel="noopener noreferrer" aria-label="Open bahianails.com in a new tab">
+    <img src="/assets/bahianails-preview.jpg" alt="Screenshot of bahianails.com — homepage hero featuring the Bahia Nails wordmark, a manicured-hand photograph, and a Book via WhatsApp call-to-action." width="1000" height="625" loading="lazy" decoding="async">
+  </a>
+  <div class="preview-cap">
+    <span>Live site — <a href="https://bahianails.com" target="_blank" rel="noopener noreferrer">bahianails.com</a></span>
+    <span>1000 × 625 preview</span>
+  </div>
+</div>
+
+<article class="body-wrap">
+
+<h2>The brief</h2>
+<p>A small but ambitious nail studio opening on the Andalusian coast needed to be findable on Google the day they unlocked the doors. The owner spoke three languages, kept a polished Instagram, and had no patience for a six-month build at agency rates. The asks were simple in summary, hard to deliver in execution: a website that looked premium, loaded instantly on a phone, ranked locally, and could take bookings without a third-party plugin tax.</p>
+
+<p>Existing options were unsatisfying. Wix and Squarespace would have shipped quickly but locked the brand into a cookie-cutter shell. A bespoke React build through a freelancer marketplace meant weeks of back-and-forth on Figma frames before a line of code was written. The middle path — an AI-assisted, hand-finished build — turned out to be exactly the right answer.</p>
+
+<p class="pull">"I needed a real website, not a template. I just didn't have months to spend on it."</p>
+
+<h2>The process</h2>
+<p>The seven-day build broke down into five phases, each accelerated by AI but never automated. AI drafts the obvious; the human handles the judgment calls. That balance is what separates a brand-aligned site from generated mush.</p>
+
+<div class="step-grid">
+  <div class="step">
+    <div class="step-num">Day 1 · Discovery</div>
+    <div class="step-title">Brand voice and visual direction</div>
+    <div class="step-body">A 90-minute call captured the studio's tone, services, pricing logic and the visual language the owner already used on Instagram. Reference imagery was assembled into a brief moodboard. AI was used to expand the moodboard into a structured brand-voice document covering tone of voice, vocabulary, do's and don'ts.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">Day 2 · Architecture</div>
+    <div class="step-title">Site map, copy outline, SEO targets</div>
+    <div class="step-body">Local search demand for nail-related queries in La Herradura, Almuñécar and Granada was surveyed. A six-section single-page architecture was chosen: hero, services, gallery, location, testimonials, booking. Page-level keyword targets were set before any copy was written.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">Days 3–4 · Build</div>
+    <div class="step-title">Design, copywriting, code in parallel</div>
+    <div class="step-body">Visual design and copywriting moved together. AI generated first-draft copy in three languages (Spanish, English, Polish) which was then edited by a 27-year-veteran translator — me — for register and cultural fit. Static HTML and CSS were authored by hand in the same Playfair Display + DM Mono palette used on this site.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">Day 5 · SEO and Schema</div>
+    <div class="step-title">Structured data, sitemap, llms.txt</div>
+    <div class="step-body">LocalBusiness schema with geo coordinates, opening hours and service catalogue. FAQ schema for the common pre-booking questions. Sitemap, robots.txt, llms.txt and an IndexNow key. WhatsApp deep-links so a "Book now" tap opens a pre-filled message — no third-party booking plugin required.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">Days 6–7 · Polish and Launch</div>
+    <div class="step-title">QA, accessibility, deployment</div>
+    <div class="step-body">Cross-device testing on iPhone, Android and desktop. Lighthouse and axe accessibility passes. Image compression to WebP. DNS pointed at Netlify, SSL provisioned, Google Search Console verified, Bing pinged via IndexNow. Site went live the morning of day seven.</div>
+  </div>
+</div>
+
+<h2>The stack</h2>
+<p>Every choice favoured speed of build, speed of load, and simplicity of handover. Nothing on the page is a framework that needs upgrading every six months.</p>
+
+<div class="stack-list">
+  <div class="stack-item"><div class="stack-key">Markup</div><div class="stack-val">Static HTML · No build step</div></div>
+  <div class="stack-item"><div class="stack-key">Styling</div><div class="stack-val">Hand-written CSS · No framework</div></div>
+  <div class="stack-item"><div class="stack-key">Hosting</div><div class="stack-val">Netlify · Free SSL · Global CDN</div></div>
+  <div class="stack-item"><div class="stack-key">Bookings</div><div class="stack-val">WhatsApp deep-link · Zero plugins</div></div>
+  <div class="stack-item"><div class="stack-key">Analytics</div><div class="stack-val">Privacy-first · No cookie banner</div></div>
+  <div class="stack-item"><div class="stack-key">SEO</div><div class="stack-val">Schema.org · IndexNow · llms.txt</div></div>
+</div>
+
+<h2>The result</h2>
+<p>Seven working days from brief to public launch. A site that loads in under a second on a mid-range phone, scores 100/100/100/100 on Lighthouse mobile, and ranks on the first page of Google for the studio's primary local-pack queries within four weeks of indexing — without a single paid placement.</p>
+
+<p>Total project cost came in at roughly a quarter of what a comparable agency engagement would have charged, and the client owns every line of code. No vendor lock-in, no monthly platform fee, no surprise renewal pricing. The site is hand-edited when something needs to change; updates ship in minutes.</p>
+
+<p class="pull">"The site loaded faster than my old Squarespace, ranked higher than my competitor's WordPress, and cost less than both. Not sure why I waited so long."</p>
+
+<h2>What this <em>does not</em> mean</h2>
+<p>It would be dishonest to call this a fully automated workflow. AI accelerated the obvious — brand-voice extraction, first-draft multilingual copy, schema generation, image alt text, FAQ drafting. But every decision that mattered — visual hierarchy, tone of voice in the brand's own register, what to leave off the page, whether the colour palette read as confident or chaotic — was a human call. AI is a power tool. It is not a substitute for taste.</p>
+
+<p>This is also not a fit for every project. If your site needs a custom CMS, multi-tenant architecture, payment flows, or a roadmap of unbuilt features, that is a different engagement. The seven-day window applies to marketing sites — landing pages, brochure sites, portfolio sites, local-business sites — where the goal is to ship a credible, fast, findable presence and move on.</p>
+
+<h2>What you get</h2>
+<ul>
+  <li><strong>Strategy and discovery</strong> — a structured intake call, brand-voice document, sitemap, and SEO target list before any code is written.</li>
+  <li><strong>Custom design</strong> — typography, palette and art direction tailored to the brand. No template, no Wix shell.</li>
+  <li><strong>AI-assisted copywriting</strong> — drafted by Claude, edited by a 27-year-veteran translator. Available in English, Polish, French, Spanish and other languages on request.</li>
+  <li><strong>Static-HTML build</strong> — hand-coded for speed, longevity, and easy handover. No framework treadmill.</li>
+  <li><strong>SEO-ready out of the box</strong> — structured data, sitemap, llms.txt, IndexNow, canonical URLs, mobile-first responsive design.</li>
+  <li><strong>Netlify deployment</strong> — custom domain, free SSL, global CDN, contact forms and analytics included.</li>
+  <li><strong>Source code on day one</strong> — you own every file. No lock-in, no platform fees, no surprise renewal.</li>
+  <li><strong>Optional retainer</strong> — flat-rate monthly maintenance, content updates and SEO refreshes if you'd rather not touch the code yourself.</li>
+</ul>
+
+<div class="cta-block">
+  <h3>Have a brief?<br><em>Get an itemised quote in 24 hours.</em></h3>
+  <p>Send the goal, the audience, and any reference sites you like. You'll receive a flat-fee proposal — fixed scope, fixed price, fixed timeline — within one working day.</p>
+  <div class="cta-actions">
+    <a href="mailto:acreatorstore@translatea.com?subject=AI%20website%20development%20enquiry" class="btn btn-primary">Send a Brief</a>
+    <a href="/ai" class="btn btn-ghost">Back to AI Projects</a>
+  </div>
+</div>
+
+</article>
+
+<footer>
+  <span class="footer-name"><span class="logo-a">A</span>dam Lankamer</span>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/ai">AI Projects</a></li>
+    <li><a href="/translatea">Translation</a></li>
+    <li><a href="/fotostories">Photography</a></li>
+    <li><a href="https://bahianails.com" target="_blank" rel="noopener noreferrer">bahianails.com</a></li>
+    <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/terms">Terms</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
