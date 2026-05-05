@@ -27,7 +27,7 @@ The trailing `curl` pings IndexNow so Bing/Yandex pick up changes within minutes
 | `index.html` | `/` | Homepage — hero (2-col with photo collage), 3 venture cards, dark about strip |
 | `translatea.html` | `/translatea` | Translation services page |
 | `fotostories.html` | `/fotostories` | Photography portfolio — Behold Instagram feed, masonry gallery |
-| `ai.html` | `/ai` | AI projects directory — 11 tool cards |
+| `ai.html` | `/ai` | AI projects directory — 13 tool cards |
 | `ai/website-development.html` | `/ai/website-development` | Case study — bahianails.com (AI-assisted build) |
 | `privacy.html` | `/privacy` | Privacy policy (noindex) |
 | `terms.html` | `/terms` | Terms of use (noindex) |
@@ -48,7 +48,7 @@ The trailing `curl` pings IndexNow so Bing/Yandex pick up changes within minutes
 - Flat design — no backdrop-filter, no box-shadow, sharp corners
 - 1px-gap grids: outer div sets `background: var(--border)`, children use `var(--surface)`
 
-## AI Projects (`ai.html` — 11 cards in 2-col grid)
+## AI Projects (`ai.html` — 13 cards in 2-col grid)
 | # | Name | URL | Status | Pricing |
 |---|------|-----|--------|---------|
 | 1 | Ucaption | ucaption.online | Live | From €39/mo |
@@ -62,8 +62,28 @@ The trailing `curl` pings IndexNow so Bing/Yandex pick up changes within minutes
 | 9 | Telegram Channel Automation | (bespoke) | Available | — |
 | 10 | ClaudSkills | claudskills.com | Live | Free |
 | 11 | AI-Assisted Website Development | /ai/website-development | Available | Quote-based — showcase: bahianails.com |
+| 12 | AutomationFlows | automationflows.io | Live | Free · Pro from $9/mo |
+| 13 | Au Naturel | aunaturel.life | Live | Free · Pro coming |
 
-Each card uses an anchor ID matching its slug (e.g. `#ucaption`, `#website-development`) for deep-linking.
+Each card uses an anchor ID matching its slug (e.g. `#ucaption`, `#automationflows`, `#aunaturel`, `#website-development`) for deep-linking.
+
+## Sister-brand footer family
+
+Non-adult product sites share a sister-brand footer link strip. When a new non-adult brand ships, every footer in this list gets the new link added; each site has its own deploy command and must be redeployed individually. AdamLankamer.com itself is *not* part of this strip — it's the personal portfolio that lists everything as cards on `/ai`.
+
+| Site | Footer file (line ranges shift with edits) |
+|------|--------------------------------------------|
+| ClaudSkills | `~/Desktop/ClaudSkills/site/index.html` |
+| Ucaption | `~/Desktop/Ucaption/index.html` |
+| GifPerfect | `~/Desktop/GifPerfect/site/index.html` |
+| AspectPerfect | `~/Desktop/AspectPerfect/site/index.html` |
+| SlomoPerfect | `~/Desktop/SlowMo/site/index.html` |
+| UTagger | `~/Desktop/ImageTagger/sites/utagger/index.html` |
+| AutoXPoster | `~/Desktop/AutoXPoster/site/index.html` |
+| AutomationFlows | `~/Desktop/AutomationFlows/site/index.html` |
+| Au Naturel | `~/Desktop/aunaturel-life/site/index.html` |
+
+TestYourSkills (web-only, no local repo) is referenced as a link from each footer.
 
 ## SEO Setup
 - Canonical tags on all pages (no `.html` extension — pretty URLs)
@@ -82,7 +102,7 @@ Each card uses an anchor ID matching its slug (e.g. `#ucaption`, `#website-devel
   - `/` Person + WebSite (with SearchAction for sitelinks search box)
   - `/translatea` ProfessionalService + FAQPage + BreadcrumbList
   - `/fotostories` LocalBusiness + ProfessionalService + VideoObject (geo-tagged La Herradura)
-  - `/ai` ItemList (numberOfItems 11) + BreadcrumbList + Service (AI Website Development) + FAQPage
+  - `/ai` ItemList (numberOfItems 13) + BreadcrumbList + Service (AI Website Development) + FAQPage
   - `/ai/website-development` Article + BreadcrumbList
 - Geo meta on `/fotostories`: `geo.region=ES-GR`, La Herradura/Almuñécar/Granada coords
 
@@ -107,6 +127,10 @@ Each card uses an anchor ID matching its slug (e.g. `#ucaption`, `#website-devel
 | GifPerfect | `~/Desktop/GifPerfect` |
 | Image Tagger | `~/Desktop/ImageTagger` |
 | Video Tagger | `~/Desktop/VideoTagger` |
-| Slo-Mo Perfect | `~/Desktop/SlomoPerfect` |
+| Slo-Mo Perfect | `~/Desktop/SlowMo` (site) · `~/Desktop/electron-apps/packages/slomoperfect` (app) |
 | Aspect Perfect | `~/Desktop/AspectPerfect` |
+| AutoXPoster | `~/Desktop/AutoXPoster` |
+| ClaudSkills | `~/Desktop/ClaudSkills` |
+| AutomationFlows | `~/Desktop/AutomationFlows` |
+| Au Naturel | `~/Desktop/aunaturel-life` |
 | Telegram Channel Bot | `~/Desktop/TelegramApp` |
