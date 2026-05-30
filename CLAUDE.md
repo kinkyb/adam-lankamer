@@ -1,5 +1,13 @@
 # adamlankamer.com — Project Knowledge
 
+## ⛔ Stop on ambiguity (master rule)
+
+If there is even a slight area of uncertainty — anything unclear or ambiguous about the task, scope, file targets, parameter values, or expected outcomes — **do not make assumptions and proceed.** Stop, double-check the relevant state (read files, query systems, inspect state), and/or ask the user before taking action. Applies to every operation with non-trivial blast radius: file writes, deployments, daemon restarts, config edits, deletes, schema interpretation, anything that changes shared state.
+
+
+## ⛔ One watcher per workflow trigger
+
+When a background watcher (bash poller, log-tail loop, file-system watcher, post-condition handler, or any long-running process whose purpose is to detect a single state transition) already exists for a given workflow event — **do not spawn a second watcher polling the same condition**. Modify the existing watcher to handle the additional action(s) instead. Multiple watchers waiting on the same trigger waste PIDs, multiply log-file reads, and create race conditions between near-simultaneous firings. Examples: if a watcher is already polling for "Batch done" to un-pause file A, and you also need to un-pause file B on the same event, extend the existing watcher rather than spawning a new one.
 ## Live URL
 - Production: `https://adamlankamer.com`
 - Deploy folder: `/Users/mac/Desktop/AdamLankamer/`
@@ -118,6 +126,13 @@ TestYourSkills (web-only, no local repo) is referenced as a link from each foote
 - `translatea.com` is email-only (`adam@translatea.com`); all web presence lives at `adamlankamer.com`
 - Public contact email per global policy: `acreatorstore@translatea.com` (non-adult side)
 
+## Photography pricing (`/fotostories`)
+- **Standard 1–2 hour photoshoot** — from €150
+- **Whole day photo assistance** — from €1,000
+- Live in the `.collab-strip` "Book a Session" block on [fotostories.html](fotostories.html) as a 2-column `.price-grid` (stacks on mobile via the `@media (max-width: 900px)` breakpoint), with a "For more info or booking →" cue text leading into the existing WhatsApp button (`https://wa.me/34641758592`).
+- Prices are also encoded in the page's `LocalBusiness` JSON-LD `hasOfferCatalog` as two explicit `Offer` entries with `price` + `priceCurrency: EUR` + `priceSpecification.minPrice` — so Google's rich-results pricing carousel can pick them up.
+- When the prices change: edit both the `.price-card` markup AND the two priced `Offer` entries in the JSON-LD (keep them in sync); also update the `<meta name="description">` / `og:description` / `twitter:description` if the headline rate (`from €150`) shifts.
+
 ## Image pipeline
 - WebP siblings live next to JPEG masters at the same path: `adam-casual-3.jpg` ↔ `adam-casual-3.webp`
 - HTML uses `<picture>` with WebP `<source>` and JPEG `<img>` fallback
@@ -141,3 +156,7 @@ TestYourSkills (web-only, no local repo) is referenced as a link from each foote
 ## File Overwrite Policy
 
 - **⛔ Never silently overwrite a local file.** Before any operation that would replace an existing file on the local machine (image/format conversion, codegen, downloads, copies, moves to an occupied path, save-as targets, batch processing), check whether a same-named file already exists at the destination. If it does, **stop and ask the user**: overwrite, or pick a new name? Do not decide on your own based on file size, content similarity, timestamps, single-frame-vs-animated checks, or any other heuristic. The user has to choose. This applies even when the existing file looks redundant, auto-generated, or "obviously" derived from the same source. **Burned 2026-05-12**: silently overwrote 33 single-frame `.gif` files in `/Volumes/All/Gifs/1-25 MB/` during a batch JPG→GIF conversion after self-deciding it was safe.
+
+## Netlify build diagnosis
+
+- **⛔ Don't act on `Build script returned non-zero exit code: 2 / 4` without reading the actual deploy log + getting explicit user approval.** That surface error wraps multiple unrelated failure modes (secret-scanner false positives, file-count timeouts, plugin install errors, npm install failures, function bundling, build-env limits). The real error lives ONLY in the Netlify web UI at `https://app.netlify.com/projects/$SITE/deploys/$DEPLOY_ID` — the public REST API does NOT expose log content. Before disabling auto-builds, switching deploy mechanisms, adding env vars, overriding plugins, or any other architectural change: pause, ask the user to paste the actual log section, get approval, then act. Burned 2026-05-16 on AutomationFlows — misdiagnosed a 3-day outage as a Netlify plugin issue and shipped 3 architectural commits before the real cause (secret-scanner false positives, fixed with `SECRETS_SCAN_ENABLED=false`) was confirmed. See `~/.claude/CLAUDE.md` "Workflow Rules" for the full version.
