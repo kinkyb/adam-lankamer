@@ -712,6 +712,7 @@
     .collab-strip { padding: 64px 28px; }
     .price-grid { grid-template-columns: 1fr; max-width: 360px; }
     .theme-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .collab-bg { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
     .price-amount { font-size: 26px; }
     footer { padding: 40px 28px; flex-direction: column; gap: 20px; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -1001,7 +1002,7 @@ const PHOTOS = [
   const bg = document.getElementById('collabBg');
   if (!bg || !PHOTOS.length) return;
   const strip = bg.parentElement;
-  const ROW_H = 200, MIN_COL = 180; // must match .collab-bg grid-auto-rows / minmax
+  const MIN_COL = 90; // fallback tile width if getComputedStyle is unavailable
 
   const shuffled = PHOTOS.slice();
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -1017,12 +1018,14 @@ const PHOTOS = [
 
   let currentCount = -1;
   function render() {
-    const h = bg.getBoundingClientRect().height;
+    const rect = bg.getBoundingClientRect();
     const cols = columnCount();
-    const rows = Math.max(1, Math.round(h / ROW_H));
-    // Size the rows so they divide the block height EXACTLY — the bottom row
-    // lands flush (never clipped to half-height) and there is no dark gap.
-    bg.style.gridAutoRows = (h / rows) + 'px';
+    const colW = rect.width / cols; // actual tile width for this viewport
+    // Rows sized to the tile width → tiles stay ~square (many small squares on
+    // phones, medium on desktop, never huge zoomed blocks) AND divide the block
+    // height EXACTLY so the bottom row is flush (never clipped, never a gap).
+    const rows = Math.max(1, Math.round(rect.height / colW));
+    bg.style.gridAutoRows = (rect.height / rows) + 'px';
     const need = cols * rows; // full rows → no missing tiles
     if (need === currentCount) return;
     currentCount = need;
