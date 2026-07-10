@@ -475,14 +475,13 @@
     inset: 0;
     overflow: hidden;
     background: #0e0e0e;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    grid-auto-rows: 200px;
+    display: flex;
   }
+  .collab-bg > div { flex: 1 1 0; min-width: 0; }
   .collab-bg img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    aspect-ratio: auto 1 / 1; /* reserve ~square space before load, natural aspect after */
     display: block;
     filter: grayscale(0.12) saturate(0.82) brightness(0.8);
   }
@@ -712,7 +711,6 @@
     .collab-strip { padding: 64px 28px; }
     .price-grid { grid-template-columns: 1fr; max-width: 360px; }
     .theme-grid { grid-template-columns: 1fr; max-width: 420px; }
-    .collab-bg { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
     .price-amount { font-size: 26px; }
     footer { padding: 40px 28px; flex-direction: column; gap: 20px; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -917,36 +915,10 @@
 
 <script>
 // ── PHOTO DATA ─────────────────────────────────────────────────────────────
+// Collage backdrop photo set — web-sized (≤900px) shots in assets/collage/.
+// Full-res site-gallery photos are intentionally NOT used here (they were
+// 6336px — far too heavy for a mobile background).
 const PHOTOS = [
-  // ── Portraits ──────────────────────────────────────────────────────────────
-  { src: 'assets/DSC01930-16.jpg',       category: 'portrait', aspect: 'square' },
-  { src: 'assets/DSC01627-2.jpg',        category: 'portrait', aspect: 'square' },
-  { src: 'assets/DSC09746-3.jpg',        category: 'portrait', aspect: 'square' },
-  { src: 'assets/dsc09412-8.jpg',        category: 'portrait', aspect: 'square' },
-  { src: 'assets/dsc05905-10.jpg',       category: 'portrait', aspect: 'tall'   },
-  { src: 'assets/DSC00763-25.jpg',       category: 'portrait', aspect: 'square' },
-  { src: 'assets/20251008193928.jpg',    category: 'portrait', aspect: 'tall'   },
-  { src: 'assets/dsc08448-19 (1).jpg',   category: 'portrait', aspect: 'square' },
-  { src: 'assets/dsc08790-4 (1).jpg',    category: 'portrait', aspect: 'square' },
-  { src: 'assets/DSC07933-9.jpg',        category: 'portrait', aspect: 'square' },
-  { src: 'assets/dsc00099-16.jpg',       category: 'portrait', aspect: 'square' },
-  { src: 'assets/dsc01068-5 (1).jpg',    category: 'portrait', aspect: 'square' },
-  { src: 'assets/dsc01655-11 (1).jpg',   category: 'portrait', aspect: 'square' },
-  { src: 'assets/dsc02283-14 (1).jpg',   category: 'portrait', aspect: 'square' },
-  { src: 'assets/dsc08467-22 (1).jpg',   category: 'portrait', aspect: 'square' },
-  { src: 'assets/dsc08536-5 (1).jpg',    category: 'portrait', aspect: 'square' },
-  // ── Boudoir ────────────────────────────────────────────────────────────────
-  { src: 'assets/20250712111251.jpg',      category: 'boudoir', aspect: 'tall'   },
-  { src: 'assets/20250712113052 (1).jpg',  category: 'boudoir', aspect: 'tall'   },
-  { src: 'assets/DSC00990-26.jpg',         category: 'boudoir', aspect: 'square' },
-  // ── Lifestyle / Bokeh ──────────────────────────────────────────────────────
-  { src: 'assets/adam-bokeh-1.jpg',        category: 'lifestyle', aspect: 'square' },
-  { src: 'assets/adam-bokeh-2.jpg',        category: 'lifestyle', aspect: 'square' },
-  { src: 'assets/adam-bokeh-3.jpg',        category: 'lifestyle', aspect: 'square' },
-  // ── Cars ────────────────────────────────────────────────────────────────────
-  { src: 'assets/adam-car-1.jpg',          category: 'car', aspect: 'wide'   },
-  { src: 'assets/adam-car-2.jpg',          category: 'car', aspect: 'tall'   },
-  { src: 'assets/adam-car-3.jpg',          category: 'car', aspect: 'square' },
   // ── La Herradura collage additions ──────────────────────────────────────────
   { src: 'assets/collage/20260323163501.jpg' },
   { src: 'assets/collage/20260405184013.jpg' },
@@ -994,15 +966,14 @@ const PHOTOS = [
   { src: 'assets/collage/krk_jez.jpg' },
 ];
 
-// Build the darkened work-photo collage behind the booking block.
-// The photos are shuffled once for variety, then tiled to fill COMPLETE rows
-// for the current viewport — so coverage is always full with no missing tiles.
-// Photos repeat only as much as needed to finish the last row.
+// Build the darkened work-photo collage behind the booking block as a MASONRY
+// of columns. Each photo keeps its NATURAL aspect ratio (no object-fit crop),
+// so nothing is cropped or zoomed. Photos are shuffled and round-robined into
+// equal-width columns, repeated only as needed; overflow-hidden clips the
+// ragged bottom edge (which sits behind the CTA).
 (function buildCollabBackdrop() {
   const bg = document.getElementById('collabBg');
   if (!bg || !PHOTOS.length) return;
-  const strip = bg.parentElement;
-  const MIN_COL = 90; // fallback tile width if getComputedStyle is unavailable
 
   const shuffled = PHOTOS.slice();
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -1010,35 +981,29 @@ const PHOTOS = [
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
-  function columnCount() {
-    const tpl = getComputedStyle(bg).gridTemplateColumns;
-    const n = tpl && tpl !== 'none' ? tpl.split(' ').filter(Boolean).length : 0;
-    return n || Math.max(1, Math.floor((bg.clientWidth || strip.clientWidth) / MIN_COL));
-  }
-
-  let currentCount = -1;
+  let sig = '';
   function render() {
     const rect = bg.getBoundingClientRect();
-    const cols = columnCount();
-    const colW = rect.width / cols; // actual tile width for this viewport
-    // Tile shape is what controls crop ("zoom"), not tile size: a square tile
-    // crops a portrait photo to its centre. Use portrait-ish tiles (~2:3) on
-    // phones so the mostly-portrait photos show with little crop; ~square on
-    // desktop. Rows still divide the block height EXACTLY → flush bottom row.
-    const aspect = window.innerWidth <= 900 ? 1.5 : 1.0; // tile height / width
-    const rows = Math.max(1, Math.round(rect.height / (colW * aspect)));
-    bg.style.gridAutoRows = (rect.height / rows) + 'px';
-    const need = cols * rows; // full rows → no missing tiles
-    if (need === currentCount) return;
-    currentCount = need;
+    if (!rect.width || !rect.height) return;
+    const colW = window.innerWidth <= 900 ? 95 : 175; // target column width
+    const cols = Math.max(1, Math.round(rect.width / colW));
+    const perCol = Math.ceil(rect.height / (rect.width / cols)) + 4; // enough to overflow
+    const nextSig = cols + 'x' + perCol;
+    if (nextSig === sig) return;
+    sig = nextSig;
     const frag = document.createDocumentFragment();
-    for (let i = 0; i < need; i++) {
-      const img = document.createElement('img');
-      img.src = shuffled[i % shuffled.length].src;
-      img.alt = '';
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      frag.appendChild(img);
+    let idx = 0;
+    for (let c = 0; c < cols; c++) {
+      const col = document.createElement('div');
+      for (let r = 0; r < perCol; r++) {
+        const img = document.createElement('img');
+        img.src = shuffled[idx++ % shuffled.length].src;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        col.appendChild(img);
+      }
+      frag.appendChild(col);
     }
     bg.replaceChildren(frag);
   }
