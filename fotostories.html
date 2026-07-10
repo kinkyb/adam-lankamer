@@ -1021,10 +1021,12 @@ const PHOTOS = [
     const rect = bg.getBoundingClientRect();
     const cols = columnCount();
     const colW = rect.width / cols; // actual tile width for this viewport
-    // Rows sized to the tile width → tiles stay ~square (many small squares on
-    // phones, medium on desktop, never huge zoomed blocks) AND divide the block
-    // height EXACTLY so the bottom row is flush (never clipped, never a gap).
-    const rows = Math.max(1, Math.round(rect.height / colW));
+    // Tile shape is what controls crop ("zoom"), not tile size: a square tile
+    // crops a portrait photo to its centre. Use portrait-ish tiles (~2:3) on
+    // phones so the mostly-portrait photos show with little crop; ~square on
+    // desktop. Rows still divide the block height EXACTLY → flush bottom row.
+    const aspect = window.innerWidth <= 900 ? 1.5 : 1.0; // tile height / width
+    const rows = Math.max(1, Math.round(rect.height / (colW * aspect)));
     bg.style.gridAutoRows = (rect.height / rows) + 'px';
     const need = cols * rows; // full rows → no missing tiles
     if (need === currentCount) return;
