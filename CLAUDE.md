@@ -43,11 +43,15 @@ The trailing `curl` pings IndexNow so Bing/Yandex pick up changes within minutes
 |------|-----|---------|
 | `index.html` | `/` | Homepage — hero (2-col with photo collage), 3 venture cards, dark about strip |
 | `translatea.html` | `/translatea` | Translation services page |
-| `fotostories.html` | `/fotostories` | Photography portfolio — Behold Instagram feed; Session Themes list over a darkened work-photo collage backdrop |
+| `fotostories.html` | `/fotostories` | Photography portfolio — Behold Instagram feed; Session Themes list over a darkened work-photo collage backdrop. Has a distinct **B2B "partner strip"** near the bottom (`.b2b-strip`) linking to `/fotostories/partners`, plus a "Partners" footer link |
+| `fotostories/partners.html` | `/fotostories/partners` | **B2B partner programme** for hotels/villas/restaurants — the FotoStories guest-photo offer (gift a private 15-min branded mini-session, from €25). Embeds the sell sheet + thank-you card + branded souvenir (images) with PDF downloads. Assets live in `/partner-kit/` (copied from `~/Desktop/BellaMani/thankyou-card/`). Added 2026-08-04 |
 | `ai.html` | `/ai` | AI projects directory — 12 tool cards |
 | `ai/website-development.html` | `/ai/website-development` | Case study — bahianails.com (AI-assisted build) |
 | `privacy.html` | `/privacy` | Privacy policy (noindex) |
 | `terms.html` | `/terms` | Terms of use (noindex) |
+
+### Partner kit (`/partner-kit/`)
+Downloadable + displayed B2B assets for `/fotostories/partners`: `sell-sheet.jpg`, `thank-you-card.jpg`, `souvenir-sample.jpg` (page images) + `FotoStories-Partner-SellSheet.pdf`, `FotoStories-ThankYou-Card.pdf`, `FotoStories-ThankYou-Card-PRINT.pdf` (downloads). **Source of truth is `~/Desktop/BellaMani/thankyou-card/`** — regenerate there (`build_souvenir_photo.py` → `build_thankyou_split.py whitelabel` → `build_sellsheet.py`, in that order), then copy the outputs into `partner-kit/` and redeploy. Deliberately at root (NOT under `/assets/`) so it escapes the 1-year immutable cache and updates propagate.
 
 ## Stack
 - **Hosting**: Netlify (static HTML, no build step), pretty URLs via `netlify.toml` redirects
@@ -72,7 +76,7 @@ The trailing `curl` pings IndexNow so Bing/Yandex pick up changes within minutes
 | 2 | TestYourSkills | testyourskills.app | Live | — |
 | 3 | Image & Video Tagger | utagger.online | Live | From $49 |
 | 4 | UTagger Viewer | utagger.online/viewer | Live | $19 one-time |
-| 5 | PerfectStudio (bundles AspectPerfect · GifPerfect · FramePerfect · SlomoPerfect) | perfectstudio.app | Live | From $29 |
+| 5 | PerfectStudio (bundles AspectPerfect · GifPerfect · FramePerfect · Video Slicer · SlomoPerfect) | perfectstudio.app | Live | From $59 |
 | 6 | AutoXPoster | autoxposter.com | Live | Quote-based |
 | 7 | Telegram Channel Automation | (bespoke) | Available | — |
 | 8 | ClaudSkills | claudskills.com | Live | Free |
@@ -128,8 +132,39 @@ AdamLankamer.com's own footers (`index.html` curated 3-brand strip, plus the sub
 - All external links: `target="_blank" rel="noopener noreferrer"`
 - Card anchors enable cross-page deep-linking, e.g. `/ai#ucaption` from `/translatea` body copy
 
+## translatea.com (parked domain -> /translatea)
+
+`translatea.com` is registered and **DNS-hosted at OVH** (registrar OVH SAS, created
+2002-06-26, nameservers `ns104.ovh.net` / `dns104.ovh.net`). It is a **domain alias of
+the `adam-lankamer` Netlify site** and 301s to `https://adamlankamer.com/translatea`.
+
+| Record | Value |
+|---|---|
+| `A @` | `75.2.60.5` (Netlify) |
+| `CNAME www` | `adam-lankamer.netlify.app` |
+| `MX` | `mx0/1/2/3.mail.ovh.net` — **OVH mail, do not touch** |
+| `TXT` | OVH SPF (`v=spf1 include:mx.ovh.com ~all`) + Brevo verification |
+
+- **Keep the OVH nameservers.** The mail for `adam@translatea.com` and
+  `acreatorstore@translatea.com` rides on the OVH MX records in this zone. Moving the
+  domain to Netlify DNS (or any other provider) without re-creating MX + SPF silently
+  kills both addresses. Only the `A`/`CNAME` records were changed; NS stays OVH.
+- **The four `[[redirects]]` in `netlify.toml` MUST stay at the top of the file.** They
+  use absolute-URL `from` values (`https://translatea.com/*` etc.), but the pretty-URL
+  rewrites below them use *relative* paths, which match on **any** hostname the site
+  serves — including `translatea.com`. Move the domain rules below them and
+  `translatea.com/ai` starts serving `ai.html` under the wrong domain instead of
+  redirecting. Verified: `/`, `/translatea`, `/ai` and deep paths all 301 on both
+  `translatea.com` and `www.translatea.com`.
+- **History (fixed 2026-08-27).** The domain used to sit on OVH's free web-redirect
+  proxy (`213.186.33.5`, marker `TXT "4|http://www.translatea.rocks"`) pointing at
+  `www.translatea.rocks` — a domain that **no longer resolves**, so the apex 301'd
+  straight into a dead host. Worse, port 443 was closed entirely (OVH's free redirect
+  is HTTP-only), so `https://translatea.com` — what every browser tries first — refused
+  to connect. Deleting that redirect is what clears the `4|...` TXT marker.
+
 ## Brand Notes
-- `translatea.com` is email-only (`adam@translatea.com`); all web presence lives at `adamlankamer.com`
+- `translatea.com` carries the mail (`adam@translatea.com`) and 301s to `/translatea`; all web presence lives at `adamlankamer.com`
 - Public contact email per global policy: `acreatorstore@translatea.com` (non-adult side)
 
 ## Photography card on landing page (`/`)
