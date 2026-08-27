@@ -1,3 +1,33 @@
+# --- translatea.com domain redirect -------------------------------------
+# translatea.com is an alias of this site (OVH DNS -> Netlify). Everything on
+# that hostname 301s to the TransLateA page here. MUST stay above the pretty-URL
+# rewrites below: those use relative paths and would otherwise match on the
+# translatea.com hostname too. Email (adam@translatea.com) stays on OVH MX —
+# never move the nameservers away from OVH.
+[[redirects]]
+  from = "https://translatea.com/*"
+  to = "https://adamlankamer.com/translatea"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.translatea.com/*"
+  to = "https://adamlankamer.com/translatea"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://translatea.com/*"
+  to = "https://adamlankamer.com/translatea"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.translatea.com/*"
+  to = "https://adamlankamer.com/translatea"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/translatea"
   to   = "/translatea.html"
@@ -6,6 +36,11 @@
 [[redirects]]
   from = "/fotostories"
   to   = "/fotostories.html"
+  status = 200
+
+[[redirects]]
+  from = "/fotostories/partners"
+  to   = "/fotostories/partners.html"
   status = 200
 
 [[redirects]]
