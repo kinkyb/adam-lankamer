@@ -163,6 +163,39 @@ the `adam-lankamer` Netlify site** and 301s to `https://adamlankamer.com/transla
   is HTTP-only), so `https://translatea.com` — what every browser tries first — refused
   to connect. Deleting that redirect is what clears the `4|...` TXT marker.
 
+- **⛔ Adding a domain alias on Netlify does NOT add it to the TLS certificate.**
+  Fixed 2026-09-08. `translatea.com` + `www.translatea.com` were correctly registered
+  as `domain_aliases` on the site and DNS was correct, yet **every** `https://` request
+  failed with `SSL: no alternative certificate subject name matches target host name`
+  — Netlify was falling back to the shared `*.netlify.app` wildcard cert. Cause: the
+  Let's Encrypt cert (issued 2026-03-26) only had SANs `adamlankamer.com` +
+  `www.adamlankamer.com`; aliases added afterwards are picked up **only at renewal**,
+  which was not due until 2026-10-22. Because `force_ssl` is on, `http://translatea.com`
+  301'd to `https://` and died there — so the domain was 100% dead in browsers while
+  every DNS record and every `netlify.toml` redirect looked perfect.
+  **Diagnosis** — compare the cert's SANs against the site's aliases; matching DNS is
+  not enough:
+  ```bash
+  echo | openssl s_client -connect translatea.com:443 -servername translatea.com 2>/dev/null \
+    | openssl x509 -noout -text | grep DNS:
+  netlify api getSite --data '{"site_id":"4ab57f96-b902-47ef-a730-d9e6e4ca89b1"}' | grep domain_aliases
+  ```
+  A served `CN=*.netlify.app` instead of `CN=adamlankamer.com` is the tell.
+  **Fix** — force a renewal (the UI's "Renew certificate" button). The CLI's
+  `provisionSiteTLSCertificate` and a bare `POST /sites/{id}/ssl` both **422** with
+  *"certificate parameter is required when updating an existing certificate"* — those
+  are for uploading a CUSTOM cert. The managed-renewal route is `POST /ssl/renew`:
+  ```bash
+  curl -X POST "https://api.netlify.com/api/v1/sites/$SITE_ID/ssl/renew" \
+    -H "Authorization: Bearer $TOKEN"
+  ```
+  Takes ~40 s (`renew_running: true` → new cert). Token lives in
+  `~/Library/Preferences/netlify/config.json` (NOT `~/.netlify/config.json`).
+  Result: SANs now `adamlankamer.com, translatea.com, www.adamlankamer.com,
+  www.translatea.com`, valid to 2026-12-07. **No file changed and no deploy was needed**
+  — `netlify.toml` was already correct; this was purely a Netlify control-plane fix.
+  Same trap applies to every site in the network that gains a domain alias.
+
 ## Brand Notes
 - `translatea.com` carries the mail (`adam@translatea.com`) and 301s to `/translatea`; all web presence lives at `adamlankamer.com`
 - Public contact email per global policy: `acreatorstore@translatea.com` (non-adult side)
