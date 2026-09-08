@@ -196,6 +196,42 @@ the `adam-lankamer` Netlify site** and 301s to `https://adamlankamer.com/transla
   — `netlify.toml` was already correct; this was purely a Netlify control-plane fix.
   Same trap applies to every site in the network that gains a domain alias.
 
+## ⛔ `--dir=.` publishes the WHOLE project directory
+
+The deploy command is `netlify deploy --prod --dir=.`, so **every file sitting in
+this folder is served on the public site unless a rule blocks it** — including
+files git has never seen, which is how `fotostories/`, `partner-kit/` and
+`_leaflet/` were live for weeks while `git status` still listed them as
+untracked. **A clean git tree is not evidence of what is deployed here.**
+
+- **Netlify already withholds some things by itself** (verified 2026-09-08, all
+  404 in production): dotfiles and dot-directories — `.DS_Store`, `.gitignore`,
+  `.claude/`, `.netlify/` — plus `netlify.toml` and `netlify.toml.*`. Everything
+  else is served.
+- **`CLAUDE.md` was live at `/CLAUDE.md` (HTTP 200)** until 2026-09-08, exposing
+  the Netlify site ID, the deploy command, the IndexNow key, the OVH mail/DNS
+  architecture and internal notes. `_leaflet/leaflet.html` + `qr.png` (A5 print
+  artwork, no `<title>`, no `noindex`, unlinked and absent from `sitemap.xml`,
+  but crawlable) were also live. Both are now blocked by `[[redirects]]` rules
+  in `netlify.toml` returning **404**.
+- **`force = true` on those rules is LOAD-BEARING.** Both paths are real files
+  on the CDN; without `force` the static file wins and the rule never fires.
+- **404, not `X-Robots-Tag: noindex`.** noindex only stops search engines — the
+  file stays downloadable by anyone holding the URL.
+- **The blocking rules must stay BELOW the translatea.com block** (which matches
+  absolute URLs with `force = true`). Verified after deploy:
+  `translatea.com/CLAUDE.md` still 301s to `/translatea` instead of 404ing.
+- **⛔ Never add these paths to `robots.txt`.** That file is public, so a
+  `Disallow: /CLAUDE.md` line advertises the exact path it is meant to hide.
+- **Adding any new private file to this folder re-opens the hole.** Scratch
+  files, `*.bak`, build scripts and notes all get published. Verify with:
+  ```bash
+  curl -sS -o /dev/null -w '%{http_code}\n' https://adamlankamer.com/<path>
+  ```
+- **Test rule changes on a DRAFT deploy first** — `netlify deploy --dir=.`
+  without `--prod` returns a preview URL, so redirect rules can be proven
+  before production sees them. Used for this fix.
+
 ## Brand Notes
 - `translatea.com` carries the mail (`adam@translatea.com`) and 301s to `/translatea`; all web presence lives at `adamlankamer.com`
 - Public contact email per global policy: `acreatorstore@translatea.com` (non-adult side)

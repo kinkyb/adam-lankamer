@@ -28,6 +28,38 @@
   status = 301
   force = true
 
+# --- block non-public files -------------------------------------------------
+# `netlify deploy --prod --dir=.` publishes the WHOLE project directory, so any
+# file sitting here is served unless a rule says otherwise. Netlify already
+# withholds dotfiles (.DS_Store, .gitignore, .claude/, .netlify/) and
+# netlify.toml itself — verified — but nothing else, which is how CLAUDE.md
+# ended up live at /CLAUDE.md and _leaflet/ (A5 print artwork) at /_leaflet/.
+#
+# `force = true` is LOAD-BEARING: both paths are real files on the CDN, and
+# without force the static file wins and the rule never fires.
+#
+# 404, not `X-Robots-Tag: noindex` — noindex only stops search engines, the
+# file stays downloadable by anyone with the URL.
+#
+# These MUST stay BELOW the translatea.com block above (which matches absolute
+# URLs with force=true) so translatea.com/CLAUDE.md still 301s to /translatea
+# rather than 404ing, and ABOVE nothing in particular — no pretty-URL rewrite
+# below matches these paths.
+#
+# Do NOT add these paths to robots.txt: that file is public, so a Disallow line
+# would advertise the exact paths it is meant to hide.
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/_leaflet/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
 [[redirects]]
   from = "/translatea"
   to   = "/translatea.html"
