@@ -99,7 +99,7 @@
       "name": "Are the AI tools at ACreatorStore SaaS subscriptions or one-time purchases?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It depends on the tool. UTagger Viewer is free. Other desktop apps are one-time purchases — PerfectStudio starts at $59. Cloud tools (Ucaption, UTagger) use straightforward monthly plans starting at €39. Bespoke services (AutoXPoster, Telegram Automation, AI Website Development) are quoted per project."
+        "text": "It depends on the tool. UTagger Viewer is free. Desktop apps are one-time purchases — Image & Video Tagger starts at $49, PerfectStudio at $59. Ucaption is a cloud tool with monthly plans starting at €39. Bespoke services (AutoXPoster, Telegram Automation, AI Website Development) are quoted per project."
       }
     },
     {
@@ -107,7 +107,7 @@
       "name": "Are these tools available offline?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "All desktop apps run fully offline once installed — your files never leave your machine. Cloud tools (Ucaption, UTagger) require an internet connection because they call vision models that don't run on consumer hardware."
+        "text": "Desktop apps install and run on your own machine. PerfectStudio and UTagger Viewer work fully offline. Image & Video Tagger runs locally too, but calls xAI's vision API with your own key, so it needs a connection — your files go straight from your computer to xAI and never touch our servers. Ucaption is cloud-based and requires an internet connection."
       }
     }
   ]
@@ -691,8 +691,9 @@
       <ul class="tool-features">
         <li>Supports JPEG, PNG, WebP, MP4, MOV and all major media formats</li>
         <li>Exports to CSV, JSON or writes tags directly into EXIF/IPTC metadata</li>
-        <li>Batch processing — hundreds of files in a single run, fully offline</li>
+        <li>Batch processing — hundreds of files in a single run, nothing stored on our servers</li>
         <li>Parallel processing — up to 10 workers, auto-resumes if interrupted</li>
+        <li>BYOK — bring your own xAI key and pay xAI directly, no markup</li>
       </ul>
       <a href="https://utagger.online" target="_blank" rel="noopener noreferrer" class="tool-cta">Try UTagger →</a>
     </div>
@@ -720,7 +721,7 @@
       <a href="https://utagger.online/viewer" target="_blank" rel="noopener noreferrer" class="tool-cta">Explore Viewer →</a>
     </div>
 
-    <!-- 05 · PERFECTSTUDIO (bundles AspectPerfect · GifPerfect · FramePerfect · SlomoPerfect) -->
+    <!-- 05 · PERFECTSTUDIO (bundles AspectPerfect · GifPerfect · FramePerfect · Video Slicer · SlomoPerfect) -->
     <div class="tool-card" id="perfectstudio">
       <div class="tool-header">
         <div>
@@ -732,12 +733,13 @@
           <span class="badge badge-price">From $59</span>
         </div>
       </div>
-      <p class="tool-tagline">"Four media tools in one offline desktop app — aspect ratios, GIF chunks, frame extraction, AI slow motion."</p>
-      <p class="tool-desc">Mac &amp; Windows desktop app that bundles AspectPerfect, GifPerfect, FramePerfect, and SlomoPerfect into a single licence. Convert any image or video to any aspect ratio, chunk videos into size-capped GIFs that beat every platform limit, extract stills, and create AI-interpolated slow motion — fully offline, one-time payment, signed and Apple-notarized. No cloud uploads, no subscriptions for the core tool.</p>
+      <p class="tool-tagline">"Five media tools in one offline desktop app — aspect ratios, GIF chunks, frame extraction, video slicing, AI slow motion."</p>
+      <p class="tool-desc">Mac &amp; Windows desktop app that bundles five media tools into a single licence. Convert any image or video to any aspect ratio, chunk videos into size-capped GIFs that beat every platform limit, extract stills, slice videos into same-format clips, and create AI-interpolated slow motion — fully offline, one-time payment, signed and Apple-notarized. No cloud uploads, no subscriptions for the core tool.</p>
       <ul class="tool-features">
         <li><strong>AspectPerfect:</strong> 9:16, 16:9, 1:1 and custom ratios with crop · blur · letterbox fill modes</li>
         <li><strong>GifPerfect:</strong> size-capped GIF / WebP / APNG chunks (15 MB X, 25 MB Discord, 99 MB OnlyFans)</li>
         <li><strong>FramePerfect:</strong> video-to-stills extraction at any interval — JPEG, PNG, or WebP</li>
+        <li><strong>Video Slicer:</strong> cut any video into slices that stay in the original format — split by size or length, lossless stream-copy on Studio</li>
         <li><strong>SlomoPerfect:</strong> AI-interpolated ½ · ¼ · ⅛ slow motion via RIFE — GPU-accelerated via Vulkan</li>
         <li>Mac (Apple-notarized) + Windows desktop app — one purchase, both platforms, fully offline</li>
       </ul>
