@@ -223,6 +223,17 @@ untracked. **A clean git tree is not evidence of what is deployed here.**
   `translatea.com/CLAUDE.md` still 301s to `/translatea` instead of 404ing.
 - **⛔ Never add these paths to `robots.txt`.** That file is public, so a
   `Disallow: /CLAUDE.md` line advertises the exact path it is meant to hide.
+- **⛔ `assets/adam-foto.jpg` is blocked but must NOT be deleted.** No page here
+  references it, but **Showcase** treats `AdamLankamer/assets` as a photo pool
+  (`Showcase/make_collage.py` → `pool_paths()`) and `Showcase/slices.py` lists the
+  literal filename `"adam-foto.jpg"` in `COUPLES_ANCHORS` — that file's own
+  docstring warns anchors are matched by FILENAME precisely so shoots don't get
+  silently reassigned, so removing it breaks the couples collage quietly.
+  `Showcase/manifest.json` also records it as the `source` for
+  `001-intro-adam-foto.jpg`. It is the **only copy on the machine**. Blocked from
+  the public site (it was serving 3 MB to nobody), kept on disk. **A file being
+  unreferenced by this site does not mean it is unused** — grep `~/Desktop`
+  before deleting anything from `assets/`.
 - **Adding any new private file to this folder re-opens the hole.** Scratch
   files, `*.bak`, build scripts and notes all get published. Verify with:
   ```bash

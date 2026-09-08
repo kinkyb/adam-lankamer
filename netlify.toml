@@ -60,6 +60,18 @@
   status = 404
   force = true
 
+# assets/adam-foto.jpg is referenced by NO page here, but it must NOT be deleted:
+# Showcase treats this repo's assets/ folder as a photo pool
+# (Showcase/make_collage.py pool_paths()) and Showcase/slices.py uses the literal
+# filename "adam-foto.jpg" as a stable COUPLES_ANCHORS entry — removing the file
+# would leave that anchor unresolvable and silently break the couples collage.
+# It is also the only copy on the machine. So: keep it on disk, stop serving it.
+[[redirects]]
+  from = "/assets/adam-foto.jpg"
+  to = "/404.html"
+  status = 404
+  force = true
+
 [[redirects]]
   from = "/translatea"
   to   = "/translatea.html"
