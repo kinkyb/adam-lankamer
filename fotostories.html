@@ -714,7 +714,18 @@
     .price-amount { font-size: 26px; }
     footer { padding: 40px 28px; flex-direction: column; gap: 20px; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
+    .b2b-strip { padding: 56px 28px; }
   }
+
+  /* ── B2B PARTNER STRIP ── */
+  .b2b-strip { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 64px 28px; text-align: center; }
+  .b2b-inner { max-width: 720px; margin: 0 auto; }
+  .b2b-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; display: block; }
+  .b2b-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 38px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); margin-bottom: 14px; }
+  .b2b-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .b2b-sub { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 300; line-height: 1.8; color: var(--muted); max-width: 520px; margin: 0 auto 30px; letter-spacing: 0.02em; }
+  .b2b-link { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; text-decoration: none; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; padding: 15px 30px; transition: opacity 0.2s; }
+  .b2b-link:hover { opacity: 0.86; }
 </style>
 </head>
 <body>
@@ -897,10 +908,21 @@
   </a>
 </div>
 
+<!-- B2B PARTNER PROGRAMME -->
+<section class="b2b-strip">
+  <div class="b2b-inner">
+    <span class="b2b-eyebrow">For hotels · villas · restaurants · beach clubs</span>
+    <h2 class="b2b-title">Run a business? <em>Gift your guests a photo.</em></h2>
+    <p class="b2b-sub">A private, branded 15-minute mini-session your guests keep forever — from €25. You gift it, I shoot it. A thank-you, an apology, a compensation or a paid add-on.</p>
+    <a href="/fotostories/partners" class="b2b-link">See the partner programme →</a>
+  </div>
+</section>
+
 <footer>
   <span class="footer-name"><span class="logo-a">A</span>dam Lankamer</span>
   <ul class="footer-links">
     <li><a href="/">Home</a></li>
+    <li><a href="/fotostories/partners">Partners</a></li>
     <li><a href="/translatea">Translation</a></li>
     <li><a href="/ai">AI</a></li>
     <li><a href="https://instagram.com/foto__stories" target="_blank" rel="noopener noreferrer">@foto__stories</a></li>

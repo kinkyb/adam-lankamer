@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--accent:#c8102e;--ink:#0e0e0e;--muted:rgba(255,255,255,0.55);--desc:rgba(255,255,255,0.72);--line:rgba(255,255,255,0.16);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#333;}
+  .sheet{display:flex;flex-direction:column;gap:60px;align-items:center;}
+  /* A5 portrait @ ~180dpi */
+  .page{position:relative;width:1488px;height:2105px;background:var(--ink);overflow:hidden;font-family:'DM Mono',monospace;}
+  /* ── COLLAGE BACKGROUND (visible on both sides) ── */
+  .strip{position:absolute;top:0;bottom:0;overflow:hidden;display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:167px;background:var(--ink);}
+  .strip.left{left:0;width:334px;}
+  .strip.right{right:0;width:334px;}
+  .strip img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(0.08) saturate(0.95) brightness(0.98);}
+  .strip.left::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(14,14,14,0.16) 0%, rgba(14,14,14,0.16) 62%, rgba(14,14,14,0.50) 100%);}
+  .strip.right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(14,14,14,0.50) 0%, rgba(14,14,14,0.16) 38%, rgba(14,14,14,0.16) 100%);}
+  /* ── CENTER COLUMN ── */
+  .col{
+    position:absolute;top:0;bottom:0;left:334px;right:334px;
+    background:rgba(14,14,14,0.975);
+    border:1px solid var(--line);
+    box-shadow:0 0 40px 10px rgba(0,0,0,0.55);
+    display:flex;flex-direction:column;
+    padding:58px 60px 52px;color:#fff;text-align:center;
+  }
+  .tagline{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:46px;line-height:1.12;color:#fff;}
+  .tagline em{color:var(--accent);font-style:italic;}
+  .intro{font-size:18px;font-weight:300;color:var(--muted);letter-spacing:0.03em;line-height:1.6;max-width:720px;margin:15px auto 0;}
+  .rule{width:64px;height:2px;background:var(--accent);opacity:0.7;margin:24px auto 26px;}
+  /* themes — single centred column */
+  .body{flex:1;display:flex;flex-direction:column;justify-content:flex-start;}
+  .themes{text-align:center;}
+  .t{margin-bottom:26px;}
+  .t-head{display:flex;flex-direction:column;align-items:center;gap:3px;margin-bottom:7px;}
+  .t-name{font-family:'Playfair Display',serif;font-weight:700;font-size:25px;color:#fff;line-height:1.15;}
+  .t-price{font-size:19px;color:var(--accent);font-weight:500;white-space:nowrap;}
+  .t-desc{font-size:17px;font-weight:300;line-height:1.5;color:var(--desc);letter-spacing:0.01em;}
+  .note{font-style:italic;font-size:19px;color:rgba(255,255,255,0.8);letter-spacing:0.03em;margin-top:6px;}
+  .divider{width:100%;height:1px;background:var(--line);margin:0 0 22px;}
+  /* footer */
+  .foot{display:flex;flex-direction:column;align-items:center;}
+  .brand{font-family:'Playfair Display',serif;font-weight:700;font-size:54px;line-height:0.98;letter-spacing:0.02em;color:#fff;}
+  .brand-underline{width:92px;height:3px;background:var(--accent);margin:14px auto 12px;}
+  .byline{font-size:19px;letter-spacing:0.34em;text-transform:uppercase;color:rgba(255,255,255,0.82);}
+  .byline .a{color:var(--accent);}
+  .foot-row{display:flex;align-items:center;justify-content:center;gap:46px;margin-top:26px;}
+  .contact{text-align:left;}
+  .contact .label{font-size:15px;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);}
+  .contact .phone{font-size:42px;font-weight:500;color:#fff;letter-spacing:0.01em;margin-top:6px;line-height:1;}
+  .contact .site{font-size:19px;color:rgba(255,255,255,0.85);margin-top:14px;letter-spacing:0.02em;}
+  .contact .ig{font-size:17px;color:var(--muted);margin-top:6px;letter-spacing:0.04em;}
+  .qr{display:flex;flex-direction:column;align-items:center;gap:9px;flex-shrink:0;}
+  .qr img{width:176px;height:176px;display:block;}
+  .qr .scan{font-size:16px;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);}
+  .pagetag{position:absolute;top:-32px;left:0;color:#bbb;font:14px monospace;letter-spacing:0.2em;}
+</style>
+</head>
+<body>
+<div class="sheet" id="sheet"></div>
+
+<script>
+const THEMES = [
+  ['Fine-art portrait photoshoot','€200',"A cinematic session where shadow and highlight sculpt you into a painter's muse. Each frame is composed with gallery-grade polish, building portraits destined to hang for decades. Timeless, refined, unmistakably yours."],
+  ['Motorboat photoshoot','€500',"Cast off beside a licensed skipper as the open Mediterranean becomes your stage. Salt spray, a boundless horizon and total freedom charge every shot with adventure. A private escape reachable only across the waves."],
+  ['Convertible Mustang photoshoot','€350',"Top down, engine growling, wind rushing through your hair — raw American-muscle glamour along the shoreline. We follow sweeping bends and tight curves for images dripping with attitude and swagger. Playful, spirited, impossibly stylish."],
+  ['Lifestyle / beach / holiday photoshoot','€150',"Sun-kissed sand, bare skin and that carefree holiday feeling, caught exactly as it happens. Loose and natural, this shoot turns a lazy afternoon into memories you'll want to relive endlessly. Radiant, easy, brimming with life."],
+  ['Romantic / sunset / sunrise / night photoshoot','€200',"The loveliest hours frame themselves in romance and atmosphere. From the soft blush of dawn to a deep golden dusk and dramatic night flash after dark, warmth and mood flood your images. Dreamy, tender, meant to be treasured."],
+  ['Artistic nudity / boudoir photoshoot','€250',"An elegant tribute to the human form, captured with absolute discretion and respect. Sensual illumination and graceful framing craft pictures at once daring yet tasteful, empowering yet intensely intimate. Confident, liberating, quietly artful."],
+  ['Instagram spots / viewpoints photoshoot','€200',"The region's spectacular backdrops, framed to stop thumbs mid-swipe. From the heights of Cerro Gordo to secret viewpoints and postcard-white villages, all angles arranged to dazzle your feed. Share-worthy, magnetic, effortlessly striking."],
+  ['Custom theme / cosplay photoshoot','€200',"Your fantasy, your persona, your narrative — brought vividly alive just as you picture it. Whether a wild concept, a beloved figure or a realm born of your own mind, the entire production revolves around your imagination. Inventive, immersive, gloriously one-of-a-kind."],
+  ['Property & hospitality photoshoot','€250',"Interiors that sell at a glance — immaculate rooms, inviting corners and hospitality settings shown at their finest. Crisp, spacious compositions capture the essence of a villa, hotel or restaurant, luring guests before they arrive. Clean, welcoming, market-ready."],
+  ['Branding & commercial photoshoot','€250',"Sharp, purposeful imagery that makes your brand hard to ignore. Products, teams and workspaces captured with a modern commercial edge — visuals engineered to earn trust, lift revenue and elevate how clients see you. Professional, cohesive, consistently on-message."],
+  ['Full day / multi-location photoshoot','€1,000',"A whole day that belongs completely to you, spent however and wherever the whim takes you. Switch looks, chase spontaneous ideas, drift from harbour to backstreet to a secluded hideaway — the pace is yours alone and the possibilities never run dry. The ultimate, fully bespoke journey, tailored precisely to your wishes."],
+];
+const PHOTOS = [
+  '20230510-dsc07430.jpg','20250712111251.jpg','20250712113052-1-.jpg','20251008193928.jpg','20260323163501.jpg',
+  '20260405184013.jpg','20260405190618.jpg','20260407194801.jpg','20260412181049.jpg','20260412181932.jpg',
+  '20260412182040.jpg','20260422204111.jpg','20260426145455.jpg','20260614132659.jpg','adam-bokeh-1.jpg',
+  'adam-bokeh-2.jpg','adam-bokeh-3.jpg','adam-car-1.jpg','adam-car-2.jpg','adam-car-3.jpg','dsc00099-16.jpg',
+  'dsc00763-25.jpg','dsc00869-1--1.jpg','dsc00990-26.jpg','dsc01068-5-1-.jpg','dsc01148-13-1-.jpg','dsc01188-17-1-.jpg',
+  'dsc01228-23-1-.jpg','dsc01627-2.jpg','dsc01635-1.jpg','dsc01654-10-1-.jpg','dsc01655-11-1-.jpg','dsc01930-16.jpg',
+  'dsc02234-1.jpg','dsc02283-14-1-.jpg','dsc02314-32-1-.jpg','dsc02328-37-1-.jpg','dsc02603-1--1.jpg','dsc03824-2-1.jpg',
+  'dsc05289-1.jpg','dsc05368-40.jpg','dsc05373-44.jpg','dsc05489-2.jpg','dsc05495-7.jpg','dsc05535-2-1.jpg','dsc05535-3.jpg',
+  'dsc05651-120.jpg','dsc05664-133.jpg','dsc05665-134.jpg','dsc05714-1.jpg','dsc05905-10.jpg','dsc06174-23.jpg',
+  'dsc06228-1.jpg','dsc07051-2.jpg','dsc07091-3.jpg','dsc07933-9.jpg','dsc08421.jpg','dsc08448-19-1-.jpg',
+  'dsc08467-22-1-.jpg','dsc08536-5-1-.jpg','dsc08788-2-3-1-.jpg','dsc08790-4-1-.jpg','dsc08913-16-1-.jpg',
+  'dsc09285-2--1.jpg','dsc09412-8.jpg','dsc09746-3.jpg','img_5738.jpg','krk_jez.jpg'
+];
+function footerHTML(){
+  return '<div class="divider"></div><div class="foot">'
+    +'<div class="brand">FOTO STORIES</div><div class="brand-underline"></div>'
+    +'<div class="byline">By <span class="a">A</span>dam Lankamer</div>'
+    +'<div class="foot-row"><div class="contact">'
+    +'<div class="label">WhatsApp</div><div class="phone">+34 641 758 592</div>'
+    +'<div class="site">adamlankamer.com/fotostories</div><div class="ig">Instagram · @foto__stories</div>'
+    +'</div><div class="qr"><img src="qr.png" alt="scan"><div class="scan">Scan</div></div></div></div>';
+}
+function themesHTML(list){
+  return list.map(([n,p,d])=>'<div class="t"><div class="t-head"><span class="t-name">'+n+'</span><span class="t-price">from '+p+'</span></div><div class="t-desc">'+d+'</div></div>').join('');
+}
+// One deterministic order over ALL 68 photos; strips draw contiguous, non-
+// overlapping slices so the two sides together use every photo at least once.
+// Coprime stride (gcd(21,68)=1) → a full permutation of all 68, well mixed so
+// bright/dark shots don't cluster or align with a single column.
+const GORDER=[];
+for(let i=0;i<PHOTOS.length;i++) GORDER.push(PHOTOS[(i*21)%PHOTOS.length]);
+const PER_STRIP=28;
+function stripSeq(start){
+  let h='';
+  for(let i=0;i<PER_STRIP;i++) h+='<img src="../assets/collage/'+GORDER[(start+i)%GORDER.length]+'" decoding="async">';
+  return h;
+}
+function pageHTML(tag, themeList, note, startIdx){
+  return '<div class="page"><div class="pagetag">'+tag+'</div>'
+    +'<div class="strip left">'+stripSeq(startIdx)+'</div><div class="strip right">'+stripSeq(startIdx+PER_STRIP)+'</div>'
+    +'<div class="col">'
+    +'<div class="tagline">Let\'s create your <em>photo story.</em></div>'
+    +'<div class="intro">Pick a theme — or dream up your own. Every session is built around you: your story, your pace, your comfort.</div>'
+    +'<div class="rule"></div>'
+    +'<div class="body"><div class="themes">'+themesHTML(themeList)+'</div>'
+    +(note?'<div class="note">'+note+'</div>':'')+'</div>'
+    +footerHTML()
+    +'</div></div>';
+}
+const sheet=document.getElementById('sheet');
+const which=new URLSearchParams(location.search).get('p');
+const A=pageHTML('SIDE A (front)', THEMES.slice(0,6), '', 0);
+const B=pageHTML('SIDE B (back)', THEMES.slice(6), 'Ask about special offers for couples, families &amp; groups.', 2*PER_STRIP);
+sheet.innerHTML = which==='a' ? A : which==='b' ? B : (A+B);
+</script>
+</body>
+</html>

@@ -44,6 +44,16 @@
   status = 200
 
 [[redirects]]
+  from = "/fotostories/bahia-nails"
+  to   = "/fotostories/bahia-nails.html"
+  status = 200
+
+[[redirects]]
+  from = "/fotostories/gift"
+  to   = "/fotostories/gift.html"
+  status = 200
+
+[[redirects]]
   from = "/ai"
   to   = "/ai.html"
   status = 200

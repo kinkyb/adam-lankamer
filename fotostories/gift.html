@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Free 15-Minute Photo Shoot — Fotostories</title>
+<meta name="description" content="A complimentary 15-minute FotoStories photo shoot, gifted to you by your host. Message Adam on WhatsApp to fix a date and time.">
+<meta name="author" content="Adam Lankamer">
+<meta name="theme-color" content="#c8102e">
+<meta name="format-detection" content="telephone=no">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://adamlankamer.com/fotostories/gift">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="geo.region"    content="ES-GR">
+<meta name="geo.placename" content="La Herradura, Almuñécar, Granada, Spain">
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://adamlankamer.com/fotostories/gift">
+<meta property="og:site_name"   content="Adam Lankamer">
+<meta property="og:title"       content="Your free 15-minute photo shoot — Fotostories">
+<meta property="og:description" content="A complimentary 15-minute photo shoot, gifted to you by your host. Message me on WhatsApp to fix a date and time.">
+<meta property="og:locale"      content="en_US">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#f5f2ee; --surface:#eeeae6; --border:#d8d2ca; --accent:#c8102e;
+    --ink:#0e0e0e; --text:#0e0e0e; --muted:#6b6259; --muted2:#a09888; --nav-bg:rgba(14,14,14,0.94);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:var(--nav-bg);border-bottom:1px solid rgba(255,255,255,0.07);}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;letter-spacing:-0.01em;color:#fff;text-decoration:none;}
+  .logo-a{color:var(--accent);}
+  .nav-links{display:flex;gap:36px;list-style:none;}
+  .nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:#fff;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:transparent;border:0;}
+  .hamburger span{width:22px;height:1.5px;background:rgba(255,255,255,0.6);}
+
+  /* HERO */
+  .phero{position:relative;background:var(--ink);color:#fff;padding:150px 80px 84px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .phero-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;display:block;}
+  .phero-title{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,74px);font-weight:700;line-height:1.03;letter-spacing:-0.02em;margin-bottom:26px;max-width:900px;}
+  .phero-title em{font-style:italic;font-weight:400;color:var(--accent);}
+  .phero-sub{font-family:'DM Mono',monospace;font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,0.78);max-width:640px;letter-spacing:0.02em;}
+  .phero-sub strong{color:#fff;font-weight:500;}
+  .phero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;}
+  .phero-note{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.42);margin-top:24px;}
+
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;padding:16px 32px;text-decoration:none;transition:opacity 0.2s,background 0.2s,color 0.2s;}
+  .btn-accent{background:var(--accent);color:#fff;}
+  .btn-accent:hover{opacity:0.86;}
+  .btn-ghost{border:1px solid var(--border);color:var(--muted);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* SECTION */
+  .sec{max-width:1080px;margin:0 auto;padding:76px 80px;width:100%;}
+  .sec-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.2vw,38px);font-weight:700;letter-spacing:-0.02em;line-height:1.12;color:var(--text);margin-bottom:34px;}
+  .sec-title em{font-style:italic;font-weight:400;color:var(--muted);}
+  .steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+  .steps li{background:var(--surface);padding:30px 26px;display:flex;flex-direction:column;gap:12px;}
+  .steps .n{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--accent);line-height:1;}
+  .steps span.t{font-family:'DM Mono',monospace;font-size:12px;font-weight:300;line-height:1.8;color:var(--muted);letter-spacing:0.02em;}
+  .terms{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--muted2);margin-top:30px;text-transform:uppercase;}
+
+  footer{max-width:1200px;margin:0 auto;padding:48px 80px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);width:100%;}
+  .footer-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:400;color:var(--muted);letter-spacing:-0.01em;}
+  .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap;}
+  .footer-links a{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--accent);}
+
+  @media (max-width:900px){
+    nav{padding:18px 28px;}
+    .hamburger{display:flex;}
+    .nav-links{display:none;position:fixed;top:61px;left:0;right:0;background:rgba(14,14,14,0.97);flex-direction:column;align-items:center;gap:28px;padding:40px 24px;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .nav-links.open{display:flex;}
+    .phero{padding:120px 28px 60px;}
+    .sec{padding:56px 28px;}
+    .steps{grid-template-columns:1fr;}
+    footer{padding:40px 28px;flex-direction:column;gap:20px;}
+    .footer-links{justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><span class="logo-a">A</span>dam Lankamer</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/translatea">Translation</a></li>
+    <li><a href="/fotostories" class="active">Photography</a></li>
+    <li><a href="/ai">AI</a></li>
+    <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
+  </ul>
+  <button type="button" class="hamburger" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'));">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<header class="phero">
+  <span class="phero-eyebrow">Fotostories · Your gift · La Herradura</span>
+  <h1 class="phero-title">Thank you &mdash;<br><em>glad to have you here.</em></h1>
+  <p class="phero-sub">You have just been gifted a <strong>15-minute photo shoot — free</strong>. A cinematic mini-session, and the photos are yours to keep.<br><br>Shoot me a WhatsApp message and we'll fix a date and time.</p>
+  <div class="phero-actions">
+    <a class="btn btn-accent" href="https://wa.me/34641758592?text=Hi%20Adam%21%20I%27ve%20been%20gifted%20a%2015-minute%20photo%20shoot%20and%20I%27d%20like%20to%20book%20it." target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.12 1.528 5.849L.057 23.617a.75.75 0 0 0 .92.92l5.874-1.522A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.716 9.716 0 0 1-5.004-1.385l-.36-.214-3.733.968.994-3.64-.234-.374A9.716 9.716 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+      Message me on WhatsApp
+    </a>
+  </div>
+  <p class="phero-note">+34 641 758 592 · replies within 24 hours</p>
+</header>
+
+<!-- WHAT HAPPENS NEXT -->
+<section class="sec">
+  <span class="sec-eyebrow">What happens next</span>
+  <h2 class="sec-title">Three messages and <em>you're booked.</em></h2>
+  <ul class="steps">
+    <li><span class="n">1</span><span class="t">Message me on WhatsApp and tell me roughly when suits you.</span></li>
+    <li><span class="n">2</span><span class="t">We fix a date, a time and a spot — I'm based in La Herradura, so most locations are a short walk.</span></li>
+    <li><span class="n">3</span><span class="t">We shoot for 15 minutes. Your edited photos land in your messages afterwards, yours to keep.</span></li>
+  </ul>
+  <p class="terms">Valid 6 months · by appointment · one session per client</p>
+</section>
+
+<footer>
+  <span class="footer-name"><span class="logo-a">A</span>dam Lankamer</span>
+  <ul class="footer-links">
+    <li><a href="/fotostories">← Photography</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="https://instagram.com/foto__stories" target="_blank" rel="noopener noreferrer">@foto__stories</a></li>
+    <li><a href="https://wa.me/34641758592" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+    <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/terms">Terms</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
