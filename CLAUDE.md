@@ -47,6 +47,9 @@ The trailing `curl` pings IndexNow so Bing/Yandex pick up changes within minutes
 | `fotostories/partners.html` | `/fotostories/partners` | **B2B partner programme** for hotels/villas/restaurants — the FotoStories guest-photo offer (gift a private 15-min branded mini-session, from €25). Embeds the sell sheet + thank-you card + branded souvenir (images) with PDF downloads. Assets live in `/partner-kit/` (copied from `~/Desktop/BellaMani/thankyou-card/`). Added 2026-08-04 |
 | `ai.html` | `/ai` | AI projects directory — 12 tool cards |
 | `ai/website-development.html` | `/ai/website-development` | Case study — bahianails.com (AI-assisted build) |
+| `ai/bahiaphotographer.html` | `/ai/bahiaphotographer` | Case study — bahiaphotographer.com (added 2026-09-14, commit `21d886c`). Copied from the bahianails case study template. ⛔ Facts only: no traffic/ranking figures (site is still a noindex preview), translations described as AI-drafted (no human review yet), no invented quotes. Linked from both showcase captions on `/ai` ("Read the case study →"), in `sitemap.xml`, `llms.txt`, and a `netlify.toml` redirect |
+
+**Phone overflow fixed 2026-09-14:** `/ai` scrolled sideways to 595px on phones because `.hero::before` (the red glow) is 800px wide — `.hero` now has `overflow:hidden`. `/ai/website-development` also overflowed by 24px: `.preview-frame` had negative side margins but is a direct body child; margins set to `0 0`. Verified 360/390/1440px: no overflow on all three pages.
 | `privacy.html` | `/privacy` | Privacy policy (noindex) |
 | `terms.html` | `/terms` | Terms of use (noindex) |
 
