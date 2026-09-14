@@ -81,7 +81,15 @@ Downloadable + displayed B2B assets for `/fotostories/partners`: `sell-sheet.jpg
 | 7 | Telegram Channel Automation | (bespoke) | Available | — |
 | 8 | ClaudSkills | claudskills.com | Live | Free |
 | 9 | GuildSkills | guildskills.com | Live | Free · Pro Quality Score |
-| 10 | AI-Assisted Website Development | /ai/website-development | Available | Quote-based — showcase: bahianails.com |
+| 10 | AI-Assisted Website Development | /ai/website-development | Available | Quote-based — showcases: bahianails.com, bahiaphotographer.com |
+
+**Second showcase added 2026-09-14** (commit `ebdd276`): in `ai.html` `#website-development`, after the
+bahianails block, a linked screenshot `assets/bahiaphotographer-preview.jpg` (1000x625, ~101 KB, live homepage
+with the WhatsApp button hidden) + a "Showcase" caption. The Service JSON-LD `subjectOf` is now an ARRAY of two
+WebSite objects; `llms.txt` lists both showcases. The case-study page `/ai/website-development` is still about
+bahianails.com only. ⚠️ bahiaphotographer.com is still a noindex preview, so the link sends visitors to an
+unpromoted site (Adam's choice: "Publish now"). ⚠️ `/ai` already scrolled sideways on a 390px phone BEFORE this
+change (measured against the pre-change file) — not caused by the showcase, not yet investigated.
 | 11 | AutomationFlows | automationflows.io | Live | Free · Pro from $9/mo |
 | 12 | Au Naturel | aunaturel.life | Live | Free · Pro coming |
 
