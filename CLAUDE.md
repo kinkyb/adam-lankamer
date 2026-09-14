@@ -317,7 +317,29 @@ The "Book a Session" block (`.collab-strip`, "Let's create your photo story") li
 
 - **⛔ Don't act on `Build script returned non-zero exit code: 2 / 4` without reading the actual deploy log + getting explicit user approval.** That surface error wraps multiple unrelated failure modes (secret-scanner false positives, file-count timeouts, plugin install errors, npm install failures, function bundling, build-env limits). The real error lives ONLY in the Netlify web UI at `https://app.netlify.com/projects/$SITE/deploys/$DEPLOY_ID` — the public REST API does NOT expose log content. Before disabling auto-builds, switching deploy mechanisms, adding env vars, overriding plugins, or any other architectural change: pause, ask the user to paste the actual log section, get approval, then act. Burned 2026-05-16 on AutomationFlows — misdiagnosed a 3-day outage as a Netlify plugin issue and shipped 3 architectural commits before the real cause (secret-scanner false positives, fixed with `SECRETS_SCAN_ENABLED=false`) was confirmed. See `~/.claude/CLAUDE.md` "Workflow Rules" for the full version.
 
-## PLAN — photography brand consolidation (written 2026-09-13, NOT started; Adam: "write down the plan but do nothing now")
+## ✅ DONE 2026-09-14 — photography brands (commit `d699ddf`), supersedes most of the plan below
+
+Adam's decisions: **Bahía Photographer is the first photography brand and the one promoted; FotoStories is kept
+(nothing deleted — printed leaflets/QR codes ARE out) but not promoted anywhere.** He chose a "pure link" to
+bahiaphotographer.com with no preview step, and to replace the homepage Photography card with TWO cards.
+- `index.html` Ventures grid: the middle cell is now `.photo-stack` (two stacked `.photo-card-half` cards):
+  1 Bahía Photographer → `https://bahiaphotographer.com` (new tab), image `assets/bahiaphotographer-card.{jpg,webp}`
+  (1200x799, the ironwork dome frame from bahiaphotographer.com, stem b629d97c9520 — no people, so no embargo issue),
+  wordmark + "Weddings · Couples · Families" in HTML; 2 FotoStories → `/fotostories`, unchanged logo image.
+- Every "Photography" nav/footer link (index, ai, translatea, privacy, terms, both case studies) and the homepage
+  hero button → bahiaphotographer.com. FotoStories' own pages keep their self links.
+- Instagram: footers on index/ai/translatea and the Person `sameAs` now `instagram.com/bahiaphotographer`;
+  `sameAs` also gains `https://bahiaphotographer.com`. @foto__stories stays only on the FotoStories pages.
+- `fotostories.html`: `<meta name="robots" content="noindex, follow">`, geo meta and the LocalBusiness/
+  ProfessionalService JSON-LD REMOVED (breadcrumb + VideoObject kept). `fotostories/partners.html`: noindex + geo
+  meta removed. `/fotostories` dropped from `sitemap.xml`. `llms.txt` names bahiaphotographer.com as the photography site.
+- ⛔ No footer "Guest-photo partnerships" link was added — Adam wanted no promotion beyond the homepage card.
+- ⚠️ Adam's task: the existing Foto Stories Google Business Profile (no reviews, no activity) — rebrand to Bahía
+  Photographer or close it and open one for Bahía.
+- ⚠️ Pre-existing, not fixed: at ~1024px the homepage footer link row (`.footer-links`) is wider than the screen
+  (scrollWidth 1218) — same before and after this change.
+
+## PLAN — photography brand consolidation (written 2026-09-13; executed 2026-09-14, see above)
 
 **Decision direction (Adam):** keep both Instagrams. **bahiaphotographer.com becomes the wedding AND
 umbrella photography brand**; **FotoStories stays as the non-wedding brand, never promoted**.
