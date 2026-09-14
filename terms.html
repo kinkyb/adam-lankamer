@@ -57,6 +57,10 @@
   .footer-links { display: flex; gap: 24px; list-style: none; }
   .footer-links a { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--accent); }
+  /* 2026-09-14: long footer link rows wrap instead of widening the page (~1024px overflow) */
+  /* this page has no phone breakpoint, so the wrap applies at every width */
+  .footer-name { flex-shrink: 0; }
+  .footer-links { flex-wrap: wrap; row-gap: 12px; min-width: 0; }
 </style>
 </head>
 <body>
@@ -107,7 +111,7 @@
   <span class="footer-name"><span class="logo-a">A</span>dam Lankamer</span>
   <ul class="footer-links">
     <li><a href="/translatea">Translation</a></li>
-    <li><a href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer">Photography</a></li>
+    <li><a href="/#photography">Photography</a></li>
     <li><a href="/ai">AI</a></li>
     <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
     <li><a href="https://t.me/acreatorstore" target="_blank" rel="noopener noreferrer">Telegram @acreatorstore</a></li>

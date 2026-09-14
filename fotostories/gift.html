@@ -89,6 +89,12 @@
     footer{padding:40px 28px;flex-direction:column;gap:20px;}
     .footer-links{justify-content:center;}
   }
+  /* 2026-09-14: long footer link rows wrap instead of widening the page (~1024px overflow) */
+  @media (min-width: 901px) {
+    footer { gap: 32px; }
+    .footer-name { flex-shrink: 0; }
+    .footer-links { flex-wrap: wrap; justify-content: flex-end; row-gap: 12px; min-width: 0; }
+  }
 </style>
 </head>
 <body>

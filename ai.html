@@ -582,6 +582,12 @@
     .tool-header { flex-direction: column; gap: 12px; }
     .tool-badges { flex-direction: row; align-items: center; }
   }
+  /* 2026-09-14: long footer link rows wrap instead of widening the page (~1024px overflow) */
+  @media (min-width: 901px) {
+    footer { gap: 32px; }
+    .footer-name { flex-shrink: 0; }
+    .footer-links { flex-wrap: wrap; justify-content: flex-end; row-gap: 12px; min-width: 0; }
+  }
 </style>
 </head>
 <body>
@@ -591,7 +597,7 @@
   <a href="/" class="nav-logo"><span class="logo-a">A</span>dam Lankamer</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="/translatea">Translation</a></li>
-    <li><a href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer">Photography</a></li>
+    <li><a href="/#photography">Photography</a></li>
     <li><a href="/ai" class="active">AI</a></li>
     <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
   </ul>
@@ -972,7 +978,7 @@
   <ul class="footer-links">
     <li><a href="/">Home</a></li>
     <li><a href="/translatea">Translation</a></li>
-    <li><a href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer">Photography</a></li>
+    <li><a href="/#photography">Photography</a></li>
     <li><a href="https://instagram.com/bahiaphotographer" target="_blank" rel="noopener noreferrer">Instagram</a></li>
     <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
     <li><a href="https://t.me/acreatorstore" target="_blank" rel="noopener noreferrer">Telegram @acreatorstore</a></li>

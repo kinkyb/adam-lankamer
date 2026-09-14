@@ -667,6 +667,12 @@
   .b2b-sub { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 300; line-height: 1.8; color: var(--muted); max-width: 520px; margin: 0 auto 30px; letter-spacing: 0.02em; }
   .b2b-link { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; text-decoration: none; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; padding: 15px 30px; transition: opacity 0.2s; }
   .b2b-link:hover { opacity: 0.86; }
+  /* 2026-09-14: long footer link rows wrap instead of widening the page (~1024px overflow) */
+  @media (min-width: 901px) {
+    footer { gap: 32px; }
+    .footer-name { flex-shrink: 0; }
+    .footer-links { flex-wrap: wrap; justify-content: flex-end; row-gap: 12px; min-width: 0; }
+  }
 </style>
 </head>
 <body>

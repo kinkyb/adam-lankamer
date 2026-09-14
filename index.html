@@ -487,6 +487,7 @@
   /* Two photography brands share the middle grid cell (2026-09-14) */
   .photo-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 1px; background: var(--border); }
   .photo-card-half { min-height: 220px; }
+  .photo-stack { scroll-margin-top: 90px; }
   .photo-card-half .photo-card-scrim {
     background: linear-gradient(to bottom, rgba(14,14,14,0.30) 0%, rgba(14,14,14,0.42) 50%, rgba(14,14,14,0.82) 100%);
   }
@@ -624,6 +625,12 @@
     footer { padding: 40px 28px; flex-direction: column; gap: 20px; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
   }
+  /* 2026-09-14: long footer link rows wrap instead of widening the page (~1024px overflow) */
+  @media (min-width: 901px) {
+    footer { gap: 32px; }
+    .footer-name { flex-shrink: 0; }
+    .footer-links { flex-wrap: wrap; justify-content: flex-end; row-gap: 12px; min-width: 0; }
+  }
 </style>
 </head>
 <body>
@@ -633,7 +640,7 @@
   <a href="/" class="nav-logo"><span class="logo-a">A</span>dam Lankamer</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="/translatea">Translation</a></li>
-    <li><a href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer">Photography</a></li>
+    <li><a href="/#photography">Photography</a></li>
     <li><a href="/ai">AI</a></li>
     <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
   </ul>
@@ -652,7 +659,7 @@
     </p>
     <div class="hero-cta-group">
       <a href="/translatea" class="btn btn-primary">Translation</a>
-      <a href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Photography</a>
+      <a href="#photography" class="btn btn-ghost">Photography</a>
       <a href="/ai" class="btn btn-ghost">AI</a>
     </div>
   </div>
@@ -705,7 +712,7 @@
     </a>
 
     <!-- Photography — two brands stacked in one grid cell: 1 Bahía Photographer (promoted), 2 FotoStories (kept, not promoted) -->
-    <div class="photo-stack">
+    <div class="photo-stack" id="photography">
       <a class="venture-card photo-card photo-card-half" href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer">
         <picture>
           <source srcset="/assets/bahiaphotographer-card.webp" type="image/webp">
@@ -763,7 +770,7 @@
   <span class="footer-name"><span class="logo-a">A</span>dam Lankamer</span>
   <ul class="footer-links">
     <li><a href="/translatea">Translation</a></li>
-    <li><a href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer">Photography</a></li>
+    <li><a href="/#photography">Photography</a></li>
     <li><a href="/ai">AI tools</a></li>
     <li><a href="https://ucaption.online" target="_blank" rel="noopener noreferrer">Ucaption</a></li>
     <li><a href="https://perfectstudio.app" target="_blank" rel="noopener noreferrer">PerfectStudio</a></li>
@@ -777,5 +784,6 @@
   </ul>
 </footer>
 
+<script>document.querySelectorAll('#navLinks a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');var h=document.getElementById('hamburger');if(h)h.setAttribute('aria-expanded','false');});});</script>
 </body>
 </html>
