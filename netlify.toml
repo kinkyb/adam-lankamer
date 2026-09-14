@@ -107,6 +107,11 @@
   to   = "/ai/website-development.html"
   status = 200
 
+[[redirects]]
+  from = "/ai/bahiaphotographer"
+  to   = "/ai/bahiaphotographer.html"
+  status = 200
+
 [build]
   publish = "."
 
