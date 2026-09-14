@@ -57,7 +57,8 @@
         "https://autoxposter.com",
         "https://testyourskills.app",
         "https://linkedin.com/in/translatea",
-        "https://instagram.com/foto__stories",
+        "https://bahiaphotographer.com",
+        "https://instagram.com/bahiaphotographer",
         "https://github.com/kinkyb"
       ]
     },
@@ -483,6 +484,25 @@
     color: rgba(255,255,255,0.78);
   }
 
+  /* Two photography brands share the middle grid cell (2026-09-14) */
+  .photo-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 1px; background: var(--border); }
+  .photo-card-half { min-height: 220px; }
+  .photo-card-half .photo-card-scrim {
+    background: linear-gradient(to bottom, rgba(14,14,14,0.30) 0%, rgba(14,14,14,0.42) 50%, rgba(14,14,14,0.82) 100%);
+  }
+  .photo-card-brand {
+    position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); z-index: 2;
+    text-align: center; padding: 0 20px;
+    font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; line-height: 1.1; color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,0.55);
+  }
+  .photo-card-brand small {
+    display: block; margin-top: 10px;
+    font-family: 'DM Mono', monospace; font-size: 9px; font-weight: 400; letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.85);
+  }
+  @media (max-width: 900px) { .photo-card-half { min-height: 260px; } }
+
   /* ── ABOUT STRIP ── */
   .about-strip {
     background: var(--text);
@@ -613,7 +633,7 @@
   <a href="/" class="nav-logo"><span class="logo-a">A</span>dam Lankamer</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="/translatea">Translation</a></li>
-    <li><a href="/fotostories">Photography</a></li>
+    <li><a href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer">Photography</a></li>
     <li><a href="/ai">AI</a></li>
     <li><a href="mailto:acreatorstore@translatea.com">Contact</a></li>
   </ul>
@@ -632,7 +652,7 @@
     </p>
     <div class="hero-cta-group">
       <a href="/translatea" class="btn btn-primary">Translation</a>
-      <a href="/fotostories" class="btn btn-ghost">Photography</a>
+      <a href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Photography</a>
       <a href="/ai" class="btn btn-ghost">AI</a>
     </div>
   </div>
@@ -684,17 +704,26 @@
       <span class="venture-link">Explore Translatea</span>
     </a>
 
-    <!-- Photography — Foto Stories logo card -->
-    <a class="venture-card photo-card" href="/fotostories">
-      <picture>
-        <source srcset="/assets/fotostories-card.webp" type="image/webp">
-        <img src="/assets/fotostories-card.png" alt="Foto Stories — fine art photography by Adam Lankamer" width="1080" height="1080" loading="lazy" decoding="async">
-      </picture>
-      <div class="photo-card-scrim" aria-hidden="true"></div>
-      <p class="photo-card-text photo-card-text-top">Images that reveal character, show true self and highlight beauty in every captured person.</p>
-      <p class="photo-card-text photo-card-text-bot">Each session is a journey — a story told through light, shadow, and the decisive moment.</p>
-      <span class="photo-card-cta">View Fotostories &nbsp;→</span>
-    </a>
+    <!-- Photography — two brands stacked in one grid cell: 1 Bahía Photographer (promoted), 2 FotoStories (kept, not promoted) -->
+    <div class="photo-stack">
+      <a class="venture-card photo-card photo-card-half" href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer">
+        <picture>
+          <source srcset="/assets/bahiaphotographer-card.webp" type="image/webp">
+          <img src="/assets/bahiaphotographer-card.jpg" alt="Bahía Photographer — wedding and portrait photography on the Costa Tropical by Adam Lankamer" width="1200" height="799" loading="lazy" decoding="async">
+        </picture>
+        <div class="photo-card-scrim" aria-hidden="true"></div>
+        <span class="photo-card-brand">Bahía Photographer<small>Weddings · Couples · Families</small></span>
+        <span class="photo-card-cta">Visit bahiaphotographer.com &nbsp;→</span>
+      </a>
+      <a class="venture-card photo-card photo-card-half" href="/fotostories">
+        <picture>
+          <source srcset="/assets/fotostories-card.webp" type="image/webp">
+          <img src="/assets/fotostories-card.png" alt="Foto Stories — fine art photography by Adam Lankamer" width="1080" height="1080" loading="lazy" decoding="async">
+        </picture>
+        <div class="photo-card-scrim" aria-hidden="true"></div>
+        <span class="photo-card-cta">View Fotostories &nbsp;→</span>
+      </a>
+    </div>
 
     <!-- AI -->
     <a class="venture-card" href="/ai">
@@ -734,14 +763,14 @@
   <span class="footer-name"><span class="logo-a">A</span>dam Lankamer</span>
   <ul class="footer-links">
     <li><a href="/translatea">Translation</a></li>
-    <li><a href="/fotostories">Photography</a></li>
+    <li><a href="https://bahiaphotographer.com" target="_blank" rel="noopener noreferrer">Photography</a></li>
     <li><a href="/ai">AI tools</a></li>
     <li><a href="https://ucaption.online" target="_blank" rel="noopener noreferrer">Ucaption</a></li>
     <li><a href="https://perfectstudio.app" target="_blank" rel="noopener noreferrer">PerfectStudio</a></li>
     <li><a href="https://claudskills.com" target="_blank" rel="noopener noreferrer">ClaudSkills</a></li>
     <li><a href="https://guildskills.com" target="_blank" rel="noopener noreferrer">GuildSkills</a></li>
     <li><a href="https://t.me/acreatorstore" target="_blank" rel="noopener noreferrer">Telegram @acreatorstore</a></li>
-    <li><a href="https://instagram.com/foto__stories" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+    <li><a href="https://instagram.com/bahiaphotographer" target="_blank" rel="noopener noreferrer">Instagram</a></li>
     <li><a href="https://linkedin.com/in/translatea" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
     <li><a href="/privacy">Privacy</a></li>
     <li><a href="/terms">Terms</a></li>
