@@ -305,3 +305,45 @@ The "Book a Session" block (`.collab-strip`, "Let's create your photo story") li
 ## Netlify build diagnosis
 
 - **⛔ Don't act on `Build script returned non-zero exit code: 2 / 4` without reading the actual deploy log + getting explicit user approval.** That surface error wraps multiple unrelated failure modes (secret-scanner false positives, file-count timeouts, plugin install errors, npm install failures, function bundling, build-env limits). The real error lives ONLY in the Netlify web UI at `https://app.netlify.com/projects/$SITE/deploys/$DEPLOY_ID` — the public REST API does NOT expose log content. Before disabling auto-builds, switching deploy mechanisms, adding env vars, overriding plugins, or any other architectural change: pause, ask the user to paste the actual log section, get approval, then act. Burned 2026-05-16 on AutomationFlows — misdiagnosed a 3-day outage as a Netlify plugin issue and shipped 3 architectural commits before the real cause (secret-scanner false positives, fixed with `SECRETS_SCAN_ENABLED=false`) was confirmed. See `~/.claude/CLAUDE.md` "Workflow Rules" for the full version.
+
+## PLAN — photography brand consolidation (written 2026-09-13, NOT started; Adam: "write down the plan but do nothing now")
+
+**Decision direction (Adam):** keep both Instagrams. **bahiaphotographer.com becomes the wedding AND
+umbrella photography brand**; **FotoStories stays as the non-wedding brand, never promoted**.
+adamlankamer.com links photography to bahiaphotographer.com instead of `/fotostories`.
+
+**Measured state 2026-09-13 (before any change):**
+- `index.html` links "Photography" to `/fotostories` in FOUR places: top nav (line ~616), footer nav
+  (~737), hero `btn-ghost` (~635), and the Ventures `photo-card` with the Foto Stories logo (~688).
+- `/fotostories` is in `sitemap.xml`, indexable, and carries **LocalBusiness + ProfessionalService +
+  VideoObject schema geo-tagged to La Herradura** plus geo meta — i.e. it competes for the same local
+  searches bahiaphotographer.com must win. (`fotostories/gift.html` and `bahia-nails.html` are already
+  noindex.)
+- FotoStories is more than a portfolio: B2B partner programme `/fotostories/partners` (guest
+  mini-sessions from €25), `/partner-kit/` PDFs, `_leaflet/leaflet.html` + `qr.png` (A5 print).
+- @foto__stories is linked 8× in the source (live homepage 1×).
+
+**Steps, in order:**
+1. **Answer first (open questions for Adam):** (a) does a Foto Stories **Google Business Profile**
+   exist? One photographer at one place should have ONE profile, named Bahía Photographer — two can
+   be flagged; (b) were any leaflets / thank-you cards / QR codes **printed or handed out**? If yes,
+   every printed URL must keep resolving.
+2. **Repoint the four `index.html` links** to `https://bahiaphotographer.com` (nav, footer, hero
+   button); replace the Ventures Foto Stories card with a Bahía Photographer card (new image + text;
+   design preview for Adam before deploy).
+3. **Keep every `/fotostories*` page and `/partner-kit/` file live** — remove them from the main nav
+   only; add one small footer link ("Guest-photo partnerships" → `/fotostories/partners`) so they stay
+   reachable. ⛔ No redirects or deletions of these URLs.
+4. **Stop FotoStories competing in search:** add `noindex` to `fotostories.html` (and
+   `partners.html` unless Adam wants that one found), remove their LocalBusiness/ProfessionalService
+   schema and geo meta, drop `/fotostories` from `sitemap.xml`; update `llms.txt` to name
+   bahiaphotographer.com as the photography site.
+5. **Instagram:** @bahiaphotographer from adamlankamer.com's photography link/card;
+   @foto__stories only on the FotoStories pages, not on adamlankamer.com's main pages.
+6. **Google Business Profile:** one profile, Bahía Photographer, linking bahiaphotographer.com (Adam's
+   manual task; merge or close a Foto Stories profile if one exists).
+7. Netlify pre-check → deploy adamlankamer.com → verify live: the four links, footer link, noindex on
+   FotoStories pages, sitemap, schema removed, every `/fotostories*` and `/partner-kit/*` URL still 200.
+
+**Timing:** links can switch before bahiaphotographer.com goes live (visitors see the unpromoted
+noindex preview — acceptable per Adam); the search benefit starts only when it goes live.
