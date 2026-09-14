@@ -336,8 +336,18 @@ bahiaphotographer.com with no preview step, and to replace the homepage Photogra
 - ⛔ No footer "Guest-photo partnerships" link was added — Adam wanted no promotion beyond the homepage card.
 - ⚠️ Adam's task: the existing Foto Stories Google Business Profile (no reviews, no activity) — rebrand to Bahía
   Photographer or close it and open one for Bahía.
-- ⚠️ Pre-existing, not fixed: at ~1024px the homepage footer link row (`.footer-links`) is wider than the screen
-  (scrollWidth 1218) — same before and after this change.
+- **Update same day (commit `df3ee67`, Adam: Photography should scroll to the dual branding, not open
+  bahiaphotographer.com):** every "Photography" nav/footer link now points to `/#photography` (same tab) and the
+  homepage hero button to `#photography`; the stacked cards carry `id="photography"` with
+  `scroll-margin-top: 90px` so the fixed nav does not cover them. Only the Bahía CARD links out to
+  bahiaphotographer.com. The homepage got a small script that closes the phone menu when a nav link is tapped
+  (otherwise the open menu covered the cards after scrolling). Verified: from the homepage nav, the hero button,
+  /ai, /translatea and the phone menu the cards land fully in view below the nav.
+- **Footer overflow fixed (same commit):** the long `.footer-links` row made the homepage 1218px wide at 1024px,
+  and /privacy + /terms 671px wide on phones (both pre-existing). A block before `</style>` makes the links wrap
+  (`@media (min-width: 901px)` on pages that already have a phone rule — index, ai, translatea, both case studies,
+  all four FotoStories pages; unconditional on privacy/terms, which have no phone breakpoint). Verified 360–1440px on
+  all 11 pages: no horizontal overflow.
 
 ## PLAN — photography brand consolidation (written 2026-09-13; executed 2026-09-14, see above)
 
